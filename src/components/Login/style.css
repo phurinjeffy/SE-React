@@ -1,23 +1,22 @@
-/* LoginContainer */
 .LoginContainer {
     width: 100%;
     height: 100%;
-    position: relative;
+    position: absolute;
     background: white;
 }
 
-/* Backdrop */
 .Backdrop {
     width: 1440px;
+    width: 100%;
     height: 1024px;
+    height: 100%;
     left: 0;
-    top: -3;
-    position: absolute;
+    top: 0;
+    position: fixed;
     background: #585859;
     backdrop-filter: blur(8px);
 }
 
-/* SignUpOverlay */
 .SignUpOverlay {
     width: 795px;
     height: 861px;
@@ -29,7 +28,6 @@
     overflow: hidden;
 }
 
-/* Icons */
 .Icons {
     width: 32px;
     height: 32px;
@@ -38,7 +36,6 @@
     position: absolute;
 }
 
-/* Vector */
 .Vector1 {
     width: 32px;
     height: 32px;
@@ -47,7 +44,6 @@
     position: absolute;
 }
 
-/* Vector with background */
 .VectorWithBackground {
     width: 18.67px;
     height: 18.67px;
@@ -57,7 +53,6 @@
     background: #101010;
 }
 
-/* Frame288 */
 .Frame288 {
     left: 133px;
     top: 228px;
@@ -69,7 +64,6 @@
     display: inline-flex;
 }
 
-/* Frame209 */
 .Frame209 {
     flex-direction: column;
     justify-content: center;
@@ -78,7 +72,6 @@
     display: flex;
 }
 
-/* Frame8 */
 .Frame8 {
     flex-direction: column;
     justify-content: center;
@@ -87,7 +80,6 @@
     display: flex;
 }
 
-/* Login Text */
 .LoginText {
     text-align: center;
     color: #333333;
@@ -97,7 +89,6 @@
     word-wrap: break-word;
 }
 
-/* Frame287 */
 .Frame287 {
     background: white;
     flex-direction: column;
@@ -107,7 +98,6 @@
     display: flex;
 }
 
-/* TextField */
 .TextField{
     height: 87px;
     flex-direction: column;
@@ -126,7 +116,6 @@
     display: inline-flex;
 }
 
-/* Label */
 .Label {
     color: #666666;
     font-size: 16px;
@@ -149,6 +138,7 @@
     position : relative;
     border-radius : 12px;
     border : 1px rgba(102, 102, 102, 0.35) solid;
+    padding-left: 20px;
 }
 
 .Frame243_2 {
@@ -159,14 +149,12 @@
     display : inline-flex;
 }
 
-/* PasswordHideSee */
 .PasswordHideSee {
     width: 73px;
     align-self: stretch;
     position: relative;
 }
 
-/* Password Icon */
 .Icon {
     width: 24px;
     height: 24px;
@@ -182,14 +170,12 @@
     display: inline-flex;
 }
 
-/* Group1 */
 .Group1 {
     width: 18.19px;
     height: 16px;
     position: relative;
 }
 
-/* Password Icons */
 .VectorWithBackgroundIcon {
     width: 17.10px;
     height: 16px;
@@ -199,7 +185,6 @@
     background: rgba(102, 102, 102, 0.80);
 }
 
-/* Password Icons */
 .VectorIcon {
     width: 11.30px;
     height: 9.23px;
@@ -209,7 +194,6 @@
     background: rgba(102, 102, 102, 0.80);
 }
 
-/* Hide Password Text */
 .Hide {
     left: 32px;
     top: 0;
@@ -222,18 +206,6 @@
     word-wrap: break-word;
 }
 
-/* ForgetYourPassword */
-.ForgetYourPassword {
-    text-align: right;
-    color: #111111;
-    font-size: 16px;
-    font-family: 'Poppins';
-    font-weight: 400;
-    text-decoration: underline;
-    word-wrap: break-word;
-}
-
-/* Button */
 .Button {
     width: 528px;
     height: 64px;
@@ -242,7 +214,6 @@
     display: inline-flex;
 }
 
-/* Button Background */
 .ButtonBackground {
     width: 528px;
     height: 64px;
@@ -257,7 +228,6 @@
     display: inline-flex;
 }
 
-/* Frame276 */
 .Frame276 {
     justify-content : center;
     align-items : center;
@@ -265,7 +235,6 @@
     display : inline-flex;
 }
 
-/* Log in Text */
 .LoginButtonText {
     text-align: center;
     color: white;
@@ -275,7 +244,6 @@
     word-wrap: break-word;
 }
 
-/* Se11 Image */
 .Se11 {
     width: 88px;
     height: 53px;
@@ -284,7 +252,6 @@
     position: absolute;
 }
 
-/* SoftwareEngineering Text */
 .SoftwareEngineering {
     left: 295px;
     top: 192px;

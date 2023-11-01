@@ -1,11 +1,12 @@
 import React from 'react'
-import { Login } from './Login'
 
+import { Login, Profile } from './components'
 import './App.css'
 
 const App = () => {
   return (
-    <div><Login /></div>
+    // <div><Login /></div>
+    <div><Profile /></div>
   )
 }
 

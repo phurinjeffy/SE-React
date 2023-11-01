@@ -1,0 +1,149 @@
+* {
+  margin: auto;
+}
+
+.navbar {
+  width: 100%;
+  height: 15%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  background: #d9d9d9;
+}
+
+.container {
+  margin: 2.5%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: white;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+/* Rotate first bar */
+.change .bar1 {
+  transform: translate(0, 11px) rotate(-45deg);
+}
+
+/* Fade out the second bar */
+.change .bar2 {
+  opacity: 0;
+}
+
+/* Rotate last bar */
+.change .bar3 {
+  transform: translate(0, -11px) rotate(45deg);
+}
+
+.SE_Logo {
+  height: 40%;
+  margin: 40px;
+  position: absolute;
+}
+
+.SoftwareEngineering {
+  left: 302px;
+  top: 47px;
+  position: absolute;
+  text-align: center;
+  color: #666666;
+  font-size: 40px;
+  font-family: "Varela Round";
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.SearchBox {
+  width: 419px;
+  height: 48px;
+  left: 1100px;
+  top: 49px;
+  position: absolute;
+}
+
+.SearchBar {
+  width: 419px;
+  height: 48px;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+}
+
+.SearchIcon {
+  width: 25px;
+  height: 25px;
+  left: 19px;
+  top: 9px;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+}
+
+.SearchInput {
+  width: 419px;
+  height: 48px;
+  left: 0px;
+  top: 0px;
+  padding-left: 60px;
+  position: absolute;
+  background: rgba(102, 102, 102, 0.2);
+  border-radius: 30px;
+  border: solid, 1.5px, rgba(0, 0, 0, 0.5);
+}
+
+.Notification {
+  width: 54px;
+  height: 53px;
+  left: 1700px;
+  top: 44px;
+  position: absolute;
+}
+
+.NotificationIcon {
+  width: 50px;
+  height: 50px;
+  left: 0px;
+  top: 3px;
+  position: absolute;
+  background: #585859;
+  border-radius: 100%;
+}
+
+.NotificationIcon {
+  width: 30;
+  height: 30;
+  left: 10;
+  top: 13;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+}
+
+.NewUpdateNotification {
+  width: 20px;
+  height: 20px;
+  left: 34px;
+  top: 0px;
+  position: absolute;
+  background: #ee9120;
+  border-radius: 100%;
+}
+
+.UserProfile {
+  width: 50px;
+  height: 50px;
+  left: 1800px;
+  top: 47px;
+  position: absolute;
+  border-radius: 100%;
+  border: 2px, white, solid;
+}
