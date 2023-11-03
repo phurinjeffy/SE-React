@@ -22,9 +22,9 @@ const Navbar = () => {
           <img src="https://se.kmitl.ac.th/assets/se.png" alt="logo" />
         </div>
 
-        <div className="navbar-links_title">
+        {/* <div className="navbar-links_title">
           Software Engineering
-        </div>
+        </div> */}
       </div>
 
       <div className="navbar-profile">

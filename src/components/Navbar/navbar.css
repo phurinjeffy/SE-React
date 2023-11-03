@@ -11,6 +11,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  overflow: auto;
 }
 
 .navbar-links_menu {
@@ -63,7 +64,6 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  overflow: auto;
 }
 
 .navbar-profile_search {
@@ -91,7 +91,7 @@
 .navbar-profile_notification {
   width: 54px;
   height: 53px;
-  margin-right: 2rem;
+  margin-right: 1rem;
 }
 
 .navbar-profile_notification_icon {
@@ -102,7 +102,7 @@
 }
 
 .navbar-profile_user {
-  margin-right: 1rem;
+  margin-right: 0rem;
 }
 
 .navbar-profile_user img {
@@ -112,7 +112,7 @@
   border: 1px rgb(0, 0, 0) solid;
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1000px) {
   .navbar-profile_searchbar {
     max-width: 0; /* Hide the searchbar */
   }
@@ -122,7 +122,7 @@
     visibility: visible;
   }
 }
-
+/* 
 @media screen and (max-width: 900px) {
   .navbar-links_title {
     display: none;
@@ -131,4 +131,4 @@
   .navbar-profile_searchbar {
     display: none;
   }
-}
+} */
