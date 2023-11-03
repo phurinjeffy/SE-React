@@ -7,7 +7,6 @@
 }
 
 .navbar-links {
-  flex: 1;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -61,8 +60,10 @@
 
 .navbar-profile {
   display: flex;
+  flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  overflow: auto;
 }
 
 .navbar-profile_search {
@@ -81,6 +82,10 @@
   background-size: 25px;
   background-position: 15px center;
   background-repeat: no-repeat;
+
+  transition: all 0.4s; /* Add a transition for smooth animations */
+  visibility: visible; /* Make the searchbar initially visible */
+  max-width: 419px; /* Set a max-width to prevent overflow */
 }
 
 .navbar-profile_notification {
@@ -105,4 +110,25 @@
   height: 50px;
   border-radius: 100%;
   border: 1px rgb(0, 0, 0) solid;
+}
+
+@media screen and (max-width: 1300px) {
+  .navbar-profile_searchbar {
+    max-width: 0; /* Hide the searchbar */
+  }
+  
+  .navbar-profile_searchbar:hover {
+    max-width: 250px; /* Show the searchbar on hover */
+    visibility: visible;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .navbar-links_title {
+    display: none;
+  }
+
+  .navbar-profile_searchbar {
+    display: none;
+  }
 }
