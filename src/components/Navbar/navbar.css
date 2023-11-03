@@ -66,7 +66,7 @@
 }
 
 .navbar-profile_search {
-  margin-right: 3rem;
+  margin-right: 2rem;
 }
 
 .navbar-profile_searchbar {
@@ -86,33 +86,23 @@
 .navbar-profile_notification {
   width: 54px;
   height: 53px;
+  margin-right: 2rem;
 }
 
-.NotificationIcon {
+.navbar-profile_notification_icon {
   width: 50px;
   height: 50px;
   background: #585859;
   border-radius: 100%;
 }
 
-.NotificationIcon {
-  width: 30;
-  height: 30;
-  justify-content: center;
-  align-items: center;
-  display: inline-flex;
+.navbar-profile_user {
+  margin-right: 1rem;
 }
 
-.NewUpdateNotification {
-  width: 20px;
-  height: 20px;
-  background: #ee9120;
-  border-radius: 100%;
-}
-
-.UserProfile {
+.navbar-profile_user img {
   width: 50px;
   height: 50px;
   border-radius: 100%;
-  border: 2px, white, solid;
+  border: 1px rgb(0, 0, 0) solid;
 }
