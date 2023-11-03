@@ -1,12 +1,13 @@
 import React from 'react'
 
-import { Login, Profile } from './components'
+import { Navbar } from './components'
 import './App.css'
 
 const App = () => {
   return (
-    // <div><Login /></div>
-    <div><Profile /></div>
+    <div className="App">
+      <Navbar />
+    </div>
   )
 }
 
