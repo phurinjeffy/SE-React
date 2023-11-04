@@ -5,9 +5,16 @@
   background: #d9d9d9;
   box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
   border-radius: 20px;
-  margin: 3rem auto;
+  margin: 3rem;
+
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+}
+
+.User {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .UserSProfilePic {
@@ -44,19 +51,27 @@
   word-wrap: break-word;
 }
 
-.FollowIcon {
-  width: 30px;
-  height: 30px;
-  left: 172px;
-  top: 484px;
-  position: absolute;
+.Contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem;
 }
 
-.Follower {
-  left: 229px;
-  top: 488px;
-  position: absolute;
-  text-align: center;
+.ContactsRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.ContactsIcon {
+  width: 30px;
+  height: 30px;
+  margin-right: 1rem;
+}
+
+.ContactsText {
   color: black;
   font-size: 15px;
   font-family: "Varela Round";
@@ -67,58 +82,7 @@
 .Dot {
   width: 5px;
   height: 5px;
-  left: 321px;
-  top: 494px;
-  position: absolute;
   background: black;
   border-radius: 100%;
-}
-
-.Following {
-  left: 355px;
-  top: 488px;
-  position: absolute;
-  color: black;
-  font-size: 15px;
-  font-family: "Varela Round";
-  font-weight: 400;
-  word-wrap: break-word;
-}
-
-.GithubIcon {
-  width: 30px;
-  height: 30px;
-  left: 172px;
-  top: 529px;
-  position: absolute;
-}
-
-.Github {
-  left: 229px;
-  top: 535px;
-  position: absolute;
-  color: black;
-  font-size: 15px;
-  font-family: "Varela Round";
-  font-weight: 400;
-  word-wrap: break-word;
-}
-
-.DiscordIcon {
-  width: 37.5px;
-  height: 30px;
-  left: 168px;
-  top: 574px;
-  position: absolute;
-}
-
-.Discord {
-  left: 229px;
-  top: 580px;
-  position: absolute;
-  color: black;
-  font-size: 15px;
-  font-family: "Varela Round";
-  font-weight: 400;
-  word-wrap: break-word;
+  margin: 0 0.5rem;
 }

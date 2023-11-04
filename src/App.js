@@ -9,7 +9,7 @@ const App = () => {
       <Navbar />
       <div className="Content">
         <Profile />
-        {/* <Repository /> */}
+        <Repository />
       </div>
     </div>
   )
