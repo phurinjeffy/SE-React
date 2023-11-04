@@ -67,6 +67,10 @@
   margin-right: 1rem;
 }
 
+.ProjectName:hover {
+  color: rgb(91, 165, 255);
+}
+
 .ProjectVisibilityFrame {
   width: 62px;
   height: 27px;
@@ -120,13 +124,13 @@
   word-wrap: break-word;
 }
 
-@media screen and (max-width: 800px){
-    .RepositRow {
-        flex-direction: column;
-    }
+@media screen and (max-width: 800px) {
+  .RepositRow {
+    flex-direction: column;
+  }
 
-    .Reposit {
-        align-items: center;
-        height: auto;
-    }
+  .Reposit {
+    align-items: center;
+    height: auto;
+  }
 }
