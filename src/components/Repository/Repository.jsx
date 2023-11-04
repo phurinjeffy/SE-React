@@ -16,130 +16,200 @@ const Repository = () => {
             </div>
         </div>
 
-        <div className="Project">
-            <div className="ProjectRow">
-                <div className="ProjectIcon">
-                    <img src={repoIcon} alt="repoIcon" />
+        <div className="RepositRow">
+            <div className="Project">
+                <div className="ProjectRow">
+                    <div className="ProjectIcon">
+                        <img src={repoIcon} alt="repoIcon" />
+                    </div>
+                    <div className="ProjectName">
+                        Endless Runner
+                    </div>
+                    <div className="ProjectVisibilityFrame">
+                        <div className="ProjectVisibility">
+                            public
+                        </div>
+                    </div>
                 </div>
-                <div className="ProjectName">
-                    Endless Runner
+
+                <div className="ProjectRow">
+                    <div className="Description">
+                        An arcade survival game.
+                    </div>
                 </div>
-                <div className="ProjectVisibilityFrame">
-                    <div className="ProjectVisibility">
-                        public
+
+                <div className="ProjectRow">
+                    <div className="LanguageColor" />
+                    <div className="Language">
+                        languages
+                    </div>
+                    <div className="Time">
+                        Updated 2 hours ago
                     </div>
                 </div>
             </div>
 
-            <div className="ProjectRow">
-                <div className="Description">
-                    An arcade survival game.
+            <div className="Project">
+                <div className="ProjectRow">
+                    <div className="ProjectIcon">
+                        <img src={repoIcon} alt="repoIcon" />
+                    </div>
+                    <div className="ProjectName">
+                        Endless Runner
+                    </div>
+                    <div className="ProjectVisibilityFrame">
+                        <div className="ProjectVisibility">
+                            public
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div className="ProjectRow">
-                <div className="LanguageColor" />
-                <div className="Language">
-                    languages
+                <div className="ProjectRow">
+                    <div className="Description">
+                        An arcade survival game.
+                    </div>
                 </div>
-                <div className="Time">
-                    Updated 2 hours ago
+
+                <div className="ProjectRow">
+                    <div className="LanguageColor" />
+                    <div className="Language">
+                        languages
+                    </div>
+                    <div className="Time">
+                        Updated 2 hours ago
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div className="Project">
-            <div className="ProjectRow">
-                <div className="ProjectIcon">
-                    <img src={repoIcon} alt="repoIcon" />
+        <div className="RepositRow">
+            <div className="Project">
+                <div className="ProjectRow">
+                    <div className="ProjectIcon">
+                        <img src={repoIcon} alt="repoIcon" />
+                    </div>
+                    <div className="ProjectName">
+                        Endless Runner
+                    </div>
+                    <div className="ProjectVisibilityFrame">
+                        <div className="ProjectVisibility">
+                            public
+                        </div>
+                    </div>
                 </div>
-                <div className="ProjectName">
-                    Endless Runner
+
+                <div className="ProjectRow">
+                    <div className="Description">
+                        An arcade survival game.
+                    </div>
                 </div>
-                <div className="ProjectVisibilityFrame">
-                    <div className="ProjectVisibility">
-                        public
+
+                <div className="ProjectRow">
+                    <div className="LanguageColor" />
+                    <div className="Language">
+                        languages
+                    </div>
+                    <div className="Time">
+                        Updated 2 hours ago
                     </div>
                 </div>
             </div>
 
-            <div className="ProjectRow">
-                <div className="Description">
-                    An arcade survival game.
+            <div className="Project">
+                <div className="ProjectRow">
+                    <div className="ProjectIcon">
+                        <img src={repoIcon} alt="repoIcon" />
+                    </div>
+                    <div className="ProjectName">
+                        Endless Runner
+                    </div>
+                    <div className="ProjectVisibilityFrame">
+                        <div className="ProjectVisibility">
+                            public
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div className="ProjectRow">
-                <div className="LanguageColor" />
-                <div className="Language">
-                    languages
+                <div className="ProjectRow">
+                    <div className="Description">
+                        An arcade survival game.
+                    </div>
                 </div>
-                <div className="Time">
-                    Updated 2 hours ago
+
+                <div className="ProjectRow">
+                    <div className="LanguageColor" />
+                    <div className="Language">
+                        languages
+                    </div>
+                    <div className="Time">
+                        Updated 2 hours ago
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div className="Project">
-            <div className="ProjectRow">
-                <div className="ProjectIcon">
-                    <img src={repoIcon} alt="repoIcon" />
+        <div className="RepositRow">
+            <div className="Project">
+                <div className="ProjectRow">
+                    <div className="ProjectIcon">
+                        <img src={repoIcon} alt="repoIcon" />
+                    </div>
+                    <div className="ProjectName">
+                        Endless Runner
+                    </div>
+                    <div className="ProjectVisibilityFrame">
+                        <div className="ProjectVisibility">
+                            public
+                        </div>
+                    </div>
                 </div>
-                <div className="ProjectName">
-                    Endless Runner
+
+                <div className="ProjectRow">
+                    <div className="Description">
+                        An arcade survival game.
+                    </div>
                 </div>
-                <div className="ProjectVisibilityFrame">
-                    <div className="ProjectVisibility">
-                        public
+
+                <div className="ProjectRow">
+                    <div className="LanguageColor" />
+                    <div className="Language">
+                        languages
+                    </div>
+                    <div className="Time">
+                        Updated 2 hours ago
                     </div>
                 </div>
             </div>
 
-            <div className="ProjectRow">
-                <div className="Description">
-                    An arcade survival game.
-                </div>
-            </div>
-
-            <div className="ProjectRow">
-                <div className="LanguageColor" />
-                <div className="Language">
-                    languages
-                </div>
-                <div className="Time">
-                    Updated 2 hours ago
-                </div>
-            </div>
-        </div>
-
-        <div className="Project">
-            <div className="ProjectRow">
-                <div className="ProjectIcon">
-                    <img src={repoIcon} alt="repoIcon" />
-                </div>
-                <div className="ProjectName">
-                    Endless Runner
-                </div>
-                <div className="ProjectVisibilityFrame">
-                    <div className="ProjectVisibility">
-                        public
+            <div className="Project">
+                <div className="ProjectRow">
+                    <div className="ProjectIcon">
+                        <img src={repoIcon} alt="repoIcon" />
+                    </div>
+                    <div className="ProjectName">
+                        Endless Runner
+                    </div>
+                    <div className="ProjectVisibilityFrame">
+                        <div className="ProjectVisibility">
+                            public
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div className="ProjectRow">
-                <div className="Description">
-                    An arcade survival game.
+                <div className="ProjectRow">
+                    <div className="Description">
+                        An arcade survival game.
+                    </div>
                 </div>
-            </div>
 
-            <div className="ProjectRow">
-                <div className="LanguageColor" />
-                <div className="Language">
-                    languages
-                </div>
-                <div className="Time">
-                    Updated 2 hours ago
+                <div className="ProjectRow">
+                    <div className="LanguageColor" />
+                    <div className="Language">
+                        languages
+                    </div>
+                    <div className="Time">
+                        Updated 2 hours ago
+                    </div>
                 </div>
             </div>
         </div>

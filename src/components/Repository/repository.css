@@ -1,8 +1,6 @@
 .Reposit {
-  width: 487px;
+  width: 700px;
   height: 700px;
-  position: relative;
-  margin: 1rem;
   display: flex;
   flex-direction: column;
 }
@@ -22,6 +20,12 @@
   font-family: "Varela Round";
   font-weight: 400;
   word-wrap: break-word;
+}
+
+.RepositRow {
+  display: flex;
+  flex-direction: row;
+  column-gap: 1.5rem;
 }
 
 .Project {
@@ -114,4 +118,15 @@
   font-family: "Varela Round";
   font-weight: 400;
   word-wrap: break-word;
+}
+
+@media screen and (max-width: 800px){
+    .RepositRow {
+        flex-direction: column;
+    }
+
+    .Reposit {
+        align-items: center;
+        height: auto;
+    }
 }
