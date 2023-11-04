@@ -1,8 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import "./login.css";
 import closeIcon from "../../assets/close.svg";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState(null);
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      // You can replace this with your actual authentication logic
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        // Redirect the user to the dashboard or another page
+        window.location.href = "/dashboard";
+      } else {
+        // Handle authentication error
+        setLoginError("Invalid email or password. Please try again.");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      setLoginError("An error occurred. Please try again later.");
+    }
+  };
+
   return (
     <div className="Page">
       <div className="SignUpOverlay">
@@ -26,31 +64,30 @@ const Login = () => {
           <div className="Form">
             <div className="UserInput">
               <div className="Label">
-                <label for="email">
+                <label htmlFor="email">
                   Email
                 </label>
               </div>
               <div className="Input">
-                <input type="email" id="email"/>
+                <input type="email" id="email" onChange={handleEmailChange} value={email} />
               </div>
             </div>
 
             <div className="UserInput">
               <div className="Label">
-                <label for="password">
+                <label htmlFor="password">
                   Password
                 </label>
               </div>
               <div className="Input">
-                <input type="password" id="password"/>
+                <input type="password" id="password" onChange={handlePasswordChange} value={password} />
               </div>
             </div>
             
             <div className="LoginButton">
-              <button>
-                Log in
-              </button>
+              <button onClick={handleLogin}>Log in</button>
             </div>
+            {loginError && <div className="ErrorMessage">{loginError}</div>}
           </div>
         </form>
       </div>
