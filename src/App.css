@@ -14,40 +14,16 @@ a {
   text-decoration: none;
 }
 
-.section__padding {
-  padding: 4rem 6rem;
-}
-
-.section__margin {
-  margin: 4rem 6rem;
-}
-
-@media screen and (max-width: 700px) {
-  .section__padding {
-    padding: 4rem;
-  }
-
-  .section__margin {
-    margin: 4rem;
-  }
-}
-
-@media screen and (max-width: 550px) {
-  .section__padding {
-    padding: 4rem 2rem;
-  }
-
-  .section__margin {
-    margin: 4rem 2rem;
-  }
+.PageContainer {
+  display: flex;
 }
 
 .Content {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
   overflow: hidden;
+  margin: 0 auto 4rem auto;
 }
 
 @media screen and (max-width: 1400px) {

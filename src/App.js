@@ -1,18 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-import { Navbar, Login, Profile, Repository } from './components'
+import { Navbar, Sidebar, Login, Profile, Repository } from './components'
 import './App.css'
 
 const App = () => {
   return (
     <div className="App">
-      <Login />
-
-      {/* <Navbar />
-      <div className="Content">
-        <Profile />
-        <Repository />
-      </div> */}
+      <Navbar />
+      <div className="PageContainer">
+        <Sidebar />
+        <div className="Content">
+          <Profile />
+          <Repository />
+        </div>
+      </div>
+      {/* <Login /> */}
     </div>
   )
 }
