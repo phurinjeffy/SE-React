@@ -1,0 +1,124 @@
+.ProfileSection {
+  width: 616px;
+  height: 707px;
+  position: relative;
+  background: #d9d9d9;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.UserSProfilePic {
+  padding-top: 2rem;
+  margin: 2rem;
+  position: relative;
+}
+
+.UserSProfilePic img {
+  width: 250px;
+  height: 250px;
+  border-radius: 100%;
+  border: 5px white solid;
+}
+
+.Name {
+  position: relative;
+  text-align: center;
+  color: black;
+  font-size: 40px;
+  font-family: "Varela Round";
+  font-weight: 400;
+  word-wrap: break-word;
+  margin-bottom: 1rem;
+}
+
+.Email {
+  position: relative;
+  text-align: center;
+  color: rgba(102, 102, 102, 0.8);
+  font-size: 25px;
+  font-family: "Varela Round";
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.FollowIcon {
+  width: 30px;
+  height: 30px;
+  left: 172px;
+  top: 484px;
+  position: absolute;
+}
+
+.Follower {
+  left: 229px;
+  top: 488px;
+  position: absolute;
+  text-align: center;
+  color: black;
+  font-size: 15px;
+  font-family: "Varela Round";
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.Dot {
+  width: 5px;
+  height: 5px;
+  left: 321px;
+  top: 494px;
+  position: absolute;
+  background: black;
+  border-radius: 9999;
+}
+
+.Following {
+  left: 355px;
+  top: 488px;
+  position: absolute;
+  color: black;
+  font-size: 15px;
+  font-family: "Varela Round";
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.GithubIcon {
+  width: 30px;
+  height: 30px;
+  left: 172px;
+  top: 529px;
+  position: absolute;
+}
+
+.Github {
+  left: 229px;
+  top: 535px;
+  position: absolute;
+  color: black;
+  font-size: 15px;
+  font-family: "Varela Round";
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.DiscordIcon {
+  width: 37.5px;
+  height: 30px;
+  left: 168px;
+  top: 574px;
+  position: absolute;
+}
+
+.Discord {
+  left: 229px;
+  top: 580px;
+  position: absolute;
+  color: black;
+  font-size: 15px;
+  font-family: "Varela Round";
+  font-weight: 400;
+  word-wrap: break-word;
+}
