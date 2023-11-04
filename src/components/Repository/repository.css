@@ -1,6 +1,6 @@
 .Reposit {
   width: 487px;
-  height: 561px;
+  height: 700px;
   position: relative;
   margin: 1rem;
   display: flex;
@@ -32,4 +32,86 @@
   background: #dadada;
   box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.ProjectRow {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem 1.5rem;
+}
+
+.ProjectIcon {
+  width: 20px;
+  height: 22.85px;
+  margin-right: 1rem;
+}
+
+.ProjectName {
+  text-align: center;
+  color: #666666;
+  font-size: 16px;
+  font-family: "Varela Round";
+  font-weight: 400;
+  word-wrap: break-word;
+  margin-right: 1rem;
+}
+
+.ProjectVisibilityFrame {
+  width: 62px;
+  height: 27px;
+  background: #dadada;
+  border-radius: 30px;
+  border: 1px #666666 solid;
+}
+
+.ProjectVisibility {
+  text-align: center;
+  margin-top: 0.2rem;
+  color: #666666;
+  font-size: 15px;
+  font-family: "Inter";
+  font-weight: 300;
+  word-wrap: break-word;
+}
+
+.Description {
+  text-align: center;
+  color: rgba(102, 102, 102, 0.8);
+  font-size: 15px;
+  font-family: "Varela Round";
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.LanguageColor {
+  width: 20px;
+  height: 20px;
+  background: #ee9120;
+  border-radius: 100%;
+  margin-right: 1rem;
+}
+
+.Language {
+  color: #666666;
+  font-size: 10px;
+  font-family: "Varela Round";
+  font-weight: 400;
+  word-wrap: break-word;
+  margin-right: 1rem;
+}
+
+.Time {
+  text-align: center;
+  color: #666666;
+  font-size: 10px;
+  font-family: "Varela Round";
+  font-weight: 400;
+  word-wrap: break-word;
 }
