@@ -1,0 +1,35 @@
+.Reposit {
+  width: 487px;
+  height: 561px;
+  position: relative;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.Pinned {
+  display: flex;
+  align-items: center;
+}
+
+.PinnedIcon {
+  margin-right: 1rem;
+}
+
+.PinnedText {
+  color: #dadada;
+  font-size: 15px;
+  font-family: "Varela Round";
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.Project {
+  width: 473px;
+  height: 146px;
+  position: relative;
+  margin: 1rem 0;
+  background: #dadada;
+  box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
