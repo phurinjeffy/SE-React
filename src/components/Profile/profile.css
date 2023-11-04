@@ -79,6 +79,10 @@
   word-wrap: break-word;
 }
 
+.ContactsText:hover {
+  color: coral;
+}
+
 .Dot {
   width: 5px;
   height: 5px;
