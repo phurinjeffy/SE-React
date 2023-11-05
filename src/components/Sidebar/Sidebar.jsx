@@ -1,24 +1,31 @@
 import React, { useState } from "react";
 import "./sidebar.css";
 
-import profileIcon from "../../assets/profile.svg";
-import repositoryIcon from "../../assets/repository.svg";
-import learnIcon from "../../assets/learn.svg";
+import { SidebarData } from "./SidebarData";
 
 const Sidebar = () => {
   return (
     <div className="Sidebar">
-        <div className="Section">
-            <img src={profileIcon} alt="profile"/>
-        </div>
-        <div className="Section">
-            <img src={repositoryIcon} alt="repository"/>
-        </div>
-        <div className="Section">
-            <img src={learnIcon} alt="learn"/>
-        </div>
+      <ul className="SidebarList">
+        {SidebarData.map((val, key) => {
+          return (
+            <li
+              className="Section"
+              key={key}
+              id={window.location.pathname === val.link ? "active" : ""} 
+              onClick={() => {
+                window.location.pathname = val.link;
+              }}
+            >
+              <div id="icon">
+                {val.icon}
+              </div>
+            </li>
+          );
+        })}
+      </ul>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

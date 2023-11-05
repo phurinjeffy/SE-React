@@ -1,22 +1,32 @@
 .Sidebar {
   width: 130px;
   background: #152238;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
   transition: transform 0.3s ease;
 }
 
-.Section {
+.SidebarList {
   margin: 3rem;
 }
 
-.Section img {
+.SidebarList #active {
+    fill: blueviolet;
+}
+
+.Section {
+  margin-bottom: 4rem;
+  list-style-type: none;
+}
+
+.Section #icon img {
   width: 30px;
 }
 
-@media screen and (max-width: 860px){
-    .Sidebar {
-        display: none;
-    }
+.Section #icon img:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 860px) {
+  .Sidebar {
+    display: none;
+  }
 }
