@@ -1,5 +1,7 @@
 .Sidebar {
-  width: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background: #152238;
   transition: transform 0.3s ease;
 }
