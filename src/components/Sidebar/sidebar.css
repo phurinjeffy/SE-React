@@ -8,8 +8,8 @@
   margin: 3rem;
 }
 
-.SidebarList #active {
-    fill: blueviolet;
+.SidebarList #active #icon img {
+  fill: rgb(255, 175, 0); /* Doesn't work yet */
 }
 
 .Section {
@@ -19,9 +19,7 @@
 
 .Section #icon img {
   width: 30px;
-}
-
-.Section #icon img:hover {
+  transition: fill 0.3s;
   cursor: pointer;
 }
 

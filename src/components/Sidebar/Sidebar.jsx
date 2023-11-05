@@ -12,14 +12,12 @@ const Sidebar = () => {
             <li
               className="Section"
               key={key}
-              id={window.location.pathname === val.link ? "active" : ""} 
+              id={window.location.pathname === val.link ? "active" : ""}
               onClick={() => {
                 window.location.pathname = val.link;
               }}
             >
-              <div id="icon">
-                {val.icon}
-              </div>
+              <div id="icon">{val.icon}</div>
             </li>
           );
         })}
