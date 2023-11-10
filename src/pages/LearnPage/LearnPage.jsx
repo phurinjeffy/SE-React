@@ -5,7 +5,7 @@ import "./LearnPage.css";
 
 const LearnPage = () => {
   return (
-    <div className="Content">
+    <div className="learnPage">
       <Profile />
     </div>
   );

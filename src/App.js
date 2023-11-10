@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Outlet } from "react-router-dom";
 import { Navbar, Sidebar } from "./components";
-import { LoginPage, ProfilePage, RepositoryPage, LearnPage } from "./pages";
+import { LoginPage, ProfilePage, RepositoryPage, LearnPage, HomePage } from "./pages";
 import "./App.css";
 
 const MainLayout = () => {
@@ -14,9 +14,7 @@ const MainLayout = () => {
         <div className="Sidebar">
           <Sidebar />
         </div>
-        <div className="Content">
-          <Outlet />
-        </div>
+        <Outlet />
       </div>
     </div>
   );
@@ -27,6 +25,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<MainLayout />}>
+          <Route path="/" element={<HomePage />} />
           <Route path="profile" element={<ProfilePage />} />
 					<Route path="repository" element={<RepositoryPage />} />
 					<Route path="learn" element={<LearnPage />} />

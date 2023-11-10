@@ -1,0 +1,9 @@
+.homePage {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.Logo img{
+    height: 300px;
+}

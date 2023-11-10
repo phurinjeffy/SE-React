@@ -5,7 +5,7 @@ import "./ProfilePage.css";
 
 const ProfilePage = () => {
   return (
-    <div className="Content">
+    <div className="profilePage">
       <Profile />
       <Repository />
     </div>

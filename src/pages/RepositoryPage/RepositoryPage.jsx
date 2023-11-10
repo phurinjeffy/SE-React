@@ -5,7 +5,7 @@ import "./RepositoryPage.css";
 
 const RepositoryPage = () => {
   return (
-    <div className="Content">
+    <div className="repositoryPage">
       <Repository />
     </div>
   );
