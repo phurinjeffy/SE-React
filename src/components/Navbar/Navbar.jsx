@@ -1,12 +1,30 @@
-import React, { useState } from "react";
-import { useNavigate, NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, NavLink, useLocation } from "react-router-dom";
 import "./Navbar.css";
-
 import notificationIcon from "../../assets/notification.svg";
 
 const Navbar = () => {
   const [isNotificationVisible, setIsNotificationVisible] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const [pageTitle, setPageTitle] = useState("Software Engineering");
+
+  useEffect(() => {
+    switch (location.pathname) {
+      case "/profile":
+        setPageTitle("Profile");
+        break;
+      case "/repository":
+        setPageTitle("Repository");
+        break;
+      case "/learn":
+        setPageTitle("Learn");
+        break;
+      default:
+        setPageTitle("Software Engineering");
+        break;
+    }
+  }, [location.pathname]);
 
   const toggleNotification = () => {
     setIsNotificationVisible(!isNotificationVisible);
@@ -24,7 +42,7 @@ const Navbar = () => {
         </div>
 
         <div className="Title" id="title">
-          Software Engineering
+          {pageTitle}
         </div>
       </div>
 
