@@ -102,6 +102,19 @@
   border-radius: 100%;
 }
 
+.navbar-profile_notification_box {
+  background: #cecece;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1.5px solid #585859;
+  position: absolute;
+  top: 100px; /* Adjust the top position based on your layout */
+  right: 50px; /* Adjust the right position based on your layout */
+  width: 240px; /* Set the width based on your content */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5); /* Optional: Add a box shadow for depth */
+  z-index: 1000; /* Set a high z-index to ensure it appears above other elements */
+}
+
 .navbar-profile_user {
   margin-right: 0rem;
 }

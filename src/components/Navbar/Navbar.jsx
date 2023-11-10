@@ -54,7 +54,7 @@ const Navbar = () => {
             <img src={notificationIcon} alt="notificationIcon"/>
           </button>
           {isNotificationVisible && (
-            <div className="notification-box">
+            <div className="navbar-profile_notification_box">
               Notification Content
             </div>
           )}
