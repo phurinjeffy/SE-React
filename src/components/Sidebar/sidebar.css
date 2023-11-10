@@ -10,7 +10,7 @@
   margin: 3rem;
 }
 
-.SidebarList #active #icon img {
+.SidebarList .active #icon img {
   fill: rgb(255, 175, 0); /* Doesn't work yet */
 }
 

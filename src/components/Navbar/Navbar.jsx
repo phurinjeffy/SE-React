@@ -1,19 +1,35 @@
 import React, { useState } from "react";
+import { useNavigate, NavLink } from "react-router-dom";
 import "./navbar.css";
 
 import notificationIcon from "../../assets/notification.svg";
 
 const Navbar = () => {
-  const [isChanged, setIsChanged] = useState(false);
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const [isNotificationVisible, setIsNotificationVisible] = useState(false);
+  const navigate = useNavigate();
 
-  const handleButtonClick = () => {
-    setIsChanged(!isChanged);
+  const toggleMenu = () => {
+    setIsMenuVisible(!isMenuVisible);
   };
- 
+
+  const toggleNotification = () => {
+    setIsNotificationVisible(!isNotificationVisible);
+  };
+
+  const goToRoot = () => {
+    navigate("/");
+  }
+
+  const handleMenuClick = () => {
+    toggleMenu();
+    goToRoot();
+  };
+
   return (
     <div className="navbar">
       <div className="navbar-links">
-        <div className={`navbar-links_menu ${isChanged ? "change" : ""}`} onClick={handleButtonClick}>
+        <div className={`navbar-links_menu ${isMenuVisible ? "change" : ""}`} onClick={handleMenuClick}>
           <div className="bar1"></div>
           <div className="bar2"></div>
           <div className="bar3"></div>
@@ -34,15 +50,20 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-profile_notification">
-          <button className="navbar-profile_notification_icon">
+          <button className="navbar-profile_notification_icon" onClick={toggleNotification}>
             <img src={notificationIcon} alt="notificationIcon"/>
           </button>
+          {isNotificationVisible && (
+            <div className="notification-box">
+              Notification Content
+            </div>
+          )}
         </div>
 
         <div className="navbar-profile_user">
-          <a href="#">
+          <NavLink to="/login">
             <img src="https://wallpapers-clan.com/wp-content/uploads/2023/05/cool-pfp-02.jpg" alt="pfp" />
-          </a>
+          </NavLink>
         </div>
       </div>
     </div>

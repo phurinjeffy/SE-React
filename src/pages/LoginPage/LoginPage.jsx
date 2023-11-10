@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import "./LoginPage.css";
 import closeIcon from "../../assets/close.svg";
 
@@ -45,9 +46,9 @@ const LoginPage = () => {
     <div className="Page">
       <div className="SignUpOverlay">
         <div className="CloseIcon">
-          <a href="#">
-            <img src={closeIcon} alt="closeIcon" />
-          </a>
+            <NavLink to="/">
+              <img src={closeIcon} alt="closeIcon" />
+            </NavLink>
         </div>
 
         <div className="Title">
