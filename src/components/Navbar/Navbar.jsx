@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
-import "./navbar.css";
+import "./Navbar.css";
 
 import notificationIcon from "../../assets/notification.svg";
 

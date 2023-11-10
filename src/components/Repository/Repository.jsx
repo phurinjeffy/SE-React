@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./repository.css";
+import "./Repository.css";
 
 import repoIcon from "../../assets/repo.svg";
 import pinnedIcon from "../../assets/pinned.svg";

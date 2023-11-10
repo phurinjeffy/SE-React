@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./profile.css"
+import "./Profile.css"
 
 import followerIcon from "../../assets/follower.svg";
 import githubIcon from "../../assets/github.svg";
