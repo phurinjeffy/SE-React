@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-import { Navbar, Sidebar, Login, Profile, Repository } from './components'
+import { Navbar, Sidebar } from './components'
+import { LoginPage, ProfilePage } from './pages'
 import './App.css'
 
 const App = () => {
@@ -14,11 +15,10 @@ const App = () => {
 					<Sidebar />
 				</div>
 				<div className="Content">
-					<Profile />
-					<Repository />
+					<ProfilePage />
 				</div>
 			</div>
-			{/* <Login /> */}
+			{/* <LoginPage /> */}
 		</div>
 	)
 }

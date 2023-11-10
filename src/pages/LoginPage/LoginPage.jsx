@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./login.css";
+import "./LoginPage.css";
 import closeIcon from "../../assets/close.svg";
 
-const Login = () => {
+const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState(null);
@@ -95,4 +95,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;

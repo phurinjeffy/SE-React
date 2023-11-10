@@ -26,17 +26,3 @@ a {
   display: flex;
   /* padding-top: 118px; */
 }
-
-.Content {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  overflow: hidden;
-  margin: 0 auto 5% auto;
-}
-
-@media screen and (max-width: 1400px) {
-  .Content {
-    flex-direction: column;
-  }
-}
