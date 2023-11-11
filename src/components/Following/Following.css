@@ -1,5 +1,6 @@
-.EditBox {
+.FollowingBox {
   width: 993px;
+  height: 670px;
   position: relative;
   background: #d9d9d9;
   box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
@@ -9,74 +10,111 @@
   transition: width 0.4s ease;
 }
 
-.EditBox .Back {
+.FollowingBox .Back {
   padding: 2rem 0;
   position: absolute;
 }
 
-.EditBox .InputSection {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.EditBox .InputSection .EditProfilePic img {
+.FollowingBox .Title {
   position: relative;
-  width: 250px;
-  height: 250px;
-  border-radius: 100%;
-  border: 5px white solid;
-  margin: 2rem 0;
-}
-
-.EditBox .InputSection .InputField {
-  position: relative;
-  width: 100%;
-  height: 63px;
-  margin-bottom: 1rem;
-}
-
-.EditBox .InputSection .InputField input,
-.EditBox .InputSection .InputField input,
-.EditBox .InputSection .InputField input,
-.EditBox .InputSection .InputField input {
-  position: relative;
-  text-align: left;
   color: #666666;
-  font-size: 25px;
+  font-size: 35px;
   font-family: "Varela Round";
   font-weight: 400;
   word-wrap: break-word;
-  background: none;
-  border: 1 solid #585859;
-  border-radius: 10px;
-  margin: 0rem 2rem;
-  padding: 0.5rem 1rem;
-  width: 90%;
+  margin: 3rem 0;
 }
 
-.EditBox .SaveButton button {
-  width: 155px;
+.FollowingBox .AccountContainer {
+  height: 500px;
+  overflow-y: auto;
+}
+
+.FollowingBox .Account {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 2rem;
+}
+
+.FollowingBox .Account .Following {
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.Following .AccountPic {
+  width: 110px;
+  height: 110px;
+  border-radius: 100%;
+  border: 1px solid black;
+}
+
+.Following .AccountInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.AccountName {
+  text-align: center;
+  color: black;
+  font-size: 30px;
+  font-family: "Varela Round";
+  font-weight: 400;
+  word-wrap: break-word;
+  margin-top: 1rem;
+  margin-left: 2rem;
+}
+
+.FollowingBox .Following .YearsStatus {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0.5rem;
+  margin-left: 2rem;
+  width: 100%;
+}
+
+.YearsStatus .YearColor {
+  width: 20px;
+  height: 20px;
+  background: #f24e1e;
+  border-radius: 9999px;
+  margin-right: 1rem;
+}
+
+.YearsStatus .AccountYear {
+  color: #666666;
+  font-size: 20px;
+  font-family: "Varela Round";
+  font-weight: 400;
+  word-wrap: break-word;
+  margin-right: 1rem;
+}
+
+.YearsStatus .AccountStatus {
+  width: 100px;
   height: 30px;
-  position: relative;
   background: white;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+  text-align: center;
   color: #585859;
   font-size: 15px;
   font-family: "Varela Round";
   font-weight: 400;
   word-wrap: break-word;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 1200px) {
-  .EditBox {
+  .FollowingBox {
     width: 500px;
     margin: 2rem auto;
   }
