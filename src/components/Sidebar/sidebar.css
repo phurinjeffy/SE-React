@@ -4,6 +4,7 @@
   align-items: center;
   background: #152238;
   transition: transform 0.3s ease;
+  transform: translateX(0);
 }
 
 .Sidebar .SidebarList {
@@ -23,6 +24,12 @@
   width: 30px;
   transition: fill 0.3s;
   cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+  .Sidebar {
+    transform: translateX(-100%);
+  }
 }
 
 @media screen and (max-width: 860px) {
