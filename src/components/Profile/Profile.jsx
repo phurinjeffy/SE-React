@@ -24,30 +24,30 @@ const Profile = () => {
         </div>
         <div className="Contacts">
             <div className="ContactsRow">
-                <a className="ContactsIcon" href="#">
+                <a className="ContactsIcon">
                     <img src={followerIcon} alt="followerIcon"/>
                 </a>
-                <a className="ContactsText" href="#">
+                <NavLink to="./follower" className="ContactsText">
                     <span id="follower">1</span> follower
-                </a>
+                </NavLink>
                 <div className="Dot" />
-                <a className="ContactsText" href="#">
+                <NavLink to="./following" className="ContactsText">
                     <span id="following">3</span> following
-                </a>
+                </NavLink>
             </div>
             <div className="ContactsRow">
-                <a className="ContactsIcon" href="#">
+                <a className="ContactsIcon">
                     <img src={githubIcon} alt="githubIcon"/>
                 </a>
-                <a className="ContactsText" href="#">
+                <a className="ContactsText" href="">
                     Github
                 </a>
             </div>
             <div className="ContactsRow">
-                <a className="ContactsIcon" href="#">
+                <a className="ContactsIcon">
                     <img src={discordIcon} alt="discordIcon"/>
                 </a>
-                <a className="ContactsText" href="#">
+                <a className="ContactsText" href="">
                     Discord
                 </a>
             </div>

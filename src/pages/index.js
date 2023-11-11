@@ -4,3 +4,5 @@ export { default as LearnPage } from "./LearnPage/LearnPage";
 export { default as LoginPage } from "./LoginPage/LoginPage";
 export { default as HomePage } from "./HomePage/HomePage";
 export { default as EditPage } from "./EditPage/EditPage";
+export { default as FollowerPage } from "./FollowerPage/FollowerPage";
+export { default as FollowingPage } from "./FollowingPage/FollowingPage";
