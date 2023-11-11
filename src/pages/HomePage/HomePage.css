@@ -12,6 +12,7 @@
 .homePage .top img {
     filter: blur(4px); /* Adjust the blur amount as needed */
     width: 100%;
+    height: 100%;
 }
 
 .homePage .se img {

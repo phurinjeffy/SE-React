@@ -7,13 +7,9 @@ import "./App.css";
 const MainLayout = () => {
   return (
     <div className="App">
-      <div className="Navbar">
-        <Navbar />
-      </div>
+      <Navbar />
       <div className="PageContainer">
-        <div className="Sidebar">
-          <Sidebar />
-        </div>
+        <Sidebar />
         <Outlet />
       </div>
     </div>
