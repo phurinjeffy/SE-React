@@ -64,7 +64,7 @@ const Navbar = () => {
 
         <div className="User">
           <NavLink to="/login">
-            <img src="https://wallpapers-clan.com/wp-content/uploads/2023/05/cool-pfp-02.jpg" alt="pfp" />
+            <img src="https://www.asiamediajournal.com/wp-content/uploads/2022/10/Cute-PFP-for-fb.jpg" alt="pfp" />
           </NavLink>
         </div>
       </div>

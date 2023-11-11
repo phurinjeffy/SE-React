@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Outlet } from "react-router-dom";
 import { Navbar, Sidebar } from "./components";
-import { LoginPage, ProfilePage, RepositoryPage, LearnPage, HomePage } from "./pages";
+import { LoginPage, ProfilePage, RepositoryPage, LearnPage, HomePage, EditPage } from "./pages";
 import "./App.css";
 
 const MainLayout = () => {
@@ -22,9 +22,14 @@ const App = () => {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route path="/" element={<HomePage />} />
+
           <Route path="profile" element={<ProfilePage />} />
+          <Route path="profile/edit" element={<EditPage />} />
+
 					<Route path="repository" element={<RepositoryPage />} />
+
 					<Route path="learn" element={<LearnPage />} />
+          
         </Route>
         <Route path="/login" element={<LoginPage />} />
       </Routes>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import "./Profile.css"
 
 import followerIcon from "../../assets/follower.svg";
@@ -9,9 +10,11 @@ const Profile = () => {
   return (
     <div className="ProfileSection">
         <div className="User">
-            <div className="UserSProfilePic">
-                <img src="https://wallpapers-clan.com/wp-content/uploads/2023/05/cool-pfp-02.jpg"/>
-            </div>
+                <div className="UserSProfilePic">
+                    <NavLink to="./edit">
+                        <img src="https://www.asiamediajournal.com/wp-content/uploads/2022/10/Cute-PFP-for-fb.jpg"/>
+                    </NavLink>
+                </div>
             <div className="Name">
                 Phurin Vanasrivilai
                 </div>
