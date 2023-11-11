@@ -16,4 +16,5 @@ a {
 
 .PageContainer {
   display: flex;
+  overflow-x: hidden;
 }
