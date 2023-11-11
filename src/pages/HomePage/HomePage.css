@@ -1,30 +1,22 @@
 .homePage {
-    width: 100%;
-    padding-bottom: 5%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    background: linear-gradient(336deg, rgba(26, 9, 0, 1) 0%, rgba(3, 0, 26, 1) 100%);
+  width: 100%;
+  padding-bottom: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(93, 39, 10, 1) 6%,
+    rgba(0, 0, 0, 1) 64%
+  );
 }
 
-.homePage .top img {
-    filter: blur(4px); /* Adjust the blur amount as needed */
-    width: 100%;
-    height: 100%;
+.homePageSignIn {
+  margin: 20rem 0rem;
 }
 
-.homePage .se img {
-    width: 75%;
-    margin: 3rem 0;
-}
-
-.homePage .welcomeText {
-    text-align: center;
-    color: #7a7a7a;
-    font-size: 55px;
-    font-family: "Varela Round";
-    font-weight: 400;
-    word-wrap: break-word;
+.homePageSignIn img {
+  width: 350px;
+  position: relative;
+  cursor: pointer;
 }
