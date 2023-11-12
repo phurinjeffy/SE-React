@@ -1,45 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useContext  } from "react";
 import { NavLink } from "react-router-dom";
 import "./LoginPage.css";
 import closeIcon from "../../assets/close.svg";
 
+import { UserContext } from "../../context/UserContext";
+
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loginError, setLoginError] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [, setToken] = useContext(UserContext);
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
+  const submitLogin = async () => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: JSON.stringify(
+        `grant_type=&username=${email}&password=${password}&scope=&client_id=&client_secret=`
+      ),
+    };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+    const response = await fetch("/api/token", requestOptions);
+    const data = await response.json();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-
-    try {
-      // You can replace this with your actual authentication logic
-      const response = await fetch("/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (response.ok) {
-        // Redirect the user to the dashboard or another page
-        window.location.href = "/dashboard";
-      } else {
-        // Handle authentication error
-        setLoginError("Invalid email or password. Please try again.");
-      }
-    } catch (error) {
-      console.error("Login error:", error);
-      setLoginError("An error occurred. Please try again later.");
+    if (!response.ok) {
+      setErrorMessage(data.detail);
+    } else {
+      setToken(data.access_token);
     }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    submitLogin();
   };
 
   return (
@@ -61,7 +54,7 @@ const LoginPage = () => {
           </div>
         </div>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="Form">
             <div className="UserInput">
               <div className="Label">
@@ -70,7 +63,7 @@ const LoginPage = () => {
                 </label>
               </div>
               <div className="Input">
-                <input type="email" id="email" onChange={handleEmailChange} value={email} />
+                <input type="email" id="email" onChange={(e) => setEmail(e.target.value)} value={email} required/>
               </div>
             </div>
 
@@ -81,14 +74,14 @@ const LoginPage = () => {
                 </label>
               </div>
               <div className="Input">
-                <input type="password" id="password" onChange={handlePasswordChange} value={password} />
+                <input type="password" id="password" onChange={(e) => setPassword(e.target.value)} value={password} required/>
               </div>
             </div>
             
             <div className="LoginButton">
-              <button onClick={handleLogin}>Log in</button>
+              <button type="submit">Log in</button>
             </div>
-            {loginError && <div className="ErrorMessage">{loginError}</div>}
+            <div className="ErrorMessage">{errorMessage}</div>
           </div>
         </form>
       </div>

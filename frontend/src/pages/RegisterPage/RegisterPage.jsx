@@ -1,111 +1,104 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./RegisterPage.css";
 import closeIcon from "../../assets/close.svg";
 
+import { UserContext } from "../../context/UserContext";
+
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirm_password, setConfirmPassword] = useState("");
-  const [loginError, setLoginError] = useState(null);
+  const [confirmationPassword, setConfirmationPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [, setToken] = useContext(UserContext);
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  const submitRegistration = async () => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email, hashed_password: password }),
+    };
+
+    const response = await fetch("/api/users", requestOptions);
+    const data = await response.json();
+
+    if (!response.ok) {
+      setErrorMessage(data.detail);
+    } else {
+      setToken(data.access_token);
+    }
   };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleConfirmPasswordChange = (e) => {
-    setConfirmPassword(e.target.value);
-  };
-
-  const handleLogin = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    try {
-      // You can replace this with your actual authentication logic
-      const response = await fetch("/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (response.ok) {
-        // Redirect the user to the dashboard or another page
-        window.location.href = "/dashboard";
-      } else {
-        // Handle authentication error
-        setLoginError("Invalid email or password. Please try again.");
-      }
-    } catch (error) {
-      console.error("Login error:", error);
-      setLoginError("An error occurred. Please try again later.");
+    if (password === confirmationPassword && password.length > 5) {
+      submitRegistration();
+    } else {
+      setErrorMessage(
+        "Ensure that the passwords match and greater than 5 characters"
+      );
     }
   };
 
   return (
     <div className="Page">
-      <div className="RegisterOverlay">
-        <div className="CloseIcon">
-            <NavLink to="/">
-              <img src={closeIcon} alt="closeIcon" />
-            </NavLink>
+        <div className="RegisterOverlay">
+          <div className="CloseIcon">
+              <NavLink to="/">
+                <img src={closeIcon} alt="closeIcon" />
+              </NavLink>
+          </div>
+
+          <div className="Title">
+            <img className="Logo" src="https://se.kmitl.ac.th/assets/se.png" alt="se_logo" />
+            <div className="SoftwareEngineering">
+              Software Engineering
+            </div>
+            <div className="RegisterText">
+              Register
+            </div>
+          </div>
+
+          <form onSubmit={handleSubmit}>
+            <div className="Form">
+              <div className="UserInput">
+                <div className="Label">
+                  <label htmlFor="email">
+                    Email
+                  </label>
+                </div>
+                <div className="Input">
+                  <input type="email" id="email" onChange={(e) => setEmail(e.target.value)} value={email} required/>
+                </div>
+              </div>
+
+              <div className="UserInput">
+                <div className="Label">
+                  <label htmlFor="password">
+                    Password
+                  </label>
+                </div>
+                <div className="Input">
+                  <input type="password" id="password" onChange={(e) => setPassword(e.target.value)} value={password} required/>
+                </div>
+
+                <div className="Label">
+                  <label htmlFor="confirmationPassword">
+                    Confirm Password
+                  </label>
+                </div>
+                <div className="Input">
+                  <input type="password" id="confirmationPassword" onChange={(e) => setConfirmationPassword(e.target.value)} value={confirmationPassword} required/>
+                </div>
+              </div>
+              
+              <div className="RegisterButton">
+                <button type="submit">Register</button>
+              </div>
+              <div className="ErrorMessage">{errorMessage}</div>
+            </div>
+          </form>
         </div>
-
-        <div className="Title">
-          <img className="Logo" src="https://se.kmitl.ac.th/assets/se.png" alt="se_logo" />
-          <div className="SoftwareEngineering">
-            Software Engineering
-          </div>
-          <div className="RegisterText">
-            Register
-          </div>
-        </div>
-
-        <form>
-          <div className="Form">
-            <div className="UserInput">
-              <div className="Label">
-                <label htmlFor="email">
-                  Email
-                </label>
-              </div>
-              <div className="Input">
-                <input type="email" id="email" onChange={handleEmailChange} value={email} />
-              </div>
-            </div>
-
-            <div className="UserInput">
-              <div className="Label">
-                <label htmlFor="password">
-                  Password
-                </label>
-              </div>
-              <div className="Input">
-                <input type="password" id="password" onChange={handlePasswordChange} value={password} />
-              </div>
-
-              <div className="Label">
-                <label htmlFor="confirm_password">
-                  Confirm Password
-                </label>
-              </div>
-              <div className="Input">
-                <input type="password" id="confirm_password" onChange={handleConfirmPasswordChange} value={confirm_password} />
-              </div>
-            </div>
-            
-            <div className="RegisterButton">
-              <button onClick={handleLogin}>Log in</button>
-            </div>
-            {loginError && <div className="ErrorMessage">{loginError}</div>}
-          </div>
-        </form>
-      </div>
     </div>
   );
 };
