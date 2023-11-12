@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Routes, Outlet } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Outlet, Navigate } from "react-router-dom";
 import { Navbar, Sidebar } from "./components";
 import { LoginPage, RegisterPage, ProfilePage, RepositoryPage, LearnPage, HomePage, EditPage, FollowerPage, FollowingPage, UploadPage } from "./pages";
 import "./App.css";
@@ -47,19 +47,26 @@ const App = () => {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-
-        {/* Protected Routes */}
         <Route path="/" element={<MainLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/profile/edit" element={<EditPage />} />
-          <Route path="/profile/follower" element={<FollowerPage />} />
-          <Route path="/profile/following" element={<FollowingPage />} />
-          <Route path="/repository" element={<RepositoryPage />} />
-          <Route path="/learn" element={<LearnPage />} />
-          <Route path="/upload" element={<UploadPage />} />
-        {/* Protected Routes */}
         </Route>
+
+        {token ? (
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<HomePage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/profile/edit" element={<EditPage />} />
+            <Route path="/profile/follower" element={<FollowerPage />} />
+            <Route path="/profile/following" element={<FollowingPage />} />
+            <Route path="/repository" element={<RepositoryPage />} />
+            <Route path="/learn" element={<LearnPage />} />
+            <Route path="/upload" element={<UploadPage />} />
+          </Route>
+        ) : (
+          <Route path="/*" element={<Navigate to="/login" replace />} />
+        )}
+
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );
