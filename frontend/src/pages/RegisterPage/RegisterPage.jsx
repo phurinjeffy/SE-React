@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import "./LoginPage.css";
+import "./RegisterPage.css";
 import closeIcon from "../../assets/close.svg";
 
-const LoginPage = () => {
+const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirm_password, setConfirmPassword] = useState("");
   const [loginError, setLoginError] = useState(null);
 
   const handleEmailChange = (e) => {
@@ -14,6 +15,10 @@ const LoginPage = () => {
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+  };
+
+  const handleConfirmPasswordChange = (e) => {
+    setConfirmPassword(e.target.value);
   };
 
   const handleLogin = async (e) => {
@@ -44,7 +49,7 @@ const LoginPage = () => {
 
   return (
     <div className="Page">
-      <div className="LoginOverlay">
+      <div className="RegisterOverlay">
         <div className="CloseIcon">
             <NavLink to="/">
               <img src={closeIcon} alt="closeIcon" />
@@ -56,8 +61,8 @@ const LoginPage = () => {
           <div className="SoftwareEngineering">
             Software Engineering
           </div>
-          <div className="LoginText">
-            Login
+          <div className="RegisterText">
+            Register
           </div>
         </div>
 
@@ -83,9 +88,18 @@ const LoginPage = () => {
               <div className="Input">
                 <input type="password" id="password" onChange={handlePasswordChange} value={password} />
               </div>
+
+              <div className="Label">
+                <label htmlFor="confirm_password">
+                  Confirm Password
+                </label>
+              </div>
+              <div className="Input">
+                <input type="password" id="confirm_password" onChange={handleConfirmPasswordChange} value={confirm_password} />
+              </div>
             </div>
             
-            <div className="LoginButton">
+            <div className="RegisterButton">
               <button onClick={handleLogin}>Log in</button>
             </div>
             {loginError && <div className="ErrorMessage">{loginError}</div>}
@@ -96,4 +110,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
