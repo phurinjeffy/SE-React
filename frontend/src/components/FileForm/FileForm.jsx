@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import "./FileForm.css";
-import { NavLink } from "react-router-dom";
-import backIcon from "../../assets/back.svg";
 import GenericContainer from "../GenericContainer/GenericContainer";
+import "./FileForm.css";
 
 const FileForm = () => {
   const [files, setFiles] = useState(null);
