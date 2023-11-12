@@ -1,0 +1,13 @@
+.uploadPage {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0 auto 5% auto;
+  }
+  
+  @media screen and (max-width: 1400px) {
+    .uploadPage {
+      flex-direction: column;
+    }
+  }
+  

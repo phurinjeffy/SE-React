@@ -6,3 +6,4 @@ export { default as HomePage } from "./HomePage/HomePage";
 export { default as EditPage } from "./EditPage/EditPage";
 export { default as FollowerPage } from "./FollowerPage/FollowerPage";
 export { default as FollowingPage } from "./FollowingPage/FollowingPage";
+export { default as UploadPage } from "./UploadPage/UploadPage";
