@@ -1,7 +1,36 @@
 .FileForm {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
-  margin-left: 2rem;
+  margin: 0 2rem;
+  font-family: "Varela Round";
+}
+
+.RepositInput {
+  display: flex;
+  flex-direction: column;
+}
+
+.RepositInput label {
+  margin: 1rem 0;
+}
+
+.RepositInput #name {
+  padding: 0.5rem 0;
+}
+
+.RepositInput #description {
+  padding: 2rem 0;
+}
+
+.RepositRadio div {
+  margin-top: 1rem;
+}
+
+.RepositRadio label {
+  margin-right: 1rem;
+}
+
+.SaveButton {
+  margin-bottom: 1rem;
 }

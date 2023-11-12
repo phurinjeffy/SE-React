@@ -38,29 +38,39 @@ const FileForm = () => {
   return (
     <GenericContainer title="Create New Repository">
       <div className="FileForm">
-        <div className="RepositInput">
-          <div className="RepositInputField">
-            <label>Name</label>
-            <input type="text" />
+        <form>
+          <div className="RepositInput">
+            <label for="name">Name</label>
+            <input type="text" id="name"/>
           </div>
-          <div className="RepositInputField">
-            <label>Description</label>
-            <input type="text" />
+        
+          <div className="RepositInput">
+            <label for="description">Description</label>
+            <input type="text" id="description"/>
+          </div>
+
+          <div className="RepositRadio">
+            <div>
+              <label for="public">Public</label>
+              <input type="radio" id="public" name="status" value="Public" />
+            </div>
+            <div>
+              <label for="private">Private</label>
+              <input type="radio" id="private" name="status" value="Private" />
+            </div>
           </div>
 
           <div className="SaveButton">
             <button>Create</button>
           </div>
-        </div>
 
-        <form onSubmit={handleSubmit}>
-          <div className="UploadInput">
-            <input type="file" onChange={handleFileInputChange} multiple />
-          </div>
-
-          <button type="submit">Upload</button>
-
-          {files && <p>{files.length} files selected</p>}
+          <form onSubmit={handleSubmit}>
+            <div className="UploadInput">
+              <input type="file" onChange={handleFileInputChange} multiple />
+              <button type="submit">Upload</button>
+            </div>
+            {files && <p>{files.length} files selected</p>}
+          </form>
         </form>
       </div>
     </GenericContainer>
