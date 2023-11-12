@@ -16,21 +16,32 @@
 }
 
 .RepositInput #name {
-  padding: 0.5rem 0;
+  padding: 0.5rem 0 0.5rem 0.5rem;
 }
 
 .RepositInput #description {
-  padding: 2rem 0;
+  padding: 0.5rem 0 3rem 0.5rem;
 }
 
 .RepositRadio div {
   margin-top: 1rem;
 }
 
+.RepositRadio p {
+  margin: 1rem 0;
+  text-decoration: underline;
+}
+
 .RepositRadio label {
-  margin-right: 1rem;
+  margin: 1rem;
+}
+
+.UploadInput {
+  margin: 1.5rem 0;
+  text-align: center;
 }
 
 .SaveButton {
-  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
 }

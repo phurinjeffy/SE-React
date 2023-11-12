@@ -50,18 +50,11 @@ const FileForm = () => {
           </div>
 
           <div className="RepositRadio">
-            <div>
-              <label for="public">Public</label>
-              <input type="radio" id="public" name="status" value="Public" />
-            </div>
-            <div>
-              <label for="private">Private</label>
-              <input type="radio" id="private" name="status" value="Private" />
-            </div>
-          </div>
-
-          <div className="SaveButton">
-            <button>Create</button>
+            <p>Status:</p>
+            <input type="radio" id="public" name="status" value="Public" />
+            <label for="public">Public</label>
+            <input type="radio" id="private" name="status" value="Private" />
+            <label for="private">Private</label>
           </div>
 
           <form onSubmit={handleSubmit}>
@@ -71,6 +64,10 @@ const FileForm = () => {
             </div>
             {files && <p>{files.length} files selected</p>}
           </form>
+
+          <div className="SaveButton">
+            <button>Create</button>
+          </div>
         </form>
       </div>
     </GenericContainer>
