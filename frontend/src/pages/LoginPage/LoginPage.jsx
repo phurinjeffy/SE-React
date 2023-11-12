@@ -84,6 +84,11 @@ const LoginPage = () => {
             <div className="ErrorMessage">{errorMessage}</div>
           </div>
         </form>
+
+        <NavLink to="/register" className="goToRegister">
+          Don't have an account?
+          <p>Register</p>
+        </NavLink>
       </div>
     </div>
   );

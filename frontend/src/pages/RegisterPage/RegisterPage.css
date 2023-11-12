@@ -101,3 +101,17 @@
 .RegisterButton button:hover {
   cursor: pointer;
 }
+
+.goToLogin {
+  text-align: center;
+  font-family: 'Varela Round';
+  font-size: 14px;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.goToLogin p {
+  cursor: pointer;
+  text-decoration: underline;
+  text-align: center;
+}
