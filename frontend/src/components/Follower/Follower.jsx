@@ -1,7 +1,6 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import GenericContainer from "../GenericContainer/GenericContainer";
 import "./Follower.css";
-import backIcon from "../../assets/back.svg";
 
 const followersData = [
   {
@@ -43,35 +42,31 @@ const followersData = [
 ];
 
 const Follower = () => {
-    return (
-      <div className="FollowerBox">
-        <div className="Back">
-          <NavLink to="./..">
-            <img src={backIcon} alt="back" />
-          </NavLink>
-        </div>
-  
-        <div className="Title">Follower</div>
-  
-        <div className="AccountContainer">
-            <div className="Account">
-                {followersData.map((follower) => (
-                    <div className="Follower" key={follower.id}>
-                    <img className="AccountPic" src={follower.profilePic} alt={`profile-${follower.id}`} />
-                    <div className="AccountInfo">
-                        <div className="AccountName">{follower.name}</div>
-                        <div className="YearsStatus">
-                        <div className="YearColor" />
-                        <div className="AccountYear">{follower.year}</div>
-                        <div className="AccountStatus">{follower.status}</div>
-                        </div>
-                    </div>
-                    </div>
-                ))}
+  return (
+    <GenericContainer title="Follower">
+      <div className="Content">
+        <div className="Account">
+          {followersData.map((follower) => (
+            <div className="Follower" key={follower.id}>
+              <img
+                className="AccountPic"
+                src={follower.profilePic}
+                alt={`profile-${follower.id}`}
+              />
+              <div className="AccountInfo">
+                <div className="AccountName">{follower.name}</div>
+                <div className="YearsStatus">
+                  <div className="YearColor" />
+                  <div className="AccountYear">{follower.year}</div>
+                  <div className="AccountStatus">{follower.status}</div>
+                </div>
+              </div>
             </div>
+          ))}
         </div>
       </div>
-    );
-  };
+    </GenericContainer>
+  );
+};
 
 export default Follower;

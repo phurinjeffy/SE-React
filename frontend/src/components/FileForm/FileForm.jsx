@@ -1,26 +1,29 @@
-import React, {useState} from 'react'
-import "./FileForm.css"
+import React, { useState } from "react";
+import "./FileForm.css";
+import { NavLink } from "react-router-dom";
+import backIcon from "../../assets/back.svg";
+import GenericContainer from "../GenericContainer/GenericContainer";
 
 const FileForm = () => {
   const [files, setFiles] = useState(null);
 
   const handleFileInputChange = (event) => {
     setFiles(event.target.files);
-  }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const formData = new FormData();
-    Array.from(files).forEach(file => {
-      formData.append('file_uploads', file);
+    Array.from(files).forEach((file) => {
+      formData.append("file_uploads", file);
     });
 
     try {
       const endpoint = "http://localhost:8000/upload/";
       const response = await fetch(endpoint, {
         method: "POST",
-        body: formData
+        body: formData,
       });
 
       if (response.ok) {
@@ -32,23 +35,38 @@ const FileForm = () => {
     } catch (error) {
       console.error("Error", error);
     }
-  }
+  };
 
   return (
-    <div>
-      <h1>Upload file</h1>
+    <GenericContainer title="Create New Repository">
+      <div className="FileForm">
+        <div className="RepositInput">
+          <div className="RepositInputField">
+            <label>Name</label>
+            <input type="text" />
+          </div>
+          <div className="RepositInputField">
+            <label>Description</label>
+            <input type="text" />
+          </div>
 
-      <form onSubmit={handleSubmit}>
-        <div className='UploadInput'>
-          <input type="file" onChange={handleFileInputChange} multiple />
+          <div className="SaveButton">
+            <button>Create</button>
+          </div>
         </div>
 
-        <button type="submit">Upload</button>
-      </form>
+        <form onSubmit={handleSubmit}>
+          <div className="UploadInput">
+            <input type="file" onChange={handleFileInputChange} multiple />
+          </div>
 
-      {files && <p>{files.length} files selected</p>}
-    </div>
-  )
-}
+          <button type="submit">Upload</button>
 
-export default FileForm
+          {files && <p>{files.length} files selected</p>}
+        </form>
+      </div>
+    </GenericContainer>
+  );
+};
+
+export default FileForm;
