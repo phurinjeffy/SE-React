@@ -27,9 +27,9 @@ const NoteModal = ({ active, handleModal, token, id, setErrorMessage }) => {
       } else {
         const data = await response.json();
         setDueDate(data.dueDate);
+        setCourse(data.course);
         setTitle(data.title);
         setDescription(data.description);
-        setCourse(data.course);
         setUrgency(data.urgency);
       }
     };
@@ -42,9 +42,9 @@ const NoteModal = ({ active, handleModal, token, id, setErrorMessage }) => {
   // Function to clear form data
   const cleanFormData = () => {
     setDueDate("");
+    setCourse("");
     setTitle("");
     setDescription("");
-    setCourse("");
     setUrgency("");
   };
 
@@ -59,9 +59,9 @@ const NoteModal = ({ active, handleModal, token, id, setErrorMessage }) => {
       },
       body: JSON.stringify({
         dueDate: dueDate,
+        course: course,
         title: title,
         description: description,
-        course: course,
         urgency: urgency,
       }),
     };
@@ -86,9 +86,9 @@ const NoteModal = ({ active, handleModal, token, id, setErrorMessage }) => {
       },
       body: JSON.stringify({
         dueDate: dueDate,
+        course: course,
         title: title,
         description: description,
-        course: course,
         urgency: urgency,
       }),
     };
@@ -125,6 +125,18 @@ const NoteModal = ({ active, handleModal, token, id, setErrorMessage }) => {
               </div>
             </div>
             <div className="field">
+              <label className="label">Course</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="Enter course"
+                  value={course}
+                  onChange={(e) => setCourse(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
               <label className="label">Title</label>
               <div className="control">
                 <input
@@ -145,18 +157,6 @@ const NoteModal = ({ active, handleModal, token, id, setErrorMessage }) => {
                   placeholder="Enter description"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  className="input"
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Course</label>
-              <div className="control">
-                <input
-                  type="text"
-                  placeholder="Enter course"
-                  value={course}
-                  onChange={(e) => setCourse(e.target.value)}
                   className="input"
                 />
               </div>
