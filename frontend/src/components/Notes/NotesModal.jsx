@@ -1,16 +1,12 @@
-// Import necessary libraries and styles
 import React, { useEffect, useState } from "react";
-import "./Notes.css";
 
 const NotesModal = ({ active, handleModal, token, id, setErrorMessage }) => {
-  // State variables for form fields
   const [dueDate, setDueDate] = useState("");
   const [course, setCourse] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [urgency, setUrgency] = useState("");
 
-  // Fetch note data if in update mode
   useEffect(() => {
     const getTodo = async () => {
       const requestOptions = {
@@ -39,7 +35,6 @@ const NotesModal = ({ active, handleModal, token, id, setErrorMessage }) => {
     }
   }, [id, token]);
 
-  // Function to clear form data
   const cleanFormData = () => {
     setDueDate("");
     setCourse("");
@@ -48,7 +43,6 @@ const NotesModal = ({ active, handleModal, token, id, setErrorMessage }) => {
     setUrgency("");
   };
 
-  // Function to handle creation of a to-do item
   const handleCreateTodo = async (e) => {
     e.preventDefault();
     const requestOptions = {
@@ -75,7 +69,6 @@ const NotesModal = ({ active, handleModal, token, id, setErrorMessage }) => {
     }
   };
 
-  // Function to handle updating a to-do item
   const handleUpdateTodo = async (e) => {
     e.preventDefault();
     const requestOptions = {
@@ -102,7 +95,6 @@ const NotesModal = ({ active, handleModal, token, id, setErrorMessage }) => {
     }
   };
 
-  // Return the JSX for the to-do list entry form
   return (
     <div className={`modal ${active && "is-active"}`}>
       <div className="modal-background" onClick={handleModal}></div>
