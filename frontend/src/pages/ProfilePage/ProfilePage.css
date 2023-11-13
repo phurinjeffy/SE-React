@@ -5,8 +5,29 @@
   margin: 0 auto 5% auto;
 }
 
+.profileContent {
+  margin-left: 1rem;
+}
+
+.profileCalendar {
+  margin: 2rem 0;
+}
+
+.profileNote {
+  height: 370px;
+  overflow-y: auto;
+}
+
 @media screen and (max-width: 1400px) {
   .profilePage {
     flex-direction: column;
+  }
+
+  .profileContent {
+    margin-left: 0;
+  }
+
+  .profileNote {
+    height: max-content;
   }
 }

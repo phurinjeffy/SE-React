@@ -1,3 +1,7 @@
+* {
+  font-family: 'Varela Round';
+}
+
 /* NOTEMODAL */
 .modal {
   position: fixed;
@@ -62,6 +66,7 @@
 .button {
   margin-left: 0.5rem;
   padding: 0.5rem;
+  border-radius: 7px;
 }
 
 .button.is-info {
@@ -104,11 +109,20 @@
 }
 
 .table th {
+  background-color: #d3d4d9;
+}
+
+.table tr {
   background-color: #f5f6fa;
 }
 
 .table tbody tr:hover {
-  background-color: #dfe6e9;
+  background-color: #eaecf3;
+}
+
+.table td {
+  height: 2rem;
+  width: 3rem;
 }
 
 .button {

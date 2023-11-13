@@ -57,11 +57,15 @@ const ProfilePage = () => {
   return (
     <div className="profilePage">
       <Profile />
-      <div>
-        <Calendar />
-        { loaded && notes && (
-          <NotesTable notes={notes} handleUpdate={handleUpdate} handleDelete={handleDelete} showEdit={false} />
-        ) }
+      <div className="profileContent">
+        <div className="profileCalendar">
+          <Calendar />
+        </div>
+        <div className="profileNote">
+          { loaded && notes && (
+            <NotesTable notes={notes} handleUpdate={handleUpdate} handleDelete={handleDelete} showEdit={false} />
+          ) }
+        </div>
       </div>
     </div>
   );
