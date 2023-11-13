@@ -1,0 +1,89 @@
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.modal.is-active {
+  display: flex;
+}
+
+.modal-card {
+  max-width: 500px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.modal-card-head,
+.modal-card-body,
+.modal-card-foot {
+  padding: 1rem;
+}
+
+.modal-card-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.modal-card-foot {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.field {
+  margin-bottom: 1rem;
+}
+
+.label {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.button {
+  margin-left: 0.5rem;
+  padding: 0.5rem;
+}
+
+.button.is-info {
+  background: #3273dc;
+  color: #fff;
+  border: none;
+}
+
+.button.is-danger {
+  background: #ff3860;
+  color: #fff;
+  border: none;
+}
+
+.has-background-primary-light {
+  background-color: #f2f2f2;
+}
+
+.has-background-primary-light .button {
+  background-color: #3273dc;
+  color: #fff;
+}
+
+.has-background-primary-light .button:hover {
+  background-color: #2765c6;
+}

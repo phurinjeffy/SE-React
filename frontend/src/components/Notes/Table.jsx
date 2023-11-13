@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import moment from "moment";
 
-import LeadModal from "./LeadModal";
+import "./Table.css"
+import NoteModel from "./NoteModel";
 import { UserContext } from "../../context/UserContext";
+import GenericContainer from "../GenericContainer/GenericContainer";
 
 const Table = () => {
   const [token] = useContext(UserContext);
@@ -62,18 +64,9 @@ const Table = () => {
   };
 
   return (
-    <>
-      <LeadModal
-        active={activeModal}
-        handleModal={handleModal}
-        token={token}
-        id={id}
-        setErrorMessage={setErrorMessage}
-      />
-      <button
-        className="button is-fullwidth mb-5 is-primary"
-        onClick={() => setActiveModal(true)}
-      >
+    <GenericContainer title="Notes">
+      <NoteModel active={activeModal} handleModal={handleModal} token={token} id={id} setErrorMessage={setErrorMessage} />
+      <button className="button is-fullwidth mb-5 is-primary" onClick={() => setActiveModal(true)} >
         Create Lead
       </button>
       <div className="ErrorMessage">{errorMessage}</div>
@@ -100,16 +93,10 @@ const Table = () => {
                 <td>{lead.note}</td>
                 <td>{moment(lead.date_last_updated).format("MMM Do YY")}</td>
                 <td>
-                  <button
-                    className="button mr-2 is-info is-light"
-                    onClick={() => handleUpdate(lead.id)}
-                  >
+                  <button className="button mr-2 is-info is-light" onClick={() => handleUpdate(lead.id)}>
                     Update
                   </button>
-                  <button
-                    className="button mr-2 is-danger is-light"
-                    onClick={() => handleDelete(lead.id)}
-                  >
+                  <button className="button mr-2 is-danger is-light" onClick={() => handleDelete(lead.id)}>
                     Delete
                   </button>
                 </td>
@@ -120,7 +107,7 @@ const Table = () => {
       ) : (
         <p>Loading</p>
       )}
-    </>
+    </GenericContainer>
   );
 };
 

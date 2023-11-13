@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-const LeadModal = ({ active, handleModal, token, id, setErrorMessage }) => {
+import "./NoteModel.css"
+
+const NoteModel = ({ active, handleModal, token, id, setErrorMessage }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [company, setCompany] = useState("");
@@ -187,4 +189,4 @@ const LeadModal = ({ active, handleModal, token, id, setErrorMessage }) => {
   );
 };
 
-export default LeadModal;
+export default NoteModel;
