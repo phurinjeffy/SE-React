@@ -17,26 +17,32 @@ const NotesTable = ({ notes, handleUpdate, handleDelete, showEdit }) => (
       </tr>
     </thead>
     <tbody>
-      {notes.map((note) => (
-        <tr key={note.id}>
-          <td>{note.dueDate}</td>
-          <td>{note.course}</td>
-          <td>{note.title}</td>
-          <td>{note.description}</td>
-          <td>{note.urgency}</td>
-          {showEdit && 
-          <td>{moment(note.date_last_updated).format("MMM Do YY")}</td> &&
-          <td>
-            <button className="button mr-2 is-info is-light" onClick={() => handleUpdate(note.id)}>
-              Update
-            </button>
-            <button className="button mr-2 is-danger is-light" onClick={() => handleDelete(note.id)}>
-              Delete
-            </button>
-          </td>
-          }
+      {notes && notes.length > 0 ? (
+        notes.map((note) => (
+          <tr key={note.id}>
+            <td>{note.dueDate}</td>
+            <td>{note.course}</td>
+            <td>{note.title}</td>
+            <td>{note.description}</td>
+            <td>{note.urgency}</td>
+            {showEdit && 
+            <td>{moment(note.date_last_updated).format("MMM Do YY")}</td> &&
+            <td>
+              <button className="button mr-2 is-info is-light" onClick={() => handleUpdate(note.id)}>
+                Update
+              </button>
+              <button className="button mr-2 is-danger is-light" onClick={() => handleDelete(note.id)}>
+                Delete
+              </button>
+            </td>
+            }
+          </tr>
+        ))
+      ) : (
+        <tr>
+          <td colSpan={showEdit ? 6 : 5}>No notes available</td>
         </tr>
-      ))}
+      )}
     </tbody>
   </table>
 );
