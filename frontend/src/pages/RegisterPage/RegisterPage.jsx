@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./RegisterPage.css";
 import closeIcon from "../../assets/close.svg";
 
@@ -11,6 +11,7 @@ const RegisterPage = () => {
   const [confirmationPassword, setConfirmationPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [, setToken] = useContext(UserContext);
+  const navigate = useNavigate();
 
   const submitRegistration = async () => {
     const requestOptions = {
@@ -33,6 +34,7 @@ const RegisterPage = () => {
     e.preventDefault();
     if (password === confirmationPassword && password.length > 5) {
       submitRegistration();
+      navigate('/login')
     } else {
       setErrorMessage(
         "Ensure that the passwords match and greater than 5 characters"

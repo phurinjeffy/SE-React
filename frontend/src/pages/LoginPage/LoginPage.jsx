@@ -1,5 +1,5 @@
 import React, { useState, useContext  } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 import closeIcon from "../../assets/close.svg";
 
@@ -10,6 +10,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [, setToken] = useContext(UserContext);
+  const navigate = useNavigate();
 
   const submitLogin = async () => {
     const requestOptions = {
@@ -27,6 +28,7 @@ const LoginPage = () => {
       setErrorMessage(data.detail);
     } else {
       setToken(data.access_token);
+      navigate("/profile");
     }
   };
 

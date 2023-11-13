@@ -115,3 +115,11 @@
   text-decoration: underline;
   text-align: center;
 }
+
+.ErrorMessage {
+  text-align: center;
+  font-family: 'Varela Round';
+  color: red;
+  font-size: 14px;
+  margin-bottom: 1rem;
+}
