@@ -18,7 +18,7 @@ const TimetablesModal = ({ active, handleModal, token, id, setErrorMessage }) =>
       const response = await fetch(`/api/timetables/${id}`, requestOptions);
 
       if (!response.ok) {
-        setErrorMessage("Could not get the to-do item");
+        setErrorMessage("Could not get the timetable item");
       } else {
         const data = await response.json();
         setCourse(data.course);
@@ -34,7 +34,6 @@ const TimetablesModal = ({ active, handleModal, token, id, setErrorMessage }) =>
   }, [id, token]);
 
   const cleanFormData = () => {
-    setDueDate("");
     setCourse("");
     setDate("");
     setTime("");
@@ -50,17 +49,16 @@ const TimetablesModal = ({ active, handleModal, token, id, setErrorMessage }) =>
         Authorization: "Bearer " + token,
       },
       body: JSON.stringify({
-        dueDate: dueDate,
         course: course,
-        title: title,
-        description: description,
-        urgency: urgency,
+        date: date,
+        time: time,
+        location: location,
       }),
     };
     const response = await fetch("/api/timetables", requestOptions);
 
     if (!response.ok) {
-      setErrorMessage("Something went wrong when creating the to-do item");
+      setErrorMessage("Something went wrong when creating the timetable item");
     } else {
       cleanFormData();
       handleModal();
@@ -76,17 +74,16 @@ const TimetablesModal = ({ active, handleModal, token, id, setErrorMessage }) =>
         Authorization: "Bearer " + token,
       },
       body: JSON.stringify({
-        dueDate: dueDate,
         course: course,
-        title: title,
-        description: description,
-        urgency: urgency,
+        date: date,
+        time: time,
+        location: location,
       }),
     };
     const response = await fetch(`/api/timetables/${id}`, requestOptions);
 
     if (!response.ok) {
-      setErrorMessage("Something went wrong when updating the to-do item");
+      setErrorMessage("Something went wrong when updating the timetable item");
     } else {
       cleanFormData();
       handleModal();
@@ -98,22 +95,10 @@ const TimetablesModal = ({ active, handleModal, token, id, setErrorMessage }) =>
       <div className="modal-background" onClick={handleModal}></div>
       <div className="modal-card">
         <header className="modal-card-head has-background-primary-light">
-          <h1 className="modal-card-title">{id ? "Update To-Do" : "Create To-Do"}</h1>
+          <h1 className="modal-card-title">{id ? "Update Timetable" : "Create Timetable"}</h1>
         </header>
         <section className="modal-card-body">
           <form>
-            <div className="field">
-              <label className="label">Due Date</label>
-              <div className="control">
-                <input
-                  type="date"
-                  value={dueDate}
-                  onChange={(e) => setDueDate(e.target.value)}
-                  className="input"
-                  required
-                />
-              </div>
-            </div>
             <div className="field">
               <label className="label">Course</label>
               <div className="control">
@@ -127,12 +112,12 @@ const TimetablesModal = ({ active, handleModal, token, id, setErrorMessage }) =>
               </div>
             </div>
             <div className="field">
-              <label className="label">Title</label>
+              <label className="label">Date</label>
               <div className="control">
                 <input
                   type="text"
-                  placeholder="Enter title"
-                  value={title}
+                  placeholder="Enter date"
+                  value={date}
                   onChange={(e) => setDate(e.target.value)}
                   className="input"
                   required
@@ -140,24 +125,24 @@ const TimetablesModal = ({ active, handleModal, token, id, setErrorMessage }) =>
               </div>
             </div>
             <div className="field">
-              <label className="label">Description</label>
+              <label className="label">Time</label>
               <div className="control">
                 <input
                   type="text"
-                  placeholder="Enter description"
-                  value={description}
+                  placeholder="Enter time"
+                  value={time}
                   onChange={(e) => setTime(e.target.value)}
                   className="input"
                 />
               </div>
             </div>
             <div className="field">
-              <label className="label">Urgency</label>
+              <label className="label">Location</label>
               <div className="control">
                 <input
                   type="text"
-                  placeholder="Enter urgency"
-                  value={urgency}
+                  placeholder="Enter location"
+                  value={location}
                   onChange={(e) => setLocation(e.target.value)}
                   className="input"
                 />
