@@ -116,11 +116,11 @@ async def delete_note(note_id: int, user: _schemas.User, db: _orm.Session):
 async def update_note(note_id: int, note: _schemas.NoteCreate, user: _schemas.User, db: _orm.Session):
     note_db = await _note_selector(note_id, user, db)
 
-    note_db.first_name = note.first_name
-    note_db.last_name = note.last_name
-    note_db.email = note.email
-    note_db.company = note.company
-    note_db.note = note.note
+    note_db.dueDate = note.dueDate
+    note_db.course = note.course
+    note_db.title = note.title
+    note_db.description = note.description
+    note_db.urgency = note.urgency
     note_db.date_last_updated = _dt.datetime.utcnow()
 
     db.commit()

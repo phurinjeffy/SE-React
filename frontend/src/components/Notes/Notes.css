@@ -1,3 +1,4 @@
+/* NOTEMODAL */
 .modal {
   position: fixed;
   top: 0;
@@ -86,4 +87,39 @@
 
 .has-background-primary-light .button:hover {
   background-color: #2765c6;
+}
+
+/* TABLE */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1em;
+}
+
+.table th,
+.table td {
+  border: 1px solid #dfe6e9;
+  padding: 0.5em;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f5f6fa;
+}
+
+.table tbody tr:hover {
+  background-color: #dfe6e9;
+}
+
+.button {
+  cursor: pointer;
+}
+
+.button.is-fullwidth {
+  width: 99%;
+}
+
+.ErrorMessage {
+  color: #e74c3c;
+  margin-top: 1em;
 }

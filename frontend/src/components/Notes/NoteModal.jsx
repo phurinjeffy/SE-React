@@ -1,6 +1,6 @@
 // Import necessary libraries and styles
 import React, { useEffect, useState } from "react";
-import "./NoteModal.css";
+import "./Notes.css";
 
 const NoteModal = ({ active, handleModal, token, id, setErrorMessage }) => {
   // State variables for form fields

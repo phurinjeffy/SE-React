@@ -1,11 +1,11 @@
 import React from 'react'
-import { Table } from "../../components";
+import { Notes } from "../../components";
 import "./NotePage.css"
 
 const NotePage = () => {
   return (
     <div className='notePage'>
-        <Table />
+        <Notes />
     </div>
   )
 }
