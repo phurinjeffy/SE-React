@@ -1,13 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate, NavLink, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import notificationIcon from "../../assets/notification.svg";
 
+import { UserContext } from "../../context/UserContext";
+
 const Navbar = () => {
   const [isNotificationVisible, setIsNotificationVisible] = useState(false);
+  const [isUserVisible, setUserVisible] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const [pageTitle, setPageTitle] = useState("Software Engineering");
+
+  const [token, setToken] = useContext(UserContext);
+
+  const handleLogout = () => {
+    setToken(null);
+  };
+
+  const handleLogin = () => {
+    navigate('/login');
+  }
 
   useEffect(() => {
     switch (location.pathname) {
@@ -28,6 +41,10 @@ const Navbar = () => {
 
   const toggleNotification = () => {
     setIsNotificationVisible(!isNotificationVisible);
+  };
+
+  const toggleUser = () => {
+    setUserVisible(!isUserVisible);
   };
 
   const goToRoot = () => {
@@ -63,9 +80,22 @@ const Navbar = () => {
         </div>
 
         <div className="User">
-          <NavLink to="/login">
-            <img src="https://www.asiamediajournal.com/wp-content/uploads/2022/10/Cute-PFP-for-fb.jpg" alt="pfp" />
-          </NavLink>
+          <button className="UserIcon" onClick={toggleUser}>
+            <img src="https://i1.rgstatic.net/ii/profile.image/614807262740481-1523592882757_Q512/Fatima-Iqbal-12.jpg" alt="pfp"/>
+          </button>
+          {isUserVisible && (
+            <div className="UserBox">
+              {token ? (
+                <button className="logButton" onClick={handleLogout}>
+                  Logout
+                </button>
+              ) : (
+                <button className="logButton" onClick={handleLogin}>
+                  Login
+                </button>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>
