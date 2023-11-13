@@ -128,3 +128,59 @@ async def update_note(note_id: int, note: _schemas.NoteCreate, user: _schemas.Us
 
     return _schemas.Note.from_orm(note_db)
 
+
+
+async def create_timetable(user: _schemas.User, db: _orm.Session, timetable: _schemas.TimetableCreate):
+    timetable = _models.Timetable(**timetable.dict(), owner_id=user.id)
+    db.add(timetable)
+    db.commit()
+    db.refresh(timetable)
+    return _schemas.Timetable.from_orm(timetable)
+
+
+async def get_timetables(user: _schemas.User, db: _orm.Session):
+    timetables = db.query(_models.Timetable).filter_by(owner_id=user.id)
+
+    return list(map(_schemas.Timetable.from_orm, timetables))
+
+
+async def _timetable_selector(timetable_id: int, user: _schemas.User, db: _orm.Session):
+    timetable = (
+        db.query(_models.Timetable)
+        .filter_by(owner_id=user.id)
+        .filter(_models.Timetable.id == timetable_id)
+        .first()
+    )
+
+    if timetable is None:
+        raise _fastapi.HTTPException(status_code=404, detail="Timetable does not exist")
+
+    return timetable
+
+
+async def get_timetable(timetable_id: int, user: _schemas.User, db: _orm.Session):
+    timetable = await _timetable_selector(timetable_id=timetable_id, user=user, db=db)
+
+    return _schemas.Timetable.from_orm(timetable)
+
+
+async def delete_timetable(timetable_id: int, user: _schemas.User, db: _orm.Session):
+    timetable = await _timetable_selector(timetable_id, user, db)
+
+    db.delete(timetable)
+    db.commit()
+
+async def update_timetable(timetable_id: int, timetable: _schemas.TimetableCreate, user: _schemas.User, db: _orm.Session):
+    timetable_db = await _timetable_selector(timetable_id, user, db)
+
+    timetable_db.course = timetable.course
+    timetable_db.date = timetable.date
+    timetable_db.time = timetable.time
+    timetable_db.location = timetable.location
+    timetable_db.date_last_updated = _dt.datetime.utcnow()
+
+    db.commit()
+    db.refresh(timetable_db)
+
+    return _schemas.Timetable.from_orm(timetable_db)
+

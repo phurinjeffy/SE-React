@@ -42,3 +42,25 @@ class Note(_NoteBase):
     class Config:
         # orm_mode = True
         from_attributes = True
+
+
+class _TimetableBase(_pydantic.BaseModel):
+    course: str
+    date: str
+    time: str
+    location: str
+
+
+class TimetableCreate(_TimetableBase):
+    pass
+
+
+class Timetable(_TimetableBase):
+    id: int
+    owner_id: int
+    date_created: _dt.datetime
+    date_last_updated: _dt.datetime
+
+    class Config:
+        # orm_mode = True
+        from_attributes = True

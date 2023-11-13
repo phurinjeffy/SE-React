@@ -90,3 +90,50 @@ async def update_note(
 @app.get("/api")
 async def root():
     return {"message": "Awesome Notes Manager"}
+
+
+@app.post("/api/timetables", response_model=_schemas.Timetable)
+async def create_timetable(
+    timetable: _schemas.TimetableCreate,
+    user: _schemas.User = _fastapi.Depends(_services.get_current_user),
+    db: _orm.Session = _fastapi.Depends(_services.get_db),
+):
+    return await _services.create_timetable(user=user, db=db, timetable=timetable)
+
+
+@app.get("/api/timetables", response_model=List[_schemas.Timetable])
+async def get_timetables(
+    user: _schemas.User = _fastapi.Depends(_services.get_current_user),
+    db: _orm.Session = _fastapi.Depends(_services.get_db),
+):
+    return await _services.get_timetables(user=user, db=db)
+
+
+@app.get("/api/timetables/{timetable_id}", status_code=200)
+async def get_timetable(
+    timetable_id: int,
+    user: _schemas.User = _fastapi.Depends(_services.get_current_user),
+    db: _orm.Session = _fastapi.Depends(_services.get_db),
+):
+    return await _services.get_timetable(timetable_id, user, db)
+
+
+@app.delete("/api/timetables/{timetable_id}", status_code=204)
+async def delete_timetable(
+    timetable_id: int,
+    user: _schemas.User = _fastapi.Depends(_services.get_current_user),
+    db: _orm.Session = _fastapi.Depends(_services.get_db),
+):
+    await _services.delete_timetable(timetable_id, user, db)
+    return {"message", "Successfully Deleted"}
+
+
+@app.put("/api/timetables/{timetable_id}", status_code=200)
+async def update_timetable(
+    timetable_id: int,
+    timetable: _schemas.TimetableCreate,
+    user: _schemas.User = _fastapi.Depends(_services.get_current_user),
+    db: _orm.Session = _fastapi.Depends(_services.get_db),
+):
+    await _services.update_timetable(timetable_id, timetable, user, db)
+    return {"message", "Successfully Updated"}
