@@ -64,7 +64,7 @@ const App = () => {
             <Route path="/upload" element={<UploadPage />} />
           </Route>
         ) : (
-          <Route path="/*" element={<Navigate to="/login" replace />} />
+          <Route path="/*" element={<Navigate to="/" replace />} />
         )}
 
         <Route path="*" element={<Navigate to="/" replace />} />
