@@ -1,0 +1,65 @@
+.calendar-container {
+  width: 600px;
+  margin: auto 2rem;
+  font-family: "Varela Round";
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #db8734;
+  color: #fff;
+  padding: 10px;
+}
+
+.calendar-header button {
+  background: none;
+  border: none;
+  color: #000000;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.current-month {
+  font-size: 22px;
+}
+
+.calendar-days {
+  display: flex;
+  background-color: #ecf0f1;
+}
+
+.calendar-cell {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #bdc3c7;
+  background-color: #ecf0f1;
+  transition: background-color 0.3s ease;
+}
+
+.calendar-cell:hover {
+  background-color: #dfe6e9;
+}
+
+.empty-cell {
+  background-color: #ecf0f1;
+}
+
+.day-of-week {
+  font-weight: bold;
+  color: #2c3e50;
+  background-color: rgb(236, 223, 209);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+@media screen and (max-width: 768px) {
+  .calendar-container {
+    width: 100%;
+  }
+}

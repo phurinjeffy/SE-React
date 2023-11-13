@@ -11,9 +11,9 @@ export const SidebarData = [
         link: "/profile"
     },
     {
-        title: "Repository",
+        title: "Notes",
         icon: <img src={repositoryIcon} alt="repositoryIcon"/>,
-        link: "/repository"
+        link: "/notes"
     },
     {
         title: "Learn",

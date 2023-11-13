@@ -8,3 +8,5 @@ export { default as Follower } from "./Follower/Follower";
 export { default as Following } from "./Following/Following";
 export { default as FileForm } from "./FileForm/FileForm";
 export { default as GenericContainer } from "./GenericContainer/GenericContainer";
+export { default as Table } from "./Notes/Table";
+export { default as Calendar } from "./Calendar/Calendar";
