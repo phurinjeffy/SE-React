@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment";
 
-const NotesTable = ({ notes, handleUpdate, handleDelete }) => (
+const NotesTable = ({ notes, handleUpdate, handleDelete, showEdit }) => (
   <table className="table is-fullwidth">
     <thead>
       <tr>
@@ -10,8 +10,10 @@ const NotesTable = ({ notes, handleUpdate, handleDelete }) => (
         <th>Title</th>
         <th>Description</th>
         <th>Urgency</th>
-        <th>Last Updated</th>
+        {showEdit && 
+        <th>Last Updated</th> && 
         <th>Actions</th>
+        }
       </tr>
     </thead>
     <tbody>
@@ -22,7 +24,8 @@ const NotesTable = ({ notes, handleUpdate, handleDelete }) => (
           <td>{note.title}</td>
           <td>{note.description}</td>
           <td>{note.urgency}</td>
-          <td>{moment(note.date_last_updated).format("MMM Do YY")}</td>
+          {showEdit && 
+          <td>{moment(note.date_last_updated).format("MMM Do YY")}</td> &&
           <td>
             <button className="button mr-2 is-info is-light" onClick={() => handleUpdate(note.id)}>
               Update
@@ -31,6 +34,7 @@ const NotesTable = ({ notes, handleUpdate, handleDelete }) => (
               Delete
             </button>
           </td>
+          }
         </tr>
       ))}
     </tbody>

@@ -72,7 +72,7 @@ const Notes = () => {
         </button>
         <div className="ErrorMessage">{errorMessage}</div>
         {loaded && notes ? (
-          <NotesTable notes={notes} handleUpdate={handleUpdate} handleDelete={handleDelete} />
+          <NotesTable notes={notes} handleUpdate={handleUpdate} handleDelete={handleDelete} showEdit={true}/>
         ) : (
           <p>Loading</p>
         )}
