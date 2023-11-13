@@ -13,22 +13,22 @@ class User(_database.Base):
     email = _sql.Column(_sql.String, unique=True, index=True)
     hashed_password = _sql.Column(_sql.String)
 
-    leads = _orm.relationship("Lead", back_populates="owner")
+    notes = _orm.relationship("Note", back_populates="owner")
 
     def verify_password(self, password: str):
         return _hash.bcrypt.verify(password, self.hashed_password)
 
 
-class Lead(_database.Base):
-    __tablename__ = "leads"
+class Note(_database.Base):
+    __tablename__ = "notes"
     id = _sql.Column(_sql.Integer, primary_key=True, index=True)
     owner_id = _sql.Column(_sql.Integer, _sql.ForeignKey("users.id"))
-    first_name = _sql.Column(_sql.String, index=True)
-    last_name = _sql.Column(_sql.String, index=True)
-    email = _sql.Column(_sql.String, index=True)
-    company = _sql.Column(_sql.String, index=True, default="")
-    note = _sql.Column(_sql.String, default="")
+    dueDate = _sql.Column(_sql.String, index=True)
+    course = _sql.Column(_sql.String, index=True)
+    title = _sql.Column(_sql.String, index=True)
+    description = _sql.Column(_sql.String, index=True, default="")
+    urgency = _sql.Column(_sql.String, default="")
     date_created = _sql.Column(_sql.DateTime, default=_dt.datetime.utcnow)
     date_last_updated = _sql.Column(_sql.DateTime, default=_dt.datetime.utcnow)
 
-    owner = _orm.relationship("User", back_populates="leads")
+    owner = _orm.relationship("User", back_populates="notes")

@@ -2,13 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import moment from "moment";
 
 import "./Table.css"
-import NoteModel from "./NoteModel";
+import NoteModal from "./NoteModal";
 import { UserContext } from "../../context/UserContext";
 import GenericContainer from "../GenericContainer/GenericContainer";
 
 const Table = () => {
   const [token] = useContext(UserContext);
-  const [leads, setLeads] = useState(null);
+  const [notes, setNotes] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [loaded, setLoaded] = useState(false);
   const [activeModal, setActiveModal] = useState(false);
@@ -27,15 +27,15 @@ const Table = () => {
         Authorization: "Bearer " + token,
       },
     };
-    const response = await fetch(`/api/leads/${id}`, requestOptions);
+    const response = await fetch(`/api/notes/${id}`, requestOptions);
     if (!response.ok) {
-      setErrorMessage("Failed to delete lead");
+      setErrorMessage("Failed to delete note");
     }
 
-    getLeads();
+    getNotes();
   };
 
-  const getLeads = async () => {
+  const getNotes = async () => {
     const requestOptions = {
       method: "GET",
       headers: {
@@ -43,60 +43,60 @@ const Table = () => {
         Authorization: "Bearer " + token,
       },
     };
-    const response = await fetch("/api/leads", requestOptions);
+    const response = await fetch("/api/notes", requestOptions);
     if (!response.ok) {
-      setErrorMessage("Something went wrong. Couldn't load the leads");
+      setErrorMessage("Something went wrong. Couldn't load the notes");
     } else {
       const data = await response.json();
-      setLeads(data);
+      setNotes(data);
       setLoaded(true);
     }
   };
 
   useEffect(() => {
-    getLeads();
+    getNotes();
   }, []);
 
   const handleModal = () => {
     setActiveModal(!activeModal);
-    getLeads();
+    getNotes();
     setId(null);
   };
 
   return (
     <GenericContainer title="Notes">
-      <NoteModel active={activeModal} handleModal={handleModal} token={token} id={id} setErrorMessage={setErrorMessage} />
+      <NoteModal active={activeModal} handleModal={handleModal} token={token} id={id} setErrorMessage={setErrorMessage} />
       <button className="button is-fullwidth mb-5 is-primary" onClick={() => setActiveModal(true)} >
-        Create Lead
+        Create Note
       </button>
       <div className="ErrorMessage">{errorMessage}</div>
-      {loaded && leads ? (
+      {loaded && notes ? (
         <table className="table is-fullwidth">
           <thead>
             <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Company</th>
-              <th>Email</th>
-              <th>Note</th>
+              <th>Due Date</th>
+              <th>Course</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Urgency</th>
               <th>Last Updated</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {leads.map((lead) => (
-              <tr key={lead.id}>
-                <td>{lead.first_name}</td>
-                <td>{lead.last_name}</td>
-                <td>{lead.company}</td>
-                <td>{lead.email}</td>
-                <td>{lead.note}</td>
-                <td>{moment(lead.date_last_updated).format("MMM Do YY")}</td>
+            {notes.map((note) => (
+              <tr key={note.id}>
+                <td>{note.dueDate}</td>
+                <td>{note.course}</td>
+                <td>{note.title}</td>
+                <td>{note.description}</td>
+                <td>{note.urgency}</td>
+                <td>{moment(note.date_last_updated).format("MMM Do YY")}</td>
                 <td>
-                  <button className="button mr-2 is-info is-light" onClick={() => handleUpdate(lead.id)}>
+                  <button className="button mr-2 is-info is-light" onClick={() => handleUpdate(note.id)}>
                     Update
                   </button>
-                  <button className="button mr-2 is-danger is-light" onClick={() => handleDelete(lead.id)}>
+                  <button className="button mr-2 is-danger is-light" onClick={() => handleDelete(note.id)}>
                     Delete
                   </button>
                 </td>

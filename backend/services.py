@@ -73,58 +73,58 @@ async def get_current_user(
     return _schemas.User.from_orm(user)
 
 
-async def create_lead(user: _schemas.User, db: _orm.Session, lead: _schemas.LeadCreate):
-    lead = _models.Lead(**lead.dict(), owner_id=user.id)
-    db.add(lead)
+async def create_note(user: _schemas.User, db: _orm.Session, note: _schemas.NoteCreate):
+    note = _models.Note(**note.dict(), owner_id=user.id)
+    db.add(note)
     db.commit()
-    db.refresh(lead)
-    return _schemas.Lead.from_orm(lead)
+    db.refresh(note)
+    return _schemas.Note.from_orm(note)
 
 
-async def get_leads(user: _schemas.User, db: _orm.Session):
-    leads = db.query(_models.Lead).filter_by(owner_id=user.id)
+async def get_notes(user: _schemas.User, db: _orm.Session):
+    notes = db.query(_models.Note).filter_by(owner_id=user.id)
 
-    return list(map(_schemas.Lead.from_orm, leads))
+    return list(map(_schemas.Note.from_orm, notes))
 
 
-async def _lead_selector(lead_id: int, user: _schemas.User, db: _orm.Session):
-    lead = (
-        db.query(_models.Lead)
+async def _note_selector(note_id: int, user: _schemas.User, db: _orm.Session):
+    note = (
+        db.query(_models.Note)
         .filter_by(owner_id=user.id)
-        .filter(_models.Lead.id == lead_id)
+        .filter(_models.Note.id == note_id)
         .first()
     )
 
-    if lead is None:
-        raise _fastapi.HTTPException(status_code=404, detail="Lead does not exist")
+    if note is None:
+        raise _fastapi.HTTPException(status_code=404, detail="Note does not exist")
 
-    return lead
-
-
-async def get_lead(lead_id: int, user: _schemas.User, db: _orm.Session):
-    lead = await _lead_selector(lead_id=lead_id, user=user, db=db)
-
-    return _schemas.Lead.from_orm(lead)
+    return note
 
 
-async def delete_lead(lead_id: int, user: _schemas.User, db: _orm.Session):
-    lead = await _lead_selector(lead_id, user, db)
+async def get_note(note_id: int, user: _schemas.User, db: _orm.Session):
+    note = await _note_selector(note_id=note_id, user=user, db=db)
 
-    db.delete(lead)
+    return _schemas.Note.from_orm(note)
+
+
+async def delete_note(note_id: int, user: _schemas.User, db: _orm.Session):
+    note = await _note_selector(note_id, user, db)
+
+    db.delete(note)
     db.commit()
 
-async def update_lead(lead_id: int, lead: _schemas.LeadCreate, user: _schemas.User, db: _orm.Session):
-    lead_db = await _lead_selector(lead_id, user, db)
+async def update_note(note_id: int, note: _schemas.NoteCreate, user: _schemas.User, db: _orm.Session):
+    note_db = await _note_selector(note_id, user, db)
 
-    lead_db.first_name = lead.first_name
-    lead_db.last_name = lead.last_name
-    lead_db.email = lead.email
-    lead_db.company = lead.company
-    lead_db.note = lead.note
-    lead_db.date_last_updated = _dt.datetime.utcnow()
+    note_db.first_name = note.first_name
+    note_db.last_name = note.last_name
+    note_db.email = note.email
+    note_db.company = note.company
+    note_db.note = note.note
+    note_db.date_last_updated = _dt.datetime.utcnow()
 
     db.commit()
-    db.refresh(lead_db)
+    db.refresh(note_db)
 
-    return _schemas.Lead.from_orm(lead_db)
+    return _schemas.Note.from_orm(note_db)
 

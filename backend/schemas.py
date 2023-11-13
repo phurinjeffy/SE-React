@@ -21,19 +21,19 @@ class User(_UserBase):
         # orm_mode = True
         from_attributes = True
 
-class _LeadBase(_pydantic.BaseModel):
-    first_name: str
-    last_name: str
-    email: str
-    company: str
-    note: str
+class _NoteBase(_pydantic.BaseModel):
+    dueDate: str
+    course: str
+    title: str
+    description: str
+    urgency: str
 
 
-class LeadCreate(_LeadBase):
+class NoteCreate(_NoteBase):
     pass
 
 
-class Lead(_LeadBase):
+class Note(_NoteBase):
     id: int
     owner_id: int
     date_created: _dt.datetime
