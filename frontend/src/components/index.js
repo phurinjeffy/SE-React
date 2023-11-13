@@ -11,3 +11,4 @@ export { default as GenericContainer } from "./GenericContainer/GenericContainer
 export { default as Notes } from "./Notes/Notes";
 export { default as NotesTable } from "./Notes/NotesTable";
 export { default as Calendar } from "./Calendar/Calendar";
+export { default as Timetables } from "./Timetables/Timetables";

@@ -9,3 +9,4 @@ export { default as FollowerPage } from "./FollowerPage/FollowerPage";
 export { default as FollowingPage } from "./FollowingPage/FollowingPage";
 export { default as UploadPage } from "./UploadPage/UploadPage";
 export { default as NotePage } from "./NotePage/NotePage";
+export { default as TimetablePage } from "./TimetablePage/TimetablePage";

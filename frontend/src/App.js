@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Outlet, Navigate } from "react-router-dom";
 import { Navbar, Sidebar } from "./components";
-import { LoginPage, RegisterPage, ProfilePage, RepositoryPage, LearnPage, HomePage, EditPage, FollowerPage, FollowingPage, UploadPage, NotePage } from "./pages";
+import { LoginPage, RegisterPage, ProfilePage, RepositoryPage, LearnPage, HomePage, EditPage, FollowerPage, FollowingPage, UploadPage, NotePage, TimetablePage } from "./pages";
 import "./App.css";
 import { UserContext } from "./context/UserContext";
 
@@ -60,6 +60,7 @@ const App = () => {
             <Route path="/profile/following" element={<FollowingPage />} />
             <Route path="/repository" element={<RepositoryPage />} />
             <Route path="/notes" element={<NotePage />} />
+            <Route path="/timetable" element={<TimetablePage />} />
             <Route path="/learn" element={<LearnPage />} />
             <Route path="/upload" element={<UploadPage />} />
           </Route>

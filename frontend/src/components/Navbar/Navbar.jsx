@@ -27,14 +27,17 @@ const Navbar = () => {
       case "/profile":
         setPageTitle("Profile");
         break;
+      case "/notes":
+        setPageTitle("Notes");
+        break;
+      case "/timetable":
+          setPageTitle("Timetable");
+          break;
       case "/repository":
         setPageTitle("Repository");
         break;
       case "/learn":
         setPageTitle("Learn");
-        break;
-      case "/notes":
-        setPageTitle("Notes");
         break;
       default:
         setPageTitle("Software Engineering");
