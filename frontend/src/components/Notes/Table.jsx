@@ -66,47 +66,49 @@ const Table = () => {
   return (
     <GenericContainer title="Notes">
       <NoteModal active={activeModal} handleModal={handleModal} token={token} id={id} setErrorMessage={setErrorMessage} />
-      <button className="button is-fullwidth mb-5 is-primary" onClick={() => setActiveModal(true)} >
-        Create Note
-      </button>
-      <div className="ErrorMessage">{errorMessage}</div>
-      {loaded && notes ? (
-        <table className="table is-fullwidth">
-          <thead>
-            <tr>
-              <th>Due Date</th>
-              <th>Course</th>
-              <th>Title</th>
-              <th>Description</th>
-              <th>Urgency</th>
-              <th>Last Updated</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {notes.map((note) => (
-              <tr key={note.id}>
-                <td>{note.dueDate}</td>
-                <td>{note.course}</td>
-                <td>{note.title}</td>
-                <td>{note.description}</td>
-                <td>{note.urgency}</td>
-                <td>{moment(note.date_last_updated).format("MMM Do YY")}</td>
-                <td>
-                  <button className="button mr-2 is-info is-light" onClick={() => handleUpdate(note.id)}>
-                    Update
-                  </button>
-                  <button className="button mr-2 is-danger is-light" onClick={() => handleDelete(note.id)}>
-                    Delete
-                  </button>
-                </td>
+      <div className="Content">
+        <button className="button is-fullwidth mb-5 is-primary" onClick={() => setActiveModal(true)} >
+          Create Note
+        </button>
+        <div className="ErrorMessage">{errorMessage}</div>
+        {loaded && notes ? (
+          <table className="table is-fullwidth">
+            <thead>
+              <tr>
+                <th>Due Date</th>
+                <th>Course</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Urgency</th>
+                <th>Last Updated</th>
+                <th>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <p>Loading</p>
-      )}
+            </thead>
+            <tbody>
+              {notes.map((note) => (
+                <tr key={note.id}>
+                  <td>{note.dueDate}</td>
+                  <td>{note.course}</td>
+                  <td>{note.title}</td>
+                  <td>{note.description}</td>
+                  <td>{note.urgency}</td>
+                  <td>{moment(note.date_last_updated).format("MMM Do YY")}</td>
+                  <td>
+                    <button className="button mr-2 is-info is-light" onClick={() => handleUpdate(note.id)}>
+                      Update
+                    </button>
+                    <button className="button mr-2 is-danger is-light" onClick={() => handleDelete(note.id)}>
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>Loading</p>
+        )}
+      </div>
     </GenericContainer>
   );
 };
