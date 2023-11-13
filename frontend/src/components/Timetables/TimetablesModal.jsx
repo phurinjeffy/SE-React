@@ -116,7 +116,6 @@ const TimetablesModal = ({ active, handleModal, token, id, setErrorMessage }) =>
               <div className="control">
                 <input
                   type="date"
-                  placeholder="Enter date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
                   className="input"
@@ -129,7 +128,6 @@ const TimetablesModal = ({ active, handleModal, token, id, setErrorMessage }) =>
               <div className="control">
                 <input
                   type="time"
-                  placeholder="Enter time"
                   value={time}
                   onChange={(e) => setTime(e.target.value)}
                   className="input"
