@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import "./Notes.css";
 
-const NoteModal = ({ active, handleModal, token, id, setErrorMessage }) => {
+const NotesModal = ({ active, handleModal, token, id, setErrorMessage }) => {
   // State variables for form fields
   const [dueDate, setDueDate] = useState("");
   const [course, setCourse] = useState("");
@@ -194,4 +194,4 @@ const NoteModal = ({ active, handleModal, token, id, setErrorMessage }) => {
   );
 };
 
-export default NoteModal;
+export default NotesModal;

@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import moment from "moment";
 
 import "./Notes.css"
-import NoteModal from "./NoteModal";
-import Table from "./Table";
+import NotesModal from "./NotesModal";
+import NotesTable from "./NotesTable";
 import { UserContext } from "../../context/UserContext";
 import GenericContainer from "../GenericContainer/GenericContainer";
 
@@ -66,7 +66,7 @@ const Notes = () => {
 
   return (
     <GenericContainer title="Notes">
-      <NoteModal active={activeModal} handleModal={handleModal} token={token} id={id} setErrorMessage={setErrorMessage} />
+      <NotesModal active={activeModal} handleModal={handleModal} token={token} id={id} setErrorMessage={setErrorMessage} />
       <div className="Content">
         <button className="button is-fullwidth mb-5 is-primary" onClick={() => setActiveModal(true)} >
           Create Note
