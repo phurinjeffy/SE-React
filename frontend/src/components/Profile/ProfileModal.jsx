@@ -95,7 +95,7 @@ const ProfileModal = ({ active, handleModal, token, id, setErrorMessage }) => {
       <div className="modal-background" onClick={handleModal}></div>
       <div className="modal-card">
         <header className="modal-card-head has-background-primary-light">
-          <h1 className="modal-card-title">{id ? "Update Schedule" : "Create Schedule"}</h1>
+          <h1 className="modal-card-title">{id ? "Update Profile" : "Create Profile"}</h1>
         </header>
         <section className="modal-card-body">
           <form>
@@ -117,6 +117,7 @@ const ProfileModal = ({ active, handleModal, token, id, setErrorMessage }) => {
                 <input
                   type="text"
                   value={surname}
+                  placeholder="Enter surname"
                   onChange={(e) => setSurname(e.target.value)}
                   className="input"
                 />

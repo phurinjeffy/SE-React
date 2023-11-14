@@ -139,5 +139,5 @@
 }
 
 .Content::-webkit-scrollbar {
-  display: none; /* Set the width of the scrollbar */
+  display: none; 
 }

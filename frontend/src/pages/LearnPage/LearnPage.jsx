@@ -1,12 +1,12 @@
 import React from "react";
 
-import { Profile } from "../../components";
+import { } from "../../components";
 import "./LearnPage.css";
 
 const LearnPage = () => {
   return (
     <div className="learnPage">
-      <Profile />
+
     </div>
   );
 };
