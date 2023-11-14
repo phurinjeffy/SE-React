@@ -40,7 +40,7 @@ const NotesTable = ({ notes, handleUpdate, handleDelete, showEdit }) => (
         ))
       ) : (
         <tr>
-          <td colSpan={showEdit ? 6 : 5}>No notes available</td>
+          <td colSpan="7">No notes available</td>
         </tr>
       )}
     </tbody>

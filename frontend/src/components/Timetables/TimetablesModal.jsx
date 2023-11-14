@@ -5,9 +5,10 @@ const TimetablesModal = ({ active, handleModal, token, id, setErrorMessage }) =>
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [location, setLocation] = useState("");
+  const [lecturer, setLecturer] = useState("");
 
   useEffect(() => {
-    const getTimetable = async () => {
+    const getSchedule = async () => {
       const requestOptions = {
         method: "GET",
         headers: {
@@ -18,18 +19,19 @@ const TimetablesModal = ({ active, handleModal, token, id, setErrorMessage }) =>
       const response = await fetch(`/api/timetables/${id}`, requestOptions);
 
       if (!response.ok) {
-        setErrorMessage("Could not get the timetable item");
+        setErrorMessage("Could not get the schedule item");
       } else {
         const data = await response.json();
         setCourse(data.course);
         setDate(data.date);
         setTime(data.time);
         setLocation(data.location);
+        setLecturer(data.lecturer);
       }
     };
 
     if (id) {
-      getTimetable();
+      getSchedule();
     }
   }, [id, token]);
 
@@ -38,9 +40,10 @@ const TimetablesModal = ({ active, handleModal, token, id, setErrorMessage }) =>
     setDate("");
     setTime("");
     setLocation("");
+    setLecturer("");
   };
 
-  const handleCreateTimetable = async (e) => {
+  const handleCreateSchedule = async (e) => {
     e.preventDefault();
     const requestOptions = {
       method: "POST",
@@ -53,19 +56,20 @@ const TimetablesModal = ({ active, handleModal, token, id, setErrorMessage }) =>
         date: date,
         time: time,
         location: location,
+        lecturer: lecturer,
       }),
     };
     const response = await fetch("/api/timetables", requestOptions);
 
     if (!response.ok) {
-      setErrorMessage("Something went wrong when creating the timetable item");
+      setErrorMessage("Something went wrong when creating the schedule item");
     } else {
       cleanFormData();
       handleModal();
     }
   };
 
-  const handleUpdateTimetable = async (e) => {
+  const handleUpdateSchedule = async (e) => {
     e.preventDefault();
     const requestOptions = {
       method: "PUT",
@@ -78,12 +82,13 @@ const TimetablesModal = ({ active, handleModal, token, id, setErrorMessage }) =>
         date: date,
         time: time,
         location: location,
+        lecturer: lecturer,
       }),
     };
     const response = await fetch(`/api/timetables/${id}`, requestOptions);
 
     if (!response.ok) {
-      setErrorMessage("Something went wrong when updating the timetable item");
+      setErrorMessage("Something went wrong when updating the schedule item");
     } else {
       cleanFormData();
       handleModal();
@@ -95,7 +100,7 @@ const TimetablesModal = ({ active, handleModal, token, id, setErrorMessage }) =>
       <div className="modal-background" onClick={handleModal}></div>
       <div className="modal-card">
         <header className="modal-card-head has-background-primary-light">
-          <h1 className="modal-card-title">{id ? "Update Timetable" : "Create Timetable"}</h1>
+          <h1 className="modal-card-title">{id ? "Update Schedule" : "Create Schedule"}</h1>
         </header>
         <section className="modal-card-body">
           <form>
@@ -146,15 +151,27 @@ const TimetablesModal = ({ active, handleModal, token, id, setErrorMessage }) =>
                 />
               </div>
             </div>
+            <div className="field">
+              <label className="label">Lecturer</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="Enter lecturer"
+                  value={lecturer}
+                  onChange={(e) => setLecturer(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
           </form>
         </section>
         <footer className="modal-card-foot has-background-primary-light">
           {id ? (
-            <button className="button is-info" onClick={handleUpdateTimetable}>
+            <button className="button is-info" onClick={handleUpdateSchedule}>
               Update
             </button>
           ) : (
-            <button className="button is-primary" onClick={handleCreateTimetable}>
+            <button className="button is-primary" onClick={handleCreateSchedule}>
               Create
             </button>
           )}

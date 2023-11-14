@@ -9,7 +9,9 @@ const TimetablesTable = ({ timetables, handleUpdate, handleDelete, showEdit }) =
         <th>Date</th>
         <th>Time</th>
         <th>Location</th>
+        <th>Lecturer</th>
         {showEdit && 
+        <th>Last Updated</th> && 
         <th>Actions</th>
         }
       </tr>
@@ -22,7 +24,9 @@ const TimetablesTable = ({ timetables, handleUpdate, handleDelete, showEdit }) =
             <td>{timetable.date}</td>
             <td>{timetable.time}</td>
             <td>{timetable.location}</td>
+            <td>{timetable.lecturer}</td>
             {showEdit && 
+            <td>{moment(timetable.date_last_updated).format("MMM Do YY")}</td> &&
             <td>
               <button className="button mr-2 is-info is-light" onClick={() => handleUpdate(timetable.id)}>
                 Update
@@ -36,7 +40,7 @@ const TimetablesTable = ({ timetables, handleUpdate, handleDelete, showEdit }) =
         ))
       ) : (
         <tr>
-          <td colSpan={showEdit ? 5 : 4}>No timetable available</td>
+          <td colSpan="7">No timetable available</td>
         </tr>
       )}
     </tbody>

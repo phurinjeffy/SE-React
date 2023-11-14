@@ -87,11 +87,6 @@ async def update_note(
     return {"message", "Successfully Updated"}
 
 
-@app.get("/api")
-async def root():
-    return {"message": "Awesome Notes Manager"}
-
-
 @app.post("/api/timetables", response_model=_schemas.Timetable)
 async def create_timetable(
     timetable: _schemas.TimetableCreate,
