@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import "./Timetables.css";
 import { UserContext } from "../../context/UserContext";
 import GenericContainer from "../GenericContainer/GenericContainer";
-import TimetablesModal from "./TimetablesTable";
+import TimetablesModal from "./TimetablesModal";
 import TimetablesTable from "./TimetablesTable";
 
 const Timetables = () => {

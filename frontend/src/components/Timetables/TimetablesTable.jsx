@@ -29,7 +29,7 @@ const TimetablesTable = ({ timetables, handleUpdate, handleDelete, showEdit }) =
             <td>{timetable.lecturer}</td>
             {showEdit && 
             <>
-            <td>{moment(timetable.date_last_updated).format("YYYY-MM-D")}</td> &&
+            <td>{moment(timetable.date_last_updated).format("YYYY-MM-D")}</td>
             <td>
               <button className="button mr-2 is-info is-light" onClick={() => handleUpdate(timetable.id)}>
                 Update
