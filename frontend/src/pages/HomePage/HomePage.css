@@ -12,7 +12,7 @@
 
 .homeNavBar a {
   padding: 2rem 5%;
-  font-family: 'Poppins';
+  font-family: "Poppins";
 }
 
 .seBanner {
@@ -21,11 +21,167 @@
 
 .homeBody {
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7rem 20%;
+  font-family: "Poppins";
+  color: #fff;
+}
+
+.sectionAbout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-bottom: 2rem;
+}
+
+.paragraph {
+  width: 100%;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  text-align: justify;
+  margin-bottom: 1rem;
+}
+
+.aboutBox {
+  display: flex;
   flex-direction: row;
+}
+
+.aboutField {
+  width: 300px;
+  height: 434px;
+  background: #d9d9d9;
+  box-shadow: 6px 8px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10rem 10%;
 }
+
+.fieldLine {
+  width: 300px;
+  height: 0;
+  border: 2px #4a5c70 solid;
+  margin: 4rem 0;
+}
+
+.fieldText {
+  color: #4a5c70;
+  font-size: 20px;
+  font-family: "Poppins";
+  font-weight: 400;
+  text-transform: uppercase;
+  word-wrap: break-word;
+}
+
+.SectionLine {
+  width: 1100px;
+  height: 0;
+  border: 3px white solid;
+  margin: 5rem 0;
+}
+
+.leftTitle {
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.centerTitle {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.UoG {
+  height: 350px;
+  width: 350px;
+}
+
+.seLogoHome {
+  height: 220px;
+}
+
+.paraImg {
+  display: flex;
+  flex-direction: row;
+}
+
+.paraImg .paragraph {
+  margin-right: 2rem;
+}
+
+.paragraph li {
+  color: #e0e0e0;
+  margin: 1rem 0;
+  margin-left: 1rem;
+}
+
+.imageSphere {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.imageSphere img {
+  margin: 2rem;
+}
+
+.SectionTitle {
+  color: white;
+  font-size: 70px;
+  font-family: "Poppins";
+  font-weight: 400;
+  text-transform: uppercase;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+.sectionProgram {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-bottom: 2rem;
+}
+
+.curriculumTitle {
+  color: white;
+  font-family: "Poppins";
+  text-transform: uppercase;
+  word-wrap: break-word;
+  font-size: 30px;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.curriculumParagraph {
+  color: white;
+  font-family: "Poppins";
+  text-transform: uppercase;
+  word-wrap: break-word;
+  font-size: 16px;
+  margin-bottom: 3rem;
+}
+
+.homeBody span {
+  color: #EE9120;
+}
+
+.curriculumImg {
+  margin-bottom: 5rem;
+}
+
+.sectionClassroom {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-bottom: 2rem;
+}
+
 
 @media screen and (max-width: 900px) and (min-width: 860px) {
   .homePage {
