@@ -197,3 +197,42 @@ async def websocket_endpoint(websocket: WebSocket, client_id: int):
         await manager.broadcast(json.dumps(message))
 
 #-------------end chat---------------------
+
+#profile
+@app.post("/api/profile", response_model=_schemas.Profile)
+async def create_profile(
+    profile: _schemas.ProfileCreate,
+    user: _schemas.User = _fastapi.Depends(_services.get_current_user),
+    db: _orm.Session = _fastapi.Depends(_services.get_db),
+):
+    return await _services.create_profile(user=user, db=db, profile=profile)
+
+
+@app.get("/api/profile", response_model=List[_schemas.Profile])
+async def get_profile(
+    user: _schemas.User = _fastapi.Depends(_services.get_current_user),
+    db: _orm.Session = _fastapi.Depends(_services.get_db),
+):
+    return await _services.get_profile(user=user, db=db)
+
+
+@app.get("/api/profile/{profile_id}", status_code=200)
+async def get_profile(
+    profile_id: int,
+    user: _schemas.User = _fastapi.Depends(_services.get_current_user),
+    db: _orm.Session = _fastapi.Depends(_services.get_db),
+):
+    return await _services.get_profile(profile_id, user, db)
+
+
+@app.put("/api/profile/{profile_id}", status_code=200)
+async def update_profile(
+    profile_id: int,
+    profile: _schemas.ProfileCreate,
+    user: _schemas.User = _fastapi.Depends(_services.get_current_user),
+    db: _orm.Session = _fastapi.Depends(_services.get_db),
+):
+    await _services.update_profile(profile_id, profile, user, db)
+    return {"message", "Successfully Updated"}
+
+#end profile

@@ -64,3 +64,22 @@ class Timetable(_TimetableBase):
     class Config:
         # orm_mode = True
         from_attributes = True
+
+class _ProfileBase(_pydantic.BaseModel):
+    firstname: str
+    surname: str
+    github: str
+    discord: str
+
+
+class ProfileCreate(_ProfileBase):
+    pass
+
+
+class Profile(_ProfileBase):
+    id: int
+    owner_id: int
+    
+    class Config:
+        # orm_mode = True
+        from_attributes = True

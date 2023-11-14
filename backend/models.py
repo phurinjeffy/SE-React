@@ -15,6 +15,7 @@ class User(_database.Base):
 
     notes = _orm.relationship("Note", back_populates="owner")
     timetables = _orm.relationship("Timetable", back_populates="owner")
+    profile =_orm.relationship("Profile", back_populates="owner")
 
     def verify_password(self, password: str):
         return _hash.bcrypt.verify(password, self.hashed_password)
@@ -48,22 +49,13 @@ class Timetable(_database.Base):
 
     owner = _orm.relationship("User", back_populates="timetables")
 
-#chat
-# class ConnectionManager:
-
-#     def __init__(self) -> None:
-#         self.active_connections: List[WebSocket] = []
-
-#     async def connect(self, websocket: WebSocket):
-#         await websocket.accept()
-#         self.active_connections.append(websocket)
-
-#     def disconnect(self, websocket: WebSocket):
-#         self.active_connections.remove(websocket)
-
-#     async def send_personal_message(self, message: str, websocket: WebSocket):
-#         await websocket.send_text(message)
-
-#     async def broadcast(self, message: str):
-#         for connection in self.active_connections:
-#             await connection.send_text(message)
+class Profile(_database.Base):
+    __tablename__ = "profile"
+    id = _sql.Column(_sql.Integer, primary_key=True, index=True)
+    owner_id = _sql.Column(_sql.Integer, _sql.ForeignKey("users.id"))
+    firstname = _sql.Column(_sql.String, index=True)
+    surname = _sql.Column(_sql.String, index=True)
+    github = _sql.Column(_sql.String, index=True)
+    discord = _sql.Column(_sql.String, index=True)
+    
+    owner = _orm.relationship("User", back_populates="profile")

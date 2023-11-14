@@ -129,7 +129,6 @@ async def update_note(note_id: int, note: _schemas.NoteCreate, user: _schemas.Us
     return _schemas.Note.from_orm(note_db)
 
 
-
 async def create_timetable(user: _schemas.User, db: _orm.Session, timetable: _schemas.TimetableCreate):
     timetable = _models.Timetable(**timetable.dict(), owner_id=user.id)
     db.add(timetable)
@@ -184,3 +183,50 @@ async def update_timetable(timetable_id: int, timetable: _schemas.TimetableCreat
 
     return _schemas.Timetable.from_orm(timetable_db)
 
+#profile
+async def create_profile(user: _schemas.User, db: _orm.Session, profile: _schemas.ProfileCreate):
+    profile = _models.Profile(**profile.dict(), owner_id=user.id)
+    db.add(profile)
+    db.commit()
+    db.refresh(profile)
+    return _schemas.Profile.from_orm(profile)
+
+
+async def get_profile(user: _schemas.User, db: _orm.Session):
+    profile = db.query(_models.Profile).filter_by(owner_id=user.id)
+
+    return list(map(_schemas.Profile.from_orm, profile))
+
+
+async def _profile_selector(profile_id: int, user: _schemas.User, db: _orm.Session):
+    profile = (
+        db.query(_models.Profile)
+        .filter_by(owner_id=user.id)
+        .filter(_models.Profile.id == profile_id)
+        .first()
+    )
+
+    if profile is None:
+        raise _fastapi.HTTPException(status_code=404, detail="Profile does not exist")
+
+    return profile
+
+
+async def get_profile(profile_id: int, user: _schemas.User, db: _orm.Session):
+    profile = await _profile_selector(profile_id=profile_id, user=user, db=db)
+
+    return _schemas.Profile.from_orm(profile)
+
+
+async def update_profile(profile_id: int, profile: _schemas.ProfileCreate, user: _schemas.User, db: _orm.Session):
+    profile_db = await _profile_selector(profile_id, user, db)
+
+    profile_db.firstname = profile.firstname
+    profile_db.surname = profile.surname
+    profile_db.github = profile.github
+    profile_db.discord = profile.discord
+
+    db.commit()
+    db.refresh(profile_db)
+
+    return _schemas.Profile.from_orm(profile_db)
