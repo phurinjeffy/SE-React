@@ -1,27 +1,46 @@
 import React from "react";
 import "./HomePage.css";
-import { NavLink } from "react-router-dom";
 import seBanner from "../../assets/se_banner.png";
 import UoG from "../../assets/glasgow.png";
 import seLogo from "../../assets/se_logo_white.png";
-
 import career1 from "../../assets/career1.png";
 import career2 from "../../assets/career2.png";
 import curriculum from "../../assets/curriculum.png";
+import classroom1 from "../../assets/classroom1.png";
+import classroom2 from "../../assets/classroom2.png";
+import classroom3 from "../../assets/classroom3.png";
+import classroom4 from "../../assets/classroom4.png";
+import classroom5 from "../../assets/classroom5.png";
+import classroom6 from "../../assets/classroom6.png";
 
 const HomePage = () => {
+  const scrollTo = (elementId) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="homePage">
-      <div className="homeNavBar">
-        <a href="#">About</a>
-        <a href="#">Program</a>
-        <a href="#">Classroom</a>
-        <a href="#">Contact</a>
+      <div className="homeHeader">
+        <a href="#about" onClick={() => scrollTo('about')}>
+          About
+        </a>
+        <a href="#program" onClick={() => scrollTo('program')}>
+          Program
+        </a>
+        <a href="#classroom" onClick={() => scrollTo('classroom')}>
+          Classroom
+        </a>
+        <a href="#contact" onClick={() => scrollTo('contact')}>
+          Contact
+        </a>
       </div>
       <img src={seBanner} alt="seBanner" className="seBanner" />
 
       <div className="homeBody">
-        <div className="sectionAbout">
+        <div id="about" className="sectionAbout">
           <div className="paraImg">
             <div className="paragraph">
               <div className="leftTitle">What is Software Engineering?</div>
@@ -172,95 +191,112 @@ const HomePage = () => {
             <img src={career1} alt="career" />
             <img src={career2} alt="career" />
           </div>
+        </div>
 
+        <div id="program" className="sectionProgram">
+          <div className="SectionLine"></div>
+          <div className="SectionTitle">PROGRAM</div>
+          <div className="SectionLine"></div>
 
-          <div className="sectionProgram">
-            <div className="SectionLine"></div>
-            <div className="SectionTitle">PROGRAM</div>
-            <div className="SectionLine"></div>
-
-            <div className="paragraph">
-              <div className="curriculumTitle">
-                B.Eng. in Software Engineering Program
-              </div>
-              <div className="curriculumParagraph">
-                <br />
-                The <span>B.Eng. in Software Engineering Program</span> is a
-                4-year undergraduate program aiming at producing graduates who
-                are capable of working confidently in the international software
-                industry as well as pursuing postgraduate study and research in
-                leading universities worldwide. The curriculum of the program is
-                designed in accordance with the recent ACM/IEEE guideline for
-                undergraduate curriculum in software engineering.
-              </div>
+          <div className="paragraph">
+            <div className="curriculumTitle">
+              B.Eng. in Software Engineering Program
             </div>
-
-            <img src={curriculum} alt="curriculum" className="curriculumImg" />
-
-            <div className="paragraph">
-              <div className="leftTitle">Year 1 and Year 2</div>
-              <div>
-                In the first two years, the students will study basic courses in
-                mathematics, computer science, and software engineering and
-                develop their programming skills using various programming
-                languages (including Python, C, C++, Java, etc.). Also, the
-                students will be trained to communicate correctly and
-                effectively. At the end of Year 2, every student is required to
-                undertake an internship in a software company for 8 - 10 weeks.
-                All the courses in the first two years will be held at the
-                International College in the Bangkok Campus of KMITL.
-              </div>
-            </div>
-
-            <div className="SectionLine"></div>
-
-            <div className="paragraph">
-              <div className="leftTitle">Year 3 and Year 4 (KMITL) </div>
-              <div>
-                In Year 3 and Year 4, the students
-                will learn advanced topics in software engineering and important
-                software development methodologies that are used in practice.
-                The students will have opportunities to the apply the knowledge
-                and skills they have acquired to conduct a team software project
-                in Year 3 and a one-year research project in Year 4. Students
-                entering Year 3 are required to take one of the following
-                specializations: 
-                
-                <li>Enterprise Software Engineering - Specializing
-                inlarge and complex software for enterprises and distributed
-                systems </li>
-                
-                <li>Internet of Things - Specializing in the Internet of Things, including embedded and mobile systems </li>
-                
-                <li>Intelligent Systems - Specializing in applications of artificial
-                intelligence and data science, including machine learning and
-                Big Data </li>
-                
-                The study plans for these three specializations differ
-                in some required courses. Also the students are recommended to
-                toe work on their senior projects that utilize the knowledge of
-                their respective specializations.
-              </div>
-            </div>
-
-            <div className="SectionLine"></div>
-
-            <div className="paragraph">
-              <div className="leftTitle">Year 3 and Year 4 (KMITL-Glasgow Double-Degree Program)</div>
-              <div>
-              The students joining the KMITL-Glasgow Double-Degree Program will take courses in Years 3 and 4 in the Software Engineering program at the School of Computing Science, University of Glasgow.
-              </div>
+            <div className="curriculumParagraph">
+              <br />
+              The <span>B.Eng. in Software Engineering Program</span> is a
+              4-year undergraduate program aiming at producing graduates who are
+              capable of working confidently in the international software
+              industry as well as pursuing postgraduate study and research in
+              leading universities worldwide. The curriculum of the program is
+              designed in accordance with the recent ACM/IEEE guideline for
+              undergraduate curriculum in software engineering.
             </div>
           </div>
 
-          <div className="sectionClassroom">
-            <div className="SectionLine"></div>
-            <div className="SectionTitle">CLASSROOM</div>
-            <div className="SectionLine"></div>
+          <img src={curriculum} alt="curriculum" className="curriculumImg" />
 
-            
+          <div className="paragraph">
+            <div className="leftTitle">Year 1 and Year 2</div>
+            <div>
+              In the first two years, the students will study basic courses in
+              mathematics, computer science, and software engineering and
+              develop their programming skills using various programming
+              languages (including Python, C, C++, Java, etc.). Also, the
+              students will be trained to communicate correctly and effectively.
+              At the end of Year 2, every student is required to undertake an
+              internship in a software company for 8 - 10 weeks. All the courses
+              in the first two years will be held at the International College
+              in the Bangkok Campus of KMITL.
+            </div>
+          </div>
+
+          <div className="SectionLine"></div>
+
+          <div className="paragraph">
+            <div className="leftTitle">Year 3 and Year 4 (KMITL) </div>
+            <div>
+              In Year 3 and Year 4, the students will learn advanced topics in
+              software engineering and important software development
+              methodologies that are used in practice. The students will have
+              opportunities to the apply the knowledge and skills they have
+              acquired to conduct a team software project in Year 3 and a
+              one-year research project in Year 4. Students entering Year 3 are
+              required to take one of the following specializations:
+              <li>
+                Enterprise Software Engineering - Specializing inlarge and
+                complex software for enterprises and distributed systems{" "}
+              </li>
+              <li>
+                Internet of Things - Specializing in the Internet of Things,
+                including embedded and mobile systems{" "}
+              </li>
+              <li>
+                Intelligent Systems - Specializing in applications of artificial
+                intelligence and data science, including machine learning and
+                Big Data{" "}
+              </li>
+              The study plans for these three specializations differ in some
+              required courses. Also the students are recommended to toe work on
+              their senior projects that utilize the knowledge of their
+              respective specializations.
+            </div>
+          </div>
+
+          <div className="SectionLine"></div>
+
+          <div className="paragraph">
+            <div className="leftTitle">
+              Year 3 and Year 4 (KMITL-Glasgow Double-Degree Program)
+            </div>
+            <div>
+              The students joining the KMITL-Glasgow Double-Degree Program will
+              take courses in Years 3 and 4 in the Software Engineering program
+              at the School of Computing Science, University of Glasgow.
+            </div>
           </div>
         </div>
+
+        <div id="classroom" className="sectionClassroom">
+          <div className="SectionLine"></div>
+          <div className="SectionTitle">CLASSROOM</div>
+          <div className="SectionLine"></div>
+
+          <div className="classroomContainer">
+            <img src={classroom1} alt="classroom1" className="classroomImage" />
+            <img src={classroom2} alt="classroom2" className="classroomImage" />
+            <img src={classroom3} alt="classroom3" className="classroomImage" />
+            <img src={classroom4} alt="classroom4" className="classroomImage" />
+            <img src={classroom5} alt="classroom5" className="classroomImage" />
+            <img src={classroom6} alt="classroom6" className="classroomImage" />
+          </div>
+
+          <div className="SectionLine"></div>
+        </div>
+      </div>
+
+      <div className="homeFooter">
+
       </div>
     </div>
   );

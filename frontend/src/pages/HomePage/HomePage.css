@@ -4,13 +4,13 @@
   flex-direction: column;
 }
 
-.homeNavBar {
+.homeHeader {
   display: flex;
   flex-direction: row;
   background: #d9d9d9;
 }
 
-.homeNavBar a {
+.homeHeader a {
   padding: 2rem 5%;
   font-family: "Poppins";
 }
@@ -182,6 +182,21 @@
   margin-bottom: 2rem;
 }
 
+.classroomContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.classroomImage {
+  width: 521px;
+  height: 480px;
+  margin: 0.9rem;
+}
+
+.homeFooter {
+
+}
 
 @media screen and (max-width: 900px) and (min-width: 860px) {
   .homePage {
