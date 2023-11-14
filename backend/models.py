@@ -47,3 +47,23 @@ class Timetable(_database.Base):
     date_last_updated = _sql.Column(_sql.DateTime, default=_dt.datetime.utcnow)
 
     owner = _orm.relationship("User", back_populates="timetables")
+
+#chat
+# class ConnectionManager:
+
+#     def __init__(self) -> None:
+#         self.active_connections: List[WebSocket] = []
+
+#     async def connect(self, websocket: WebSocket):
+#         await websocket.accept()
+#         self.active_connections.append(websocket)
+
+#     def disconnect(self, websocket: WebSocket):
+#         self.active_connections.remove(websocket)
+
+#     async def send_personal_message(self, message: str, websocket: WebSocket):
+#         await websocket.send_text(message)
+
+#     async def broadcast(self, message: str):
+#         for connection in self.active_connections:
+#             await connection.send_text(message)

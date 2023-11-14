@@ -39,6 +39,9 @@ const Navbar = () => {
       case "/learn":
         setPageTitle("Learn");
         break;
+      case "/ws":
+        setPageTitle("Chat");
+        break;
       default:
         setPageTitle("Software Engineering");
         break;

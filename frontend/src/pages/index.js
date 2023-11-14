@@ -1,3 +1,5 @@
+// import reportWebVitals from '../reportWebVitals';
+
 export { default as ProfilePage } from "./ProfilePage/ProfilePage";
 export { default as RepositoryPage } from "./RepositoryPage/RepositoryPage";
 export { default as LearnPage } from "./LearnPage/LearnPage";
@@ -10,3 +12,6 @@ export { default as FollowingPage } from "./FollowingPage/FollowingPage";
 export { default as UploadPage } from "./UploadPage/UploadPage";
 export { default as NotePage } from "./NotePage/NotePage";
 export { default as TimetablePage } from "./TimetablePage/TimetablePage";
+export { default as ChatPage } from "./ChatPage/ChatPage";
+
+// reportWebVitals();
