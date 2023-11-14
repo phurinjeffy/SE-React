@@ -12,6 +12,8 @@ import classroom3 from "../../assets/classroom3.png";
 import classroom4 from "../../assets/classroom4.png";
 import classroom5 from "../../assets/classroom5.png";
 import classroom6 from "../../assets/classroom6.png";
+import facebookIcon from "../../assets/facebook.svg";
+import kmitlIcon from "../../assets/kmitl.svg";
 
 const HomePage = () => {
   const scrollTo = (elementId) => {
@@ -296,7 +298,18 @@ const HomePage = () => {
       </div>
 
       <div className="homeFooter">
-
+        <div id="contact" className="footerTitle">contact us</div>
+        <div className="contactIcons">
+          <a href="https://www.facebook.com/sekmitl/?locale=th_TH" target="_blank">
+            <img src={facebookIcon} alt="facebook" />
+          </a>
+          <a href="https://www.se.kmitl.ac.th/" target="_blank">
+            <img src={kmitlIcon} alt="kmitl" />
+          </a>
+        </div>
+        <a className="backToTop" href="#" onClick={() => scrollTo('homeHeader')}>
+          Back to Top
+        </a>
       </div>
     </div>
   );

@@ -168,7 +168,7 @@
 }
 
 .homeBody span {
-  color: #EE9120;
+  color: #ee9120;
 }
 
 .curriculumImg {
@@ -195,7 +195,37 @@
 }
 
 .homeFooter {
+  display: flex;
+  flex-direction: column;
+  background: #d9d9d9;
+  font-family: "Poppins";
+}
 
+.homeFooter .footerTitle{
+  color: black;
+  font-size: 30px;
+  font-weight: 400;
+  text-decoration: underline;
+  text-transform: uppercase;
+  word-wrap: break-word;
+  padding: 2rem 5%;
+}
+
+.contactIcons {
+  display: flex;
+  flex-direction: row;
+  margin-left: 5%;
+  margin-bottom: 3rem;
+}
+
+.contactIcons a {
+  margin-right: 1rem;
+}
+
+.backToTop {
+  margin-left: 5%;
+  margin-bottom: 5rem;
+  width: fit-content;
 }
 
 @media screen and (max-width: 900px) and (min-width: 860px) {
