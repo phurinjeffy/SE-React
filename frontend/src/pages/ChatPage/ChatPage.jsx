@@ -41,8 +41,8 @@ function ChatPage() {
 
   return (
     <div className="chatContainer">
-      <h1>Chat</h1>
-      <h2>your client id: {clientId} </h2>
+      <h1 className="chatTitle">Open Chat</h1>
+      <h2 className="clientID">Client ID: {clientId} </h2>
       <div className="chat-container">
         <div className="chat">
           {messages.map((value, index) => {

@@ -137,3 +137,7 @@
   color: #e74c3c;
   margin-top: 1em;
 }
+
+.Content::-webkit-scrollbar {
+  display: none; /* Set the width of the scrollbar */
+}
