@@ -40,7 +40,7 @@ function ChatPage() {
   };
 
   return (
-    <div className="container">
+    <div className="chatContainer">
       <h1>Chat</h1>
       <h2>your client id: {clientId} </h2>
       <div className="chat-container">
