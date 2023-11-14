@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Profile.css"
 
@@ -6,8 +6,71 @@ import followerIcon from "../../assets/follower.svg";
 import githubIcon from "../../assets/github.svg";
 import discordIcon from "../../assets/discord.svg";
 
+import { UserContext } from "../../context/UserContext";
+import GenericContainer from "../GenericContainer/GenericContainer";
+import ProfileModal from "./ProfileModal";
+
 const Profile = () => {
-  return (
+    const [token] = useContext(UserContext);
+    const [profile, setProfile] = useState(null);
+    const [errorMessage, setErrorMessage] = useState("");
+    const [loaded, setLoaded] = useState(false);
+    const [activeModal, setActiveModal] = useState(false);
+    const [id, setId] = useState(null);
+
+
+    const handleUpdate = async (id) => {
+    setId(id);
+    setActiveModal(true);
+    };
+
+    // const handleDelete = async (id) => {
+    // const requestOptions = {
+    //     method: "DELETE",
+    //     headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: "Bearer " + token,
+    //     },
+    // };
+    // const response = await fetch(`/api/profile/${id}`, requestOptions);
+    // if (!response.ok) {
+    //     setErrorMessage("Failed to delete profile");
+    // }
+
+    // getProfile();
+    // };
+
+    const getProfile = async () => {
+    const requestOptions = {
+        method: "GET",
+        headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+        },
+    };
+    const response = await fetch("/api/profile", requestOptions);
+    if (!response.ok) {
+        setErrorMessage("Something went wrong. Couldn't load the profile");
+    } else {
+        const data = await response.json();
+        setProfile(data);
+        setLoaded(true);
+    }
+    };
+
+    useEffect(() => {
+    getProfile();
+    }, []);
+
+    const handleModal = () => {
+    setActiveModal(!activeModal);
+    getProfile();
+    setId(null);
+    };
+
+    return (
+    <>
+    <ProfileModal active={activeModal} handleModal={handleModal} token={token} id={id} setErrorMessage={setErrorMessage} />
     <div className="ProfileSection">
         <div className="User">
                 <div className="UserSProfilePic">
@@ -16,7 +79,10 @@ const Profile = () => {
                     </NavLink>
                 </div>
             <div className="Name">
-                Phurin Vanasrivilai
+                Firtname
+                </div>
+            <div className="Name">
+                Surname
                 </div>
             <div className="Email">
                 65011463@kmitl.ac.th
@@ -53,7 +119,8 @@ const Profile = () => {
             </div>
         </div>
     </div>
-  )
+    </>
+    )
 }
 
 export default Profile
