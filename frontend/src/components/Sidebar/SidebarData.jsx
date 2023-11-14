@@ -4,7 +4,7 @@ import profileIcon from "../../assets/profile.svg";
 import repositoryIcon from "../../assets/repository.svg";
 import learnIcon from "../../assets/learn.svg";
 import timetableIcon from "../../assets/timetable.svg";
-import chatIcon from "../../assets/timetable.svg";
+import chatIcon from "../../assets/chat.svg";
 
 export const SidebarData = [
     {
