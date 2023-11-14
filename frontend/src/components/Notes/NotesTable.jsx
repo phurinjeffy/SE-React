@@ -11,8 +11,10 @@ const NotesTable = ({ notes, handleUpdate, handleDelete, showEdit }) => (
         <th>Description</th>
         <th>Urgency</th>
         {showEdit && 
-        <th>Last Updated</th> && 
+        <>
+        <th>Last Updated</th>
         <th>Actions</th>
+        </>
         }
       </tr>
     </thead>
@@ -26,7 +28,8 @@ const NotesTable = ({ notes, handleUpdate, handleDelete, showEdit }) => (
             <td>{note.description}</td>
             <td>{note.urgency}</td>
             {showEdit && 
-            <td>{moment(note.date_last_updated).format("MMM Do YY")}</td> &&
+            <>
+            <td>{moment(note.date_last_updated).format("YYYY-MM-D")}</td>
             <td>
               <button className="button mr-2 is-info is-light" onClick={() => handleUpdate(note.id)}>
                 Update
@@ -35,6 +38,7 @@ const NotesTable = ({ notes, handleUpdate, handleDelete, showEdit }) => (
                 Delete
               </button>
             </td>
+            </>
             }
           </tr>
         ))
