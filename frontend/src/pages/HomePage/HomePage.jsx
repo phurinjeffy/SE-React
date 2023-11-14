@@ -255,8 +255,6 @@ const HomePage = () => {
             <img src={classroom5} alt="classroom5" className="classroomImage" />
             <img src={classroom6} alt="classroom6" className="classroomImage" />
           </div>
-
-          <div className="SectionLine"></div>
         </div>
       </div>
 
