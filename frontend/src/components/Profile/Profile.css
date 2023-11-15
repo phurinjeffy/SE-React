@@ -32,18 +32,21 @@
 }
 
 .UserSProfilePic img {
-  cursor: pointer;
   width: 250px;
   height: 250px;
   border-radius: 100%;
   border: 5px white solid;
 }
 
+.UserSProfilePic img:hover {
+  cursor: pointer;
+  border: 5px rgb(240, 240, 240) solid;
+}
+
 .Name {
   position: relative;
   text-align: center;
-  cursor: pointer;
-  color: rgb(75, 75, 75);
+  color: rgb(50, 50, 50);
   font-size: 40px;
   font-family: "Varela Round";
   font-weight: 400;
@@ -52,7 +55,8 @@
 }
 
 .Name:hover {
-  color: #2a2a2a;
+  cursor: pointer;
+  color: #000000;
 }
 
 .Email {
