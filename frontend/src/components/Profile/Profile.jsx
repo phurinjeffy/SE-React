@@ -16,6 +16,7 @@ const Profile = () => {
   const [loaded, setLoaded] = useState(false);
   const [activeModal, setActiveModal] = useState(false);
   const [id, setId] = useState(null);
+  const [users, setUsers] = useState(null);
 
   const handleUpdate = async (id) => {
     setId(id);
@@ -40,8 +41,27 @@ const Profile = () => {
     }
   };
 
+  const getUser = async () => {
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    };
+    const response = await fetch("/api/users/me", requestOptions);
+    if (!response.ok) {
+      setErrorMessage("Something went wrong. Couldn't load the user");
+    } else {
+      const data = await response.json();
+      setUsers(data);
+      setLoaded(true);
+    }
+  };  
+
   useEffect(() => {
     getProfile();
+    getUser();
   }, []);
 
   const handleModal = async () => {
@@ -66,20 +86,20 @@ const Profile = () => {
                     {profile.firstname && profile.surname ? (
                       <>
                         <div className="Name">{profile.firstname} {profile.surname}</div>
-                        <div className="Email">65011463@kmitl.ac.th</div>
+                        <div className="Email">{users?.email}</div>
                       </>
                     ) : (
                       <>
-                        <div className="clickToEditProfile" onClick={() => setActiveModal(true)}>Edit Profile</div>
-                        <div className="Email">65011463@kmitl.ac.th</div>
+                        <div className="clickToEditProfile" onClick={() => setActiveModal(true)}>First Last</div>
+                        <div className="Email">{users?.email}</div>
                       </>
                     )}
                   </div>
                 ))
               ) : (
                 <div>
-                  <div className="clickToEditProfile" onClick={() => setActiveModal(true)}>Edit Profile</div>
-                  <div className="Email">Email</div>
+                  <div className="clickToEditProfile" onClick={() => setActiveModal(true)}>Click to Edit</div>
+                  <div className="Email">{users?.email}</div>
                 </div>
               )}
             </div>
