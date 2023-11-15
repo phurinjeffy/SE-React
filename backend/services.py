@@ -231,3 +231,6 @@ async def update_profile(profile_id: int, profile: _schemas.ProfileCreate, user:
     db.refresh(profile_db)
 
     return _schemas.Profile.from_orm(profile_db)
+
+async def get_profile_by_owner(owner_id: int, db: _orm.Session):
+    return db.query(_models.Profile).filter(_models.Profile.owner_id == owner_id).first()
