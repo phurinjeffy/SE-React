@@ -13,9 +13,21 @@
   margin: 2rem 0;
 }
 
-.profileNote {
+.profileTable {
   height: 370px;
   overflow-y: auto;
+}
+
+.profileTable h2{
+  font-size: 20px;
+  text-align: center;
+  color: white;
+  margin-bottom: 1rem;
+  text-decoration: underline;
+}
+
+.profileTable::-webkit-scrollbar {
+  display: none;
 }
 
 @media screen and (max-width: 1400px) {
@@ -27,7 +39,7 @@
     margin-left: 0;
   }
 
-  .profileNote {
+  .profileTable {
     height: max-content;
   }
 }

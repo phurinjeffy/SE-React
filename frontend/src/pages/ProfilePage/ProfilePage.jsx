@@ -100,7 +100,8 @@ const ProfilePage = () => {
         <div className="profileCalendar">
           <Calendar notes={notes} />
         </div>
-        <div className="profileNote">
+        <div className="profileTable">
+          <h2>Timetable</h2>
           { loaded && notes && (
             <TimetablesTable timetables={timetables} handleUpdate={handleUpdate} handleDelete={handleDelete} showEdit={false} />
           ) }
