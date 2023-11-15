@@ -7,6 +7,7 @@ const ProfilePage = () => {
   const [token] = useContext(UserContext);
   const [notes, setNotes] = useState(null);
   const [timetables, setTimetables] = useState(null);
+  const [profiles, setProfile] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [loaded, setLoaded] = useState(false);
   const [activeModal, setActiveModal] = useState(false);
@@ -68,9 +69,28 @@ const ProfilePage = () => {
     }
   };
 
+  const getProfile = async () => {
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    };
+    const response = await fetch("/api/profile", requestOptions);
+    if (!response.ok) {
+      setErrorMessage("Something went wrong. Couldn't load the profile");
+    } else {
+      const data = await response.json();
+      setProfile(data);
+      setLoaded(true);
+    }
+  };
+  
   useEffect(() => {
     getNotes();
     getTimetables();
+    getProfile();
   }, []);
 
   return (

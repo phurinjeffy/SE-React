@@ -226,19 +226,19 @@ async def create_or_update_profile(
     
     
 @app.get("/api/profile", response_model=List[_schemas.Profile])
-async def get_profile(
+async def get_profiles(
     user: _schemas.User = _fastapi.Depends(_services.get_current_user),
     db: _orm.Session = _fastapi.Depends(_services.get_db),
 ):
-    return await _services.get_profile(user=user, db=db)
+    return await _services.get_profiles(user=user, db=db)
 
 @app.get("/api/profile/{profile_id}", response_model=_schemas.Profile)
-async def get_profile_by_id(
+async def get_profile(
     profile_id: int,
     user: _schemas.User = _fastapi.Depends(_services.get_current_user),
     db: _orm.Session = _fastapi.Depends(_services.get_db),
 ):
-    return await _services.get_profile(profile_id, user, db)
+    return await _services.get_profiles(profile_id, user, db)
 
 # @app.put("/api/profile/{profile_id}", status_code=200)
 # async def update_profile(

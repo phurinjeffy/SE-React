@@ -73,7 +73,7 @@ const Navbar = () => {
       </div>
 
       <div className="Right">
-        <div className="Search">
+        {/* <div className="Search">
           <input className="SearchBar" placeholder="Search"></input>
         </div>
 
@@ -86,11 +86,11 @@ const Navbar = () => {
               Notification Content
             </div>
           )}
-        </div>
+        </div> */}
 
         <div className="User">
           <button className="UserIcon" onClick={toggleUser}>
-            <img src="https://i1.rgstatic.net/ii/profile.image/614807262740481-1523592882757_Q512/Fatima-Iqbal-12.jpg" alt="pfp"/>
+            <img src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png" alt="pfp"/>
           </button>
           {isUserVisible && (
             <div className="UserBox">

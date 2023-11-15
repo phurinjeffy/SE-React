@@ -193,7 +193,7 @@ async def create_profile(user: _schemas.User, db: _orm.Session, profile: _schema
     return _schemas.Profile.from_orm(profile)
 
 
-async def get_profile(user: _schemas.User, db: _orm.Session):
+async def get_profiles(user: _schemas.User, db: _orm.Session):
     profile = db.query(_models.Profile).filter_by(owner_id=user.id)
 
     return list(map(_schemas.Profile.from_orm, profile))

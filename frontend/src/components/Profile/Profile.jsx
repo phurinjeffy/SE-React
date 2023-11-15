@@ -7,12 +7,11 @@ import githubIcon from "../../assets/github.svg";
 import discordIcon from "../../assets/discord.svg";
 
 import { UserContext } from "../../context/UserContext";
-import GenericContainer from "../GenericContainer/GenericContainer";
 import ProfileModal from "./ProfileModal";
 
 const Profile = () => {
   const [token] = useContext(UserContext);
-  const [profile, setProfile] = useState(null);
+  const [profiles, setProfile] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [loaded, setLoaded] = useState(false);
   const [activeModal, setActiveModal] = useState(false);
@@ -24,23 +23,20 @@ const Profile = () => {
   };
 
   const getProfile = async () => {
-    try {
-      const requestOptions = {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-      };
-      const response = await fetch("/api/profile", requestOptions);
-      if (!response.ok) {
-        throw new Error("Something went wrong. Couldn't load the profile");
-      }
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    };
+    const response = await fetch("/api/profile", requestOptions);
+    if (!response.ok) {
+      setErrorMessage("Something went wrong. Couldn't load the profile");
+    } else {
       const data = await response.json();
       setProfile(data);
       setLoaded(true);
-    } catch (error) {
-      setErrorMessage(error.message);
     }
   };
 
@@ -48,85 +44,50 @@ const Profile = () => {
     getProfile();
   }, []);
 
-  useEffect(() => {
-    // Fetch the profile after the modal state has been updated
-    if (activeModal) {
-      getProfile();
-    }
-  }, [activeModal]); // Add activeModal as a dependency
-
   const handleModal = async () => {
-    try {
-      const requestOptions = {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-      };
-      const response = await fetch("/api/profile", requestOptions);
-      if (!response.ok) {
-        throw new Error("Something went wrong. Couldn't load the profile");
-      }
-      const data = await response.json();
-      setProfile(data);
-      setLoaded(true); // Set loaded to true when the data is successfully loaded
-    } catch (error) {
-      setErrorMessage(error.message);
-    }
-  
-    const profileExists = profile !== null && profile.id !== null;
-  
-    if (profileExists) {
-      setId(profile.id);
-    } else {
-      setId(null);
-    }
-  
-    // Move this inside the try block to ensure it's called after data is loaded
     setActiveModal(!activeModal);
+    getProfile();
+    setId(null);
   };
-  
-  useEffect(() => {
-    // Fetch the profile after the modal state has been updated
-    if (activeModal) {
-      getProfile();
-    }
-  }, [activeModal]);
-  
-
 
   return (
     <div className="ProfileSection">
-      <ProfileModal
-        active={activeModal}
-        handleModal={handleModal}
-        token={token}
-        id={id}
-        setErrorMessage={setErrorMessage}
-      />
+      <ProfileModal active={activeModal} handleModal={handleModal} token={token} id={id} setErrorMessage={setErrorMessage} />
       <div className="User">
         <div className="UserSProfilePic">
-          <button onClick={() => setActiveModal(true)}>
-            <img src="https://www.asiamediajournal.com/wp-content/uploads/2022/10/Cute-PFP-for-fb.jpg" alt="Profile" />
-          </button>
-          {loaded && profile !== null ? (
+          <img src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png" alt="Profile" onClick={() => setActiveModal(true)}/>
+        </div>
+        <div>
+          {loaded && profiles && (
             <div>
-              <div className="Name">{profile.firstname}</div>
-              <div className="Name">{profile.surname}</div>
-              <div className="Email">65011463@kmitl.ac.th</div>
-            </div>
-          ) : (
-            <div>
-              <div className="Name">First name</div>
-              <div className="Name">Surname</div>
-              <div className="Email">65011463@kmitl.ac.th</div>
+              {profiles.length > 0 ? (
+                profiles.map((profile) => (
+                  <div key={profile.id}>
+                    {profile.firstname && profile.surname ? (
+                      <>
+                        <div className="Name">{profile.firstname} {profile.surname}</div>
+                        <div className="Email">65011463@kmitl.ac.th</div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="clickToEditProfile" onClick={() => setActiveModal(true)}>Edit Profile</div>
+                        <div className="Email">65011463@kmitl.ac.th</div>
+                      </>
+                    )}
+                  </div>
+                ))
+              ) : (
+                <div>
+                  <div className="clickToEditProfile" onClick={() => setActiveModal(true)}>Edit Profile</div>
+                  <div className="Email">Email</div>
+                </div>
+              )}
             </div>
           )}
         </div>
       </div>
       <div className="Contacts">
-        <div className="ContactsRow">
+        {/* <div className="ContactsRow">
           <a className="ContactsIcon">
             <img src={followerIcon} alt="followerIcon" />
           </a>
@@ -137,22 +98,34 @@ const Profile = () => {
           <NavLink to="./following" className="ContactsText">
             <span id="following">3</span> following
           </NavLink>
-        </div>
+        </div> */}
         <div className="ContactsRow">
           <a className="ContactsIcon">
             <img src={githubIcon} alt="githubIcon" />
           </a>
-          <a className="ContactsText" href="">
-            Github
-          </a>
+          {loaded && profiles && profiles.length > 0 && profiles[0].github !== "" ? (
+            <a className="ContactsText" href={profiles[0].github} target="_blank" rel="noopener noreferrer">
+              Github
+            </a>
+          ): (
+            <a className="ContactsTextNone" >
+              Github
+            </a>
+          )}
         </div>
         <div className="ContactsRow">
           <a className="ContactsIcon">
             <img src={discordIcon} alt="discordIcon" />
           </a>
-          <a className="ContactsText" href="">
-            Discord
-          </a>
+          {loaded && profiles && profiles.length > 0 && profiles[0].discord !== "" ? (
+            <a className="ContactsText" href={profiles[0].discord} target="_blank" rel="noopener noreferrer">
+              Discord
+            </a>
+          ) : (
+            <a className="ContactsTextNone" >
+              Discord
+            </a>
+          )}
         </div>
       </div>
     </div>

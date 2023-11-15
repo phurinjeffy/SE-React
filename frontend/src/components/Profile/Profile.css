@@ -24,11 +24,31 @@
   position: relative;
 }
 
+.UserSProfilePic button{
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
 .UserSProfilePic img {
+  cursor: pointer;
   width: 250px;
   height: 250px;
   border-radius: 100%;
   border: 5px white solid;
+}
+
+.clickToEditProfile {
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  color: rgb(62, 62, 62);
+  font-size: 40px;
+  font-family: "Varela Round";
+  font-weight: 400;
+  word-wrap: break-word;
+  margin-bottom: 1rem;
 }
 
 .Name {
@@ -82,6 +102,14 @@
 
 .ContactsText:hover {
   color: rgb(91, 165, 255);
+}
+
+.ContactsTextNone {
+  color: rgb(132, 132, 132);
+  font-size: 15px;
+  font-family: "Varela Round";
+  font-weight: 400;
+  word-wrap: break-word;
 }
 
 .Dot {
