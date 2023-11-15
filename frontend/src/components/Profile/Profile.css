@@ -39,22 +39,6 @@
   border: 5px white solid;
 }
 
-.clickToEditProfile {
-  cursor: pointer;
-  position: relative;
-  text-align: center;
-  color: rgb(75, 75, 75);
-  font-size: 40px;
-  font-family: "Varela Round";
-  font-weight: 400;
-  word-wrap: break-word;
-  margin-bottom: 1rem;
-}
-
-.clickToEditProfile:hover {
-  color: #2a2a2a;
-}
-
 .Name {
   position: relative;
   text-align: center;
@@ -64,6 +48,15 @@
   font-weight: 400;
   word-wrap: break-word;
   margin-bottom: 1rem;
+}
+
+.clickToEditProfile {
+  cursor: pointer;
+  color: rgb(75, 75, 75);
+}
+
+.clickToEditProfile:hover {
+  color: #2a2a2a;
 }
 
 .Email {

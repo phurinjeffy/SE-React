@@ -78,32 +78,31 @@ const Profile = () => {
           <img src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png" alt="Profile" onClick={() => setActiveModal(true)}/>
         </div>
         <div>
-          {loaded && profiles && (
-            <div>
-              {profiles.length > 0 ? (
-                profiles.map((profile) => (
-                  <div key={profile.id}>
+        {loaded && profiles && (
+          <div>
+            {profiles.length > 0 ? (
+              profiles.map((profile) => (
+                <div key={profile.id}>
+                  <div className="Name">
                     {profile.firstname && profile.surname ? (
-                      <>
-                        <div className="Name">{profile.firstname} {profile.surname}</div>
-                        <div className="Email">{users?.email}</div>
-                      </>
+                      `${profile.firstname} ${profile.surname}`
                     ) : (
-                      <>
-                        <div className="clickToEditProfile" onClick={() => setActiveModal(true)}>First Last</div>
-                        <div className="Email">{users?.email}</div>
-                      </>
+                      <span className="clickToEditProfile" onClick={() => setActiveModal(true)}>First Last</span>
                     )}
                   </div>
-                ))
-              ) : (
-                <div>
-                  <div className="clickToEditProfile" onClick={() => setActiveModal(true)}>Click to Edit</div>
                   <div className="Email">{users?.email}</div>
                 </div>
-              )}
-            </div>
-          )}
+              ))
+            ) : (
+              <div>
+                <div className="Name">
+                  <span className="clickToEditProfile" onClick={() => setActiveModal(true)}>Click to Edit</span>
+                </div>
+                <div className="Email">{users?.email}</div>
+              </div>
+            )}
+          </div>
+        )}
         </div>
       </div>
       <div className="Contacts">
