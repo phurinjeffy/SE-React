@@ -1,5 +1,5 @@
-// import logo from "./logo.svg";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 import "./ChatPage.css";
 
 function ChatPage() {
@@ -12,7 +12,32 @@ function ChatPage() {
   const [message, setMessage] = useState([]);
   const [messages, setMessages] = useState([]);
 
+  const [token] = useContext(UserContext);
+  const [loaded, setLoaded] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [profiles, setProfile] = useState(null);
+
+  const getProfile = async () => {
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    };
+    const response = await fetch("/api/profile", requestOptions);
+    if (!response.ok) {
+      setErrorMessage("Something went wrong. Couldn't load the profile");
+    } else {
+      const data = await response.json();
+      setProfile(data);
+      setLoaded(true);
+    }
+  };
+
   useEffect(() => {
+    getProfile();
+
     const url = "ws://localhost:8000/ws/" + clientId;
     const ws = new WebSocket(url);
 

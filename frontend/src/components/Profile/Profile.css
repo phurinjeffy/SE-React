@@ -42,7 +42,8 @@
 .Name {
   position: relative;
   text-align: center;
-  color: black;
+  cursor: pointer;
+  color: rgb(75, 75, 75);
   font-size: 40px;
   font-family: "Varela Round";
   font-weight: 400;
@@ -50,12 +51,7 @@
   margin-bottom: 1rem;
 }
 
-.clickToEditProfile {
-  cursor: pointer;
-  color: rgb(75, 75, 75);
-}
-
-.clickToEditProfile:hover {
+.Name:hover {
   color: #2a2a2a;
 }
 

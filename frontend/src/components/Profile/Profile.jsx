@@ -18,8 +18,8 @@ const Profile = () => {
   const [id, setId] = useState(null);
   const [users, setUsers] = useState(null);
 
-  const handleUpdate = async (id) => {
-    setId(id);
+  const handleUpdate = async (profileId) => {
+    setId(profileId);
     setActiveModal(true);
   };
 
@@ -75,7 +75,8 @@ const Profile = () => {
       <ProfileModal active={activeModal} handleModal={handleModal} token={token} id={id} setErrorMessage={setErrorMessage} />
       <div className="User">
         <div className="UserSProfilePic">
-          <img src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png" alt="Profile" onClick={() => setActiveModal(true)}/>
+          <img src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png" alt="Profile" 
+          onClick={() => {loaded && profiles && profiles.length > 0 ? handleUpdate(profiles[0].id) : setActiveModal(true)}}/>
         </div>
         <div>
         {loaded && profiles && (
@@ -83,11 +84,11 @@ const Profile = () => {
             {profiles.length > 0 ? (
               profiles.map((profile) => (
                 <div key={profile.id}>
-                  <div className="Name">
+                  <div className="Name" onClick={() => handleUpdate(profile.id)}>
                     {profile.firstname && profile.surname ? (
                       `${profile.firstname} ${profile.surname}`
                     ) : (
-                      <span className="clickToEditProfile" onClick={() => setActiveModal(true)}>First Last</span>
+                      <span>First Last</span>
                     )}
                   </div>
                   <div className="Email">{users?.email}</div>
@@ -96,7 +97,7 @@ const Profile = () => {
             ) : (
               <div>
                 <div className="Name">
-                  <span className="clickToEditProfile" onClick={() => setActiveModal(true)}>Click to Edit</span>
+                  <span onClick={() => setActiveModal(true)}>Click to Edit</span>
                 </div>
                 <div className="Email">{users?.email}</div>
               </div>
