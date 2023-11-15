@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Profile, Calendar, NotesTable } from "../../components";
+import { Profile, Calendar, TimetablesTable } from "../../components";
 import { UserContext } from "../../context/UserContext";
 import "./ProfilePage.css";
 
@@ -78,11 +78,11 @@ const ProfilePage = () => {
       <Profile />
       <div className="profileContent">
         <div className="profileCalendar">
-          <Calendar timetables={timetables} />
+          <Calendar notes={notes} />
         </div>
         <div className="profileNote">
           { loaded && notes && (
-            <NotesTable notes={notes} handleUpdate={handleUpdate} handleDelete={handleDelete} showEdit={false} />
+            <TimetablesTable timetables={timetables} handleUpdate={handleUpdate} handleDelete={handleDelete} showEdit={false} />
           ) }
         </div>
       </div>

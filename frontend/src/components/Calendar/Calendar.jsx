@@ -3,7 +3,7 @@ import "./Calendar.css";
 import { format } from "date-fns";
 import Modal from "react-modal";
 
-const Calendar = ({ timetables }) => {
+const Calendar = ({ notes }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -47,16 +47,16 @@ const Calendar = ({ timetables }) => {
       );
       const formattedDate = format(currentDateOfMonth, "yyyy-MM-dd");
 
-      const hasSchedule =
-        timetables &&
-        timetables.some((timetable) => timetable.date === formattedDate);
+      const hasNote =
+        notes &&
+        notes.some((note) => note.dueDate === formattedDate);
 
       calendar.push(
         <div
           key={day}
-          className={`calendar-cell ${hasSchedule ? "has-schedule" : ""}`}
+          className={`calendar-cell ${hasNote ? "has-schedule" : ""}`}
           onClick={
-            hasSchedule ? (e) => handleCellClick(formattedDate, e) : undefined
+            hasNote ? (e) => handleCellClick(formattedDate, e) : undefined
           }
         >
           {day}
@@ -101,8 +101,8 @@ const Calendar = ({ timetables }) => {
     setModalIsOpen(false);
   };
 
-  const selectedSchedule = timetables?.find(
-    (timetable) => timetable.date === selectedDate
+  const selectedNote = notes?.find(
+    (note) => note.dueDate === selectedDate
   );
 
   const handlePrevMonth = () => {
@@ -157,13 +157,13 @@ const Calendar = ({ timetables }) => {
           },
         }}
       >
-        {selectedSchedule && (
+        {selectedNote && (
           <div>
-            <p>Course: {selectedSchedule.course}</p>
-            <p>Date: {selectedSchedule.date}</p>
-            <p>Time: {selectedSchedule.time}</p>
-            <p>Location: {selectedSchedule.location}</p>
-            <p>Lecturer: {selectedSchedule.lecturer}</p>
+            <p>Deadline: {selectedNote.dueDate}</p>
+            <p>Course: {selectedNote.course}</p>
+            <p>Title: {selectedNote.title}</p>
+            <p>Description: {selectedNote.description}</p>
+            <p>Urgency: {selectedNote.urgency}</p>
           </div>
         )}
       </Modal>
