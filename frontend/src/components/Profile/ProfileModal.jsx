@@ -8,29 +8,33 @@ const ProfileModal = ({ active, handleModal, token, id, setErrorMessage }) => {
 
   useEffect(() => {
     const getDetail = async () => {
-      const requestOptions = {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-      };
-      const response = await fetch(`/api/profile/${id}`, requestOptions);
+      try {
+        if (id) {
+          const requestOptions = {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + token,
+            },
+          };
+          const response = await fetch(`/api/profile/${id}`, requestOptions);
 
-      if (!response.ok) {
-        setErrorMessage("Could not get the Profile(Detail) item");
-      } else {
-        const data = await response.json();
-        setFirstname(data.firstname);
-        setSurname(data.surname);
-        setGithub(data.github);
-        setDiscord(data.discord);
+          if (!response.ok) {
+            throw new Error("Could not get the Profile(Detail) item");
+          }
+
+          const data = await response.json();
+          setFirstname(data.firstname);
+          setSurname(data.surname);
+          setGithub(data.github);
+          setDiscord(data.discord);
+        }
+      } catch (error) {
+        setErrorMessage(error.message);
       }
     };
 
-    if (id) {
-        getDetail();
-    }
+    getDetail();
   }, [id, token]);
 
   const cleanFormData = () => {
@@ -42,54 +46,62 @@ const ProfileModal = ({ active, handleModal, token, id, setErrorMessage }) => {
 
   const handleCreateDetail = async (e) => {
     e.preventDefault();
-    const requestOptions = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
-      body: JSON.stringify({
-        firstname: firstname,
-        surname: surname,
-        github: github,
-        discord: discord,
-      }),
-    };
-    const response = await fetch("/api/profile", requestOptions);
+    try {
+      const requestOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+        body: JSON.stringify({
+          firstname: firstname,
+          surname: surname,
+          github: github,
+          discord: discord,
+        }),
+      };
+      const response = await fetch("/api/profile", requestOptions);
 
-    if (!response.ok) {
-      setErrorMessage("Something went wrong when creating the Profile(Detail) item");
-    } else {
+      if (!response.ok) {
+        throw new Error("Something went wrong when creating the Profile(Detail) item");
+      }
+
       cleanFormData();
       handleModal();
+    } catch (error) {
+      setErrorMessage(error.message);
     }
   };
 
   const handleUpdateDetail = async (e) => {
     e.preventDefault();
-    const requestOptions = {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
-      body: JSON.stringify({
-        firstname: firstname,
-        surname: surname,
-        github: github,
-        discord: discord,
-      }),
-    };
-    const response = await fetch(`/api/profile/${id}`, requestOptions);
+    try {
+      const requestOptions = {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+        body: JSON.stringify({
+          firstname: firstname,
+          surname: surname,
+          github: github,
+          discord: discord,
+        }),
+      };
+      const response = await fetch(`/api/profile/${id}`, requestOptions);
 
-    if (!response.ok) {
-      setErrorMessage("Something went wrong when updating the Profile(Detail) item");
-    } else {
+      if (!response.ok) {
+        throw new Error("Something went wrong when updating the Profile(Detail) item");
+      }
+
       cleanFormData();
       handleModal();
+    } catch (error) {
+      setErrorMessage(error.message);
     }
   };
-
+  
   return (
     <div className={`modal ${active && "is-active"}`}>
       <div className="modal-background" onClick={handleModal}></div>

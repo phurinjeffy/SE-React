@@ -23,37 +23,24 @@ const Profile = () => {
     setActiveModal(true);
   };
 
-  // const handleDelete = async (id) => {
-  // const requestOptions = {
-  //     method: "DELETE",
-  //     headers: {
-  //     "Content-Type": "application/json",
-  //     Authorization: "Bearer " + token,
-  //     },
-  // };
-  // const response = await fetch(`/api/profile/${id}`, requestOptions);
-  // if (!response.ok) {
-  //     setErrorMessage("Failed to delete profile");
-  // }
-
-  // getProfile();
-  // };
-
   const getProfile = async () => {
-    const requestOptions = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
-    };
-    const response = await fetch("/api/profile", requestOptions);
-    if (!response.ok) {
-      setErrorMessage("Something went wrong. Couldn't load the profile");
-    } else {
+    try {
+      const requestOptions = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+      };
+      const response = await fetch("/api/profile", requestOptions);
+      if (!response.ok) {
+        throw new Error("Something went wrong. Couldn't load the profile");
+      }
       const data = await response.json();
       setProfile(data);
       setLoaded(true);
+    } catch (error) {
+      setErrorMessage(error.message);
     }
   };
 
@@ -61,11 +48,53 @@ const Profile = () => {
     getProfile();
   }, []);
 
-  const handleModal = () => {
+  useEffect(() => {
+    // Fetch the profile after the modal state has been updated
+    if (activeModal) {
+      getProfile();
+    }
+  }, [activeModal]); // Add activeModal as a dependency
+
+  const handleModal = async () => {
+    try {
+      const requestOptions = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+      };
+      const response = await fetch("/api/profile", requestOptions);
+      if (!response.ok) {
+        throw new Error("Something went wrong. Couldn't load the profile");
+      }
+      const data = await response.json();
+      setProfile(data);
+      setLoaded(true); // Set loaded to true when the data is successfully loaded
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
+  
+    const profileExists = profile !== null && profile.id !== null;
+  
+    if (profileExists) {
+      setId(profile.id);
+    } else {
+      setId(null);
+    }
+  
+    // Move this inside the try block to ensure it's called after data is loaded
     setActiveModal(!activeModal);
-    getProfile();
-    setId(null);
   };
+  
+  useEffect(() => {
+    // Fetch the profile after the modal state has been updated
+    if (activeModal) {
+      getProfile();
+    }
+  }, [activeModal]);
+  
+
 
   return (
     <div className="ProfileSection">
@@ -79,12 +108,22 @@ const Profile = () => {
       <div className="User">
         <div className="UserSProfilePic">
           <button onClick={() => setActiveModal(true)}>
-            <img src="https://www.asiamediajournal.com/wp-content/uploads/2022/10/Cute-PFP-for-fb.jpg" />
+            <img src="https://www.asiamediajournal.com/wp-content/uploads/2022/10/Cute-PFP-for-fb.jpg" alt="Profile" />
           </button>
+          {loaded && profile !== null ? (
+            <div>
+              <div className="Name">{profile.firstname}</div>
+              <div className="Name">{profile.surname}</div>
+              <div className="Email">65011463@kmitl.ac.th</div>
+            </div>
+          ) : (
+            <div>
+              <div className="Name">First name</div>
+              <div className="Name">Surname</div>
+              <div className="Email">65011463@kmitl.ac.th</div>
+            </div>
+          )}
         </div>
-        <div className="Name">First Name</div>
-        <div className="Name">Surname</div>
-        <div className="Email">65011463@kmitl.ac.th</div>
       </div>
       <div className="Contacts">
         <div className="ContactsRow">
