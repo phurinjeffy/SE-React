@@ -117,10 +117,10 @@ async def update_note(note_id: int, note: _schemas.NoteCreate, user: _schemas.Us
     note_db = await _note_selector(note_id, user, db)
 
     note_db.dueDate = note.dueDate
-    note_db.course = note.course
     note_db.title = note.title
     note_db.description = note.description
-    note_db.urgency = note.urgency
+    note_db.category = note.category
+    note_db.color = note.color
     note_db.date_last_updated = _dt.datetime.utcnow()
 
     db.commit()
@@ -173,8 +173,9 @@ async def update_timetable(timetable_id: int, timetable: _schemas.TimetableCreat
     timetable_db = await _timetable_selector(timetable_id, user, db)
 
     timetable_db.course = timetable.course
-    timetable_db.date = timetable.date
-    timetable_db.time = timetable.time
+    timetable_db.day = timetable.day
+    timetable_db.startTime = timetable.startTime
+    timetable_db.endTime = timetable.endTime
     timetable_db.location = timetable.location
     timetable_db.date_last_updated = _dt.datetime.utcnow()
 

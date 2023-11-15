@@ -23,10 +23,10 @@ class User(_UserBase):
 
 class _NoteBase(_pydantic.BaseModel):
     dueDate: str
-    course: str
     title: str
     description: str
-    urgency: str
+    category: str
+    color: str
 
 
 class NoteCreate(_NoteBase):
@@ -46,8 +46,9 @@ class Note(_NoteBase):
 
 class _TimetableBase(_pydantic.BaseModel):
     course: str
-    date: str
-    time: str
+    day: str
+    startTime: str
+    endTime: str
     location: str
 
 

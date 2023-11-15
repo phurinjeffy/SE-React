@@ -6,10 +6,10 @@ const TimetablesTable = ({ timetables, handleUpdate, handleDelete, showEdit }) =
     <thead>
       <tr>
         <th>Course</th>
-        <th>Date</th>
-        <th>Time</th>
+        <th>Day</th>
+        <th>Start</th>
+        <th>End</th>
         <th>Location</th>
-        <th>Lecturer</th>
         {showEdit && 
         <>
         <th>Last Updated</th>
@@ -23,10 +23,10 @@ const TimetablesTable = ({ timetables, handleUpdate, handleDelete, showEdit }) =
         timetables.map((timetable) => (
           <tr key={timetable.id}>
             <td>{timetable.course}</td>
-            <td>{timetable.date}</td>
-            <td>{timetable.time}</td>
+            <td>{timetable.day}</td>
+            <td>{timetable.startTime}</td>
+            <td>{timetable.endTime}</td>
             <td>{timetable.location}</td>
-            <td>{timetable.lecturer}</td>
             {showEdit && 
             <>
             <td>{moment(timetable.date_last_updated).format("YYYY-MM-D")}</td>

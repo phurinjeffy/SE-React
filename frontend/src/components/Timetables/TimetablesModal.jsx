@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 
 const TimetablesModal = ({ active, handleModal, token, id, setErrorMessage }) => {
   const [course, setCourse] = useState("");
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
+  const [day, setDay] = useState("");
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
   const [location, setLocation] = useState("");
-  const [lecturer, setLecturer] = useState("");
 
   useEffect(() => {
     const getSchedule = async () => {
@@ -23,10 +23,10 @@ const TimetablesModal = ({ active, handleModal, token, id, setErrorMessage }) =>
       } else {
         const data = await response.json();
         setCourse(data.course);
-        setDate(data.date);
-        setTime(data.time);
+        setDay(data.day);
+        setStartTime(data.startTime);
+        setEndTime(data.endTime);
         setLocation(data.location);
-        setLecturer(data.lecturer);
       }
     };
 
@@ -37,10 +37,10 @@ const TimetablesModal = ({ active, handleModal, token, id, setErrorMessage }) =>
 
   const cleanFormData = () => {
     setCourse("");
-    setDate("");
-    setTime("");
+    setDay("");
+    setStartTime("");
+    setEndTime("");
     setLocation("");
-    setLecturer("");
   };
 
   const handleCreateSchedule = async (e) => {
@@ -53,10 +53,10 @@ const TimetablesModal = ({ active, handleModal, token, id, setErrorMessage }) =>
       },
       body: JSON.stringify({
         course: course,
-        date: date,
-        time: time,
+        day: day,
+        startTime: startTime,
+        endTime: endTime,
         location: location,
-        lecturer: lecturer,
       }),
     };
     const response = await fetch("/api/timetables", requestOptions);
@@ -79,10 +79,10 @@ const TimetablesModal = ({ active, handleModal, token, id, setErrorMessage }) =>
       },
       body: JSON.stringify({
         course: course,
-        date: date,
-        time: time,
+        day: day,
+        startTime: startTime,
+        endTime: endTime,
         location: location,
-        lecturer: lecturer,
       }),
     };
     const response = await fetch(`/api/timetables/${id}`, requestOptions);
@@ -113,29 +113,44 @@ const TimetablesModal = ({ active, handleModal, token, id, setErrorMessage }) =>
                   value={course}
                   onChange={(e) => setCourse(e.target.value)}
                   className="input"
+                  required
                 />
               </div>
             </div>
             <div className="field">
-              <label className="label">Date</label>
+              <label className="label">Day</label>
               <div className="control">
                 <input
-                  type="date"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
+                  type="text"
+                  placeholder="Enter day of the week"
+                  value={day}
+                  onChange={(e) => setDay(e.target.value)}
                   className="input"
                   required
                 />
               </div>
             </div>
             <div className="field">
-              <label className="label">Time</label>
+              <label className="label">Start Time</label>
               <div className="control">
                 <input
                   type="time"
-                  value={time}
-                  onChange={(e) => setTime(e.target.value)}
+                  value={startTime}
+                  onChange={(e) => setStartTime(e.target.value)}
                   className="input"
+                  required
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">End Time</label>
+              <div className="control">
+                <input
+                  type="time"
+                  value={endTime}
+                  onChange={(e) => setEndTime(e.target.value)}
+                  className="input"
+                  required
                 />
               </div>
             </div>
@@ -148,18 +163,7 @@ const TimetablesModal = ({ active, handleModal, token, id, setErrorMessage }) =>
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
                   className="input"
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Lecturer</label>
-              <div className="control">
-                <input
-                  type="text"
-                  placeholder="Enter lecturer"
-                  value={lecturer}
-                  onChange={(e) => setLecturer(e.target.value)}
-                  className="input"
+                  required
                 />
               </div>
             </div>

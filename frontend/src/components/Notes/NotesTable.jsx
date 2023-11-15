@@ -6,10 +6,10 @@ const NotesTable = ({ notes, handleUpdate, handleDelete, showEdit }) => (
     <thead>
       <tr>
         <th>Due Date</th>
-        <th>Course</th>
         <th>Title</th>
         <th>Description</th>
-        <th>Urgency</th>
+        <th>Category</th>
+        <th>Color</th>
         {showEdit && 
         <>
         <th>Last Updated</th>
@@ -23,10 +23,10 @@ const NotesTable = ({ notes, handleUpdate, handleDelete, showEdit }) => (
         notes.map((note) => (
           <tr key={note.id}>
             <td>{note.dueDate}</td>
-            <td>{note.course}</td>
             <td>{note.title}</td>
             <td>{note.description}</td>
-            <td>{note.urgency}</td>
+            <td>{note.category}</td>
+            <td>{note.color}</td>
             {showEdit && 
             <>
             <td>{moment(note.date_last_updated).format("YYYY-MM-D")}</td>

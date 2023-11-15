@@ -51,10 +51,17 @@ const Calendar = ({ notes }) => {
         notes &&
         notes.some((note) => note.dueDate === formattedDate);
 
+      const noteForDay = notes?.find((note) => note.dueDate === formattedDate);
+      
+      const cellStyle = {
+        backgroundColor: noteForDay ? noteForDay.color : '', 
+      };
+
       calendar.push(
         <div
           key={day}
           className={`calendar-cell ${hasNote ? "has-schedule" : ""}`}
+          style={cellStyle}
           onClick={
             hasNote ? (e) => handleCellClick(formattedDate, e) : undefined
           }
@@ -160,10 +167,9 @@ const Calendar = ({ notes }) => {
         {selectedNote && (
           <div>
             <p>Deadline: {selectedNote.dueDate}</p>
-            <p>Course: {selectedNote.course}</p>
             <p>Title: {selectedNote.title}</p>
             <p>Description: {selectedNote.description}</p>
-            <p>Urgency: {selectedNote.urgency}</p>
+            <p>Category: {selectedNote.category}</p>
           </div>
         )}
       </Modal>

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 
 const NotesModal = ({ active, handleModal, token, id, setErrorMessage }) => {
   const [dueDate, setDueDate] = useState("");
-  const [course, setCourse] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [urgency, setUrgency] = useState("");
+  const [category, setCategory] = useState("");
+  const [color, setColor] = useState("");
 
   useEffect(() => {
     const getTodo = async () => {
@@ -23,10 +23,10 @@ const NotesModal = ({ active, handleModal, token, id, setErrorMessage }) => {
       } else {
         const data = await response.json();
         setDueDate(data.dueDate);
-        setCourse(data.course);
         setTitle(data.title);
         setDescription(data.description);
-        setUrgency(data.urgency);
+        setCategory(data.category);
+        setColor(data.color);
       }
     };
 
@@ -37,10 +37,10 @@ const NotesModal = ({ active, handleModal, token, id, setErrorMessage }) => {
 
   const cleanFormData = () => {
     setDueDate("");
-    setCourse("");
     setTitle("");
     setDescription("");
-    setUrgency("");
+    setCategory("");
+    setColor("");
   };
 
   const handleCreateTodo = async (e) => {
@@ -53,10 +53,10 @@ const NotesModal = ({ active, handleModal, token, id, setErrorMessage }) => {
       },
       body: JSON.stringify({
         dueDate: dueDate,
-        course: course,
+        category: category,
         title: title,
         description: description,
-        urgency: urgency,
+        color: color,
       }),
     };
     const response = await fetch("/api/notes", requestOptions);
@@ -79,10 +79,10 @@ const NotesModal = ({ active, handleModal, token, id, setErrorMessage }) => {
       },
       body: JSON.stringify({
         dueDate: dueDate,
-        course: course,
         title: title,
         description: description,
-        urgency: urgency,
+        category: category,
+        color: color,
       }),
     };
     const response = await fetch(`/api/notes/${id}`, requestOptions);
@@ -117,18 +117,6 @@ const NotesModal = ({ active, handleModal, token, id, setErrorMessage }) => {
               </div>
             </div>
             <div className="field">
-              <label className="label">Course</label>
-              <div className="control">
-                <input
-                  type="text"
-                  placeholder="Enter course"
-                  value={course}
-                  onChange={(e) => setCourse(e.target.value)}
-                  className="input"
-                />
-              </div>
-            </div>
-            <div className="field">
               <label className="label">Title</label>
               <div className="control">
                 <input
@@ -150,18 +138,33 @@ const NotesModal = ({ active, handleModal, token, id, setErrorMessage }) => {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   className="input"
+                  required
                 />
               </div>
             </div>
             <div className="field">
-              <label className="label">Urgency</label>
+              <label className="label">Category</label>
               <div className="control">
                 <input
                   type="text"
-                  placeholder="Enter urgency"
-                  value={urgency}
-                  onChange={(e) => setUrgency(e.target.value)}
+                  placeholder="Enter category"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
                   className="input"
+                  required
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Color</label>
+              <div className="control">
+                <input
+                  type="color"
+                  placeholder="Enter color"
+                  value={color}
+                  onChange={(e) => setColor(e.target.value)}
+                  className="input"
+                  required
                 />
               </div>
             </div>
