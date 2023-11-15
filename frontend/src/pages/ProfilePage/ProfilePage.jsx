@@ -6,6 +6,7 @@ import "./ProfilePage.css";
 const ProfilePage = () => {
   const [token] = useContext(UserContext);
   const [notes, setNotes] = useState(null);
+  const [timetables, setTimetables] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [loaded, setLoaded] = useState(false);
   const [activeModal, setActiveModal] = useState(false);
@@ -50,8 +51,26 @@ const ProfilePage = () => {
     }
   };
 
+  const getTimetables = async () => {
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    };
+    const response = await fetch("/api/timetables", requestOptions);
+    if (!response.ok) {
+      setErrorMessage("Something went wrong. Couldn't load the timetables");
+    } else {
+      const data = await response.json();
+      setTimetables(data);
+    }
+  };
+
   useEffect(() => {
     getNotes();
+    getTimetables();
   }, []);
 
   return (
@@ -59,7 +78,7 @@ const ProfilePage = () => {
       <Profile />
       <div className="profileContent">
         <div className="profileCalendar">
-          <Calendar />
+          <Calendar timetables={timetables} />
         </div>
         <div className="profileNote">
           { loaded && notes && (

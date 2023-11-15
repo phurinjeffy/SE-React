@@ -43,6 +43,21 @@
   background-color: #dfe6e9;
 }
 
+.calendar-cell.has-schedule {
+  background-color: #f9f196;
+  cursor: pointer;
+}
+
+.clickedModal {
+  width: fit-content;
+  position: relative;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 .empty-cell {
   background-color: #ecf0f1;
 }
