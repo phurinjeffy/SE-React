@@ -50,6 +50,7 @@ class Timetable(_database.Base):
 
     owner = _orm.relationship("User", back_populates="timetables")
 
+
 class Profile(_database.Base):
     __tablename__ = "profile"
     id = _sql.Column(_sql.Integer, primary_key=True, index=True)

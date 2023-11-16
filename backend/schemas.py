@@ -2,6 +2,7 @@ import datetime as _dt
 
 import pydantic as _pydantic
 
+# ------------------- USERS ------------------------
 
 class _UserBase(_pydantic.BaseModel):
     email: str
@@ -20,6 +21,8 @@ class User(_UserBase):
     class Config:
         # orm_mode = True
         from_attributes = True
+        
+# ------------------- NOTES ------------------------
 
 class _NoteBase(_pydantic.BaseModel):
     dueDate: str
@@ -43,6 +46,7 @@ class Note(_NoteBase):
         # orm_mode = True
         from_attributes = True
 
+# ------------------- TIMETABLES ------------------------
 
 class _TimetableBase(_pydantic.BaseModel):
     course: str
@@ -65,6 +69,8 @@ class Timetable(_TimetableBase):
     class Config:
         # orm_mode = True
         from_attributes = True
+        
+# ------------------- PROFILES ------------------------
 
 class _ProfileBase(_pydantic.BaseModel):
     firstname: str

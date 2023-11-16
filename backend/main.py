@@ -6,11 +6,17 @@ import sqlalchemy.orm as _orm
 
 import services as _services, schemas as _schemas
 
-#chat
 from fastapi import WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime
 import json
+
+import boto3
+import psycopg2
+import uvicorn
+
+from pydantic import BaseModel
+from fastapi import FastAPI, UploadFile
 
 app = _fastapi.FastAPI()
 
@@ -22,6 +28,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# ------------------- USERS ------------------------
 
 @app.post("/api/users")
 async def create_user(
@@ -53,6 +60,8 @@ async def generate_token(
 async def get_user(user: _schemas.User = _fastapi.Depends(_services.get_current_user)):
     return user
 
+
+# ------------------- NOTES ------------------------
 
 @app.post("/api/notes", response_model=_schemas.Note)
 async def create_note(
@@ -101,6 +110,8 @@ async def update_note(
     return {"message", "Successfully Updated"}
 
 
+# ------------------- TIMETABLES ------------------------
+
 @app.post("/api/timetables", response_model=_schemas.Timetable)
 async def create_timetable(
     timetable: _schemas.TimetableCreate,
@@ -148,19 +159,9 @@ async def update_timetable(
     return {"message", "Successfully Updated"}
 
 
-
-#chat
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
+# ------------------- CHAT ------------------------
 
 class ConnectionManager:
-
     def __init__(self) -> None:
         self.active_connections: List[WebSocket] = []
 
@@ -180,13 +181,6 @@ class ConnectionManager:
 
 manager = ConnectionManager()
 
-# define endpoint
-
-
-# @app.get("/")
-# def Home():
-#     return "Welcome home"
-
 @app.websocket("/ws/{client_id}")
 async def websocket_endpoint(websocket: WebSocket, client_id: int):
     await manager.connect(websocket)
@@ -204,18 +198,8 @@ async def websocket_endpoint(websocket: WebSocket, client_id: int):
         message = {"time":current_time,"clientId":client_id,"message":"Offline"}
         await manager.broadcast(json.dumps(message))
 
-#-------------end chat---------------------
 
-#profile
-# @app.post("/api/profile", response_model=_schemas.Profile)
-# async def create_profile(
-#     profile: _schemas.ProfileCreate,
-#     user: _schemas.User = _fastapi.Depends(_services.get_current_user),
-#     db: _orm.Session = _fastapi.Depends(_services.get_db),
-# ):
-#     return await _services.create_profile(user=user, db=db, profile=profile)
-
-# Update get_profile function
+# ------------------- PROFILE ------------------------
 
 @app.post("/api/profile", response_model=_schemas.Profile)
 async def create_or_update_profile(
@@ -258,14 +242,8 @@ async def update_profile(
     await _services.update_profile(profile_id, profile, user, db)
     return {"message", "Successfully Updated"}
 
-# end profile
 
-# video
-import boto3
-import psycopg2
-
-from pydantic import BaseModel
-from fastapi import FastAPI, UploadFile
+# ------------------- VIDEO ------------------------
 
 S3_BUCKET_NAME = "video-storage-se"
 
@@ -317,9 +295,8 @@ async def add_video(file: UploadFile):
     cur.close()
     conn.close()
     
-# end video
 
-# photo
+# ------------------- PHOTO ------------------------
 
 class PhotoModel(BaseModel):
     id: int
@@ -368,8 +345,9 @@ async def add_photo(file: UploadFile):
     conn.commit()
     cur.close()
     conn.close()
+    
+    
+# ------------------- MAIN ------------------------
 
-
-import uvicorn
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000, reload=False)

@@ -23,6 +23,7 @@ def get_db():
     finally:
         db.close()
 
+# ------------------- USERS ------------------------
 
 async def get_user_by_email(email: str, db: _orm.Session):
     return db.query(_models.User).filter(_models.User.email == email).first()
@@ -72,6 +73,7 @@ async def get_current_user(
 
     return _schemas.User.from_orm(user)
 
+# ------------------- NOTES ------------------------
 
 async def create_note(user: _schemas.User, db: _orm.Session, note: _schemas.NoteCreate):
     note = _models.Note(**note.dict(), owner_id=user.id)
@@ -128,6 +130,7 @@ async def update_note(note_id: int, note: _schemas.NoteCreate, user: _schemas.Us
 
     return _schemas.Note.from_orm(note_db)
 
+# ------------------- TIMETABLES ------------------------
 
 async def create_timetable(user: _schemas.User, db: _orm.Session, timetable: _schemas.TimetableCreate):
     timetable = _models.Timetable(**timetable.dict(), owner_id=user.id)
@@ -184,7 +187,8 @@ async def update_timetable(timetable_id: int, timetable: _schemas.TimetableCreat
 
     return _schemas.Timetable.from_orm(timetable_db)
 
-#profile
+# ------------------- PROFILES ------------------------
+
 async def create_profile(user: _schemas.User, db: _orm.Session, profile: _schemas.ProfileCreate):
     profile = _models.Profile(**profile.dict(), owner_id=user.id)
     db.add(profile)
