@@ -13,5 +13,6 @@ export { default as UploadPage } from "./UploadPage/UploadPage";
 export { default as NotePage } from "./NotePage/NotePage";
 export { default as TimetablePage } from "./TimetablePage/TimetablePage";
 export { default as ChatPage } from "./ChatPage/ChatPage";
+export { default as NewsPage } from "./NewsPage/NewsPage";
 
 // reportWebVitals();

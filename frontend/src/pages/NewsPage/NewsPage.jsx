@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "./LearnPage.css";
+import "./NewsPage.css";
 
 import GenericContainer from "../../components/GenericContainer/GenericContainer";
 
-const LearnPage = () => {
+const NewsPage = () => {
   const [isSelected, setIsSelected] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [allVideos, setAllVideos] = useState([]);
@@ -47,8 +47,8 @@ const LearnPage = () => {
   };
 
   return (
-    <div className="learnPage">
-      <GenericContainer title="Learning Resources">
+    <div className="newsPage">
+      <GenericContainer title="News Feed">
         <div className="uploadSection">
           <input type="file" accept="video/*" onChange={onInputChange} onClick={onButtonClick} className="videoInput"/>
           <button onClick={onFileUpload} disabled={!isSelected} className="uploadButton" style={{ backgroundColor: isSelected ? "#e44d26" : "grey", cursor: isSelected ? "pointer" : "not-allowed"}}>
@@ -82,4 +82,4 @@ const LearnPage = () => {
   
 };
 
-export default LearnPage;
+export default NewsPage;

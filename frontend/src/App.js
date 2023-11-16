@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Outlet, Navigate } from "react-router-dom";
 import { Navbar, Sidebar } from "./components";
-import { LoginPage, RegisterPage, ProfilePage, RepositoryPage, LearnPage, HomePage, EditPage, FollowerPage, FollowingPage, UploadPage, NotePage, TimetablePage, ChatPage } from "./pages";
+import { LoginPage, RegisterPage, ProfilePage, RepositoryPage, LearnPage, HomePage, EditPage, FollowerPage, FollowingPage, UploadPage, NotePage, TimetablePage, ChatPage, NewsPage } from "./pages";
 import "./App.css";
 import { UserContext } from "./context/UserContext";
 
@@ -62,6 +62,7 @@ const App = () => {
             <Route path="/notes" element={<NotePage />} />
             <Route path="/timetable" element={<TimetablePage />} />
             <Route path="/learn" element={<LearnPage />} />
+            <Route path="/news" element={<NewsPage />} />
             <Route path="/upload" element={<UploadPage />} />
             <Route path="/ws" element={<ChatPage />} />
           </Route>

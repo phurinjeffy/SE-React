@@ -28,6 +28,11 @@ export const SidebarData = [
         link: "/learn"
     },
     {
+        title: "News",
+        icon: <img src={learnIcon} alt="learnIcon"/>,
+        link: "/news"
+    },
+    {
         title: "Chat",
         icon: <img src={chatIcon} alt="chatIcon"/>,
         link: "/ws"
