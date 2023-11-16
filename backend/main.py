@@ -14,6 +14,14 @@ import json
 
 app = _fastapi.FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 @app.post("/api/users")
 async def create_user(
@@ -251,3 +259,69 @@ async def update_profile(
     return {"message", "Successfully Updated"}
 
 # end profile
+
+# video
+import boto3
+import psycopg2
+
+from pydantic import BaseModel
+from fastapi import FastAPI, UploadFile
+
+S3_BUCKET_NAME = "video-storage-se"
+
+class VideoModel(BaseModel):
+    id: int
+    video_title: str
+    video_url: str
+
+
+@app.get("/videos", response_model=List[VideoModel])
+async def get_videos():
+    # Connect to our database
+    conn = psycopg2.connect(
+        database="exampledb", user="docker", password="docker", host="0.0.0.0"
+    )
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM video ORDER BY id DESC")
+    rows = cur.fetchall()
+
+    formatted_videos = []
+    for row in rows:
+        formatted_videos.append(
+            VideoModel(id=row[0], video_title=row[1], video_url=row[2])
+        )
+
+    cur.close()
+    conn.close()
+    return formatted_videos
+
+
+@app.post("/videos", status_code=201)
+async def add_video(file: UploadFile):
+    # Upload file to AWS S3
+    s3 = boto3.resource("s3")
+    bucket = s3.Bucket(S3_BUCKET_NAME)
+    bucket.upload_fileobj(file.file, file.filename)
+
+    uploaded_file_url = f"https://{S3_BUCKET_NAME}.s3.amazonaws.com/{file.filename}"
+    # uploaded_file_url = f"https://{S3_BUCKET_NAME}.s3.ap-southeast-1.amazonaws.com/{file.filename}"
+    # uploaded_file_url = f"https://15hxpxxl19.execute-api.ap-southeast-1.amazonaws.com/{S3_BUCKET_NAME}/{file.filename}"
+
+    # Store URL in database
+    conn = psycopg2.connect(
+        database="exampledb", user="docker", password="docker", host="0.0.0.0"
+    )
+    cur = conn.cursor()
+    cur.execute(
+        f"INSERT INTO video (video_title, video_url) VALUES ('{file.filename}', '{uploaded_file_url}' )"
+    )
+    conn.commit()
+    cur.close()
+    conn.close()
+    
+# end video
+
+
+import uvicorn
+if __name__ == "__main__":
+    uvicorn.run(app, host="localhost", port=8000, reload=False)
