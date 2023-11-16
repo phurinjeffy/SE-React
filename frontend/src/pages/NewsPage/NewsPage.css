@@ -10,7 +10,7 @@
   text-align: center;
 }
 
-.videoInput {
+.photoInput {
   margin-bottom: 10px;
 }
 
@@ -19,38 +19,38 @@
   color: white;
 }
 
-.uploadSpinner {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.videoSection {
+.photoSection {
   text-align: center;
   margin-bottom: 1rem;
 }
 
-.videoGrid {
+.photoGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  height: 440px;
+  height: 460px;
   overflow-y: scroll;
 }
 
-.videoBlock {
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
+.photoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.videoName {
+.photoBlock {
+  width: 100%; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 0;
+}
+
+.photoName {
   font-size: 10px;
   margin: 0.1rem 0;
 }
 
 @media screen and (max-width: 1400px) {
-  .learnPage {
+  .newsPage {
     flex-direction: column;
   }
 }

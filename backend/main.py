@@ -304,8 +304,6 @@ async def add_video(file: UploadFile):
     bucket.upload_fileobj(file.file, file.filename)
 
     uploaded_file_url = f"https://{S3_BUCKET_NAME}.s3.amazonaws.com/{file.filename}"
-    # uploaded_file_url = f"https://{S3_BUCKET_NAME}.s3.ap-southeast-1.amazonaws.com/{file.filename}"
-    # uploaded_file_url = f"https://15hxpxxl19.execute-api.ap-southeast-1.amazonaws.com/{S3_BUCKET_NAME}/{file.filename}"
 
     # Store URL in database
     conn = psycopg2.connect(
@@ -320,6 +318,56 @@ async def add_video(file: UploadFile):
     conn.close()
     
 # end video
+
+# photo
+
+class PhotoModel(BaseModel):
+    id: int
+    photo_title: str
+    photo_url: str
+
+
+@app.get("/photos", response_model=List[PhotoModel])
+async def get_photos():
+    # Connect to our database
+    conn = psycopg2.connect(
+        database="exampledb", user="docker", password="docker", host="0.0.0.0"
+    )
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM photo ORDER BY id DESC")
+    rows = cur.fetchall()
+
+    formatted_photos = []
+    for row in rows:
+        formatted_photos.append(
+            PhotoModel(id=row[0], photo_title=row[1], photo_url=row[2])
+        )
+
+    cur.close()
+    conn.close()
+    return formatted_photos
+
+
+@app.post("/photos", status_code=201)
+async def add_photo(file: UploadFile):
+    # Upload file to AWS S3
+    s3 = boto3.resource("s3")
+    bucket = s3.Bucket(S3_BUCKET_NAME)
+    bucket.upload_fileobj(file.file, file.filename)
+
+    uploaded_file_url = f"https://{S3_BUCKET_NAME}.s3.amazonaws.com/{file.filename}"
+
+    # Store URL in database
+    conn = psycopg2.connect(
+        database="exampledb", user="docker", password="docker", host="0.0.0.0"
+    )
+    cur = conn.cursor()
+    cur.execute(
+        f"INSERT INTO photo (photo_title, photo_url) VALUES ('{file.filename}', '{uploaded_file_url}' )"
+    )
+    conn.commit()
+    cur.close()
+    conn.close()
 
 
 import uvicorn

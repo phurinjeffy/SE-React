@@ -52,17 +52,11 @@ const LearnPage = () => {
         <div className="uploadSection">
           <input type="file" accept="video/*" onChange={onInputChange} onClick={onButtonClick} className="videoInput"/>
           <button onClick={onFileUpload} disabled={!isSelected} className="uploadButton" style={{ backgroundColor: isSelected ? "#e44d26" : "grey", cursor: isSelected ? "pointer" : "not-allowed"}}>
-            Upload Video
+            {showSpinner ? "Uploading..." : "Upload Video"}
           </button>
-          {showSpinner && (
-            <div className="uploadSpinner">
-              <div>Loading...</div>
-            </div>
-          )}
         </div>
       
         <div className="videoSection">
-          <div>Uploaded Videos</div>
           <div className="videoGrid">
             {Array.isArray(allVideos) &&
               allVideos.length !== 0 &&

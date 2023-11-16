@@ -1,10 +1,11 @@
 import React from 'react'
 
 import profileIcon from "../../assets/profile.svg";
-import repositoryIcon from "../../assets/repository.svg";
+import notesIcon from "../../assets/notes.svg";
 import learnIcon from "../../assets/learn.svg";
 import timetableIcon from "../../assets/timetable.svg";
 import chatIcon from "../../assets/chat.svg";
+import newsIcon from "../../assets/news.svg";
 
 export const SidebarData = [
     {
@@ -14,7 +15,7 @@ export const SidebarData = [
     },
     {
         title: "Notes",
-        icon: <img src={repositoryIcon} alt="repositoryIcon"/>,
+        icon: <img src={notesIcon} alt="notesIcon"/>,
         link: "/notes"
     },
     {
@@ -29,7 +30,7 @@ export const SidebarData = [
     },
     {
         title: "News",
-        icon: <img src={learnIcon} alt="learnIcon"/>,
+        icon: <img src={newsIcon} alt="newsIcon"/>,
         link: "/news"
     },
     {

@@ -31,16 +31,19 @@ const Navbar = () => {
         setPageTitle("Notes");
         break;
       case "/timetable":
-          setPageTitle("Timetable");
-          break;
-      case "/repository":
-        setPageTitle("Repository");
+        setPageTitle("Timetable");
         break;
       case "/learn":
         setPageTitle("Learn");
         break;
+      case "/news":
+        setPageTitle("News");
+        break;
       case "/ws":
         setPageTitle("Chat");
+        break;
+      case "/repository":
+        setPageTitle("Repository");
         break;
       default:
         setPageTitle("Software Engineering");

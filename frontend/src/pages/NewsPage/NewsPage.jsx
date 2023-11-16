@@ -6,16 +6,16 @@ import GenericContainer from "../../components/GenericContainer/GenericContainer
 const NewsPage = () => {
   const [isSelected, setIsSelected] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
-  const [allVideos, setAllVideos] = useState([]);
+  const [allPhotos, setAllPhotos] = useState([]);
   const [uploadSuccessful, setUploadSuccessful] = useState(false);
   const [showSpinner, setShowSpinner] = useState(false);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/videos")
+    fetch("http://127.0.0.1:8000/photos")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        setAllVideos(data);
+        setAllPhotos(data);
       });
   }, [uploadSuccessful]);
 
@@ -34,7 +34,7 @@ const NewsPage = () => {
     setShowSpinner(true);
     const formData = new FormData();
     formData.append("file", selectedFile, selectedFile.name);
-    fetch("http://127.0.0.1:8000/videos", {
+    fetch("http://127.0.0.1:8000/photos", {
       method: "POST",
       body: formData,
     })
@@ -50,27 +50,21 @@ const NewsPage = () => {
     <div className="newsPage">
       <GenericContainer title="News Feed">
         <div className="uploadSection">
-          <input type="file" accept="video/*" onChange={onInputChange} onClick={onButtonClick} className="videoInput"/>
+          <input type="file" accept="image/*" onChange={onInputChange} onClick={onButtonClick} className="photoInput"/>
           <button onClick={onFileUpload} disabled={!isSelected} className="uploadButton" style={{ backgroundColor: isSelected ? "#e44d26" : "grey", cursor: isSelected ? "pointer" : "not-allowed"}}>
-            Upload Video
+            {showSpinner ? "Uploading..." : "Upload Photo"}
           </button>
-          {showSpinner && (
-            <div className="uploadSpinner">
-              <div>Loading...</div>
-            </div>
-          )}
         </div>
       
-        <div className="videoSection">
-          <div>Uploaded Videos</div>
-          <div className="videoGrid">
-            {Array.isArray(allVideos) &&
-              allVideos.length !== 0 &&
-              allVideos.map((video) => (
-                <div key={video.id} >
-                  <video src={video["video_url"]} controls className="videoBlock"></video>
-                  <div className="videoName">
-                    {video["video_title"]}
+        <div className="photoSection">
+          <div className="photoGrid">
+            {Array.isArray(allPhotos) &&
+              allPhotos.length !== 0 &&
+              allPhotos.map((photo) => (
+                <div key={photo.id} className="photoContainer">
+                  <img src={photo["photo_url"]} alt={photo["photo_title"]} className="photoBlock" />
+                  <div className="photoName">
+                    {photo["photo_title"]}
                   </div>
                 </div>
               ))}
