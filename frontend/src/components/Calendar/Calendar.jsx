@@ -52,9 +52,11 @@ const Calendar = ({ notes }) => {
         notes.some((note) => note.dueDate === formattedDate);
 
       const noteForDay = notes?.find((note) => note.dueDate === formattedDate);
+      const isCurrentDay = format(currentDateOfMonth, "yyyy-MM-dd") === format(new Date(), "yyyy-MM-dd");
       
       const cellStyle = {
         backgroundColor: noteForDay ? noteForDay.color : '', 
+        border: isCurrentDay ? '1.5px solid #4285f4' : '',
       };
 
       calendar.push(
