@@ -1,6 +1,8 @@
 # Software Engineering Website
 
-A website developed for the **Software Engineering** faculty at KMITL, includes features and pages in the section below:
+A website developed for the **Software Engineering** faculty at KMITL, which stands as a robust and comprehensive hub designed to cater to the intricate needs of both students and faculty.
+
+With a seamless blend of features, it creates an immersive and dynamic online environment that facilitates effective communication and personalized tools.
 
 Developed using ReactJS, FastAPI, SQLite and PostgreSQL.
 
@@ -54,7 +56,6 @@ Developed using ReactJS, FastAPI, SQLite and PostgreSQL.
 
 <img width="768" alt="image" src="https://github.com/phurinjeffy/SE-Website/assets/110296454/e06fd1bc-422e-4715-8360-6a55ba3277d1">
 <br>
-
 <br>
 
 ## How to run
